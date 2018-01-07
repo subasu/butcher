@@ -223,18 +223,18 @@
                                         <span class="required star" title="پر کردن این فیلد الزامی است"></span>
                                     </label>
                                 </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1 ">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <input id="warehouse_place" class="form-control col-md-12 col-xs-12"
-                                               name="warehouse_place"
-                                               type="text">
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="warehouse_place"> محل
-                                        فیزیکی در
-                                        انبار :
-                                        <span class="required star" title="پر کردن این فیلد الزامی است"></span>
-                                    </label>
-                                </div>
+                                {{--<div class="col-md-10 col-md-offset-1 margin-1 ">--}}
+                                    {{--<div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">--}}
+                                        {{--<input id="warehouse_place" class="form-control col-md-12 col-xs-12"--}}
+                                               {{--name="warehouse_place"--}}
+                                               {{--type="text">--}}
+                                    {{--</div>--}}
+                                    {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="warehouse_place"> محل--}}
+                                        {{--فیزیکی در--}}
+                                        {{--انبار :--}}
+                                        {{--<span class="required star" title="پر کردن این فیلد الزامی است"></span>--}}
+                                    {{--</label>--}}
+                                {{--</div>--}}
                                 <div class="col-md-10 col-md-offset-1 margin-1">
                                     <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
                                         <input id="ready_time" class="form-control col-md-12 col-xs-12"
@@ -385,7 +385,7 @@
                                 <div class="col-md-10 ">
                                     <hr>
                                 </div>
-                                <div class="col-md-12">
+                                <div class="col-md-12 margin-bot-1">
                                     <div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3">
                                         <input class="form-control col-md-12 col-xs-12"
                                                type="file" name="video_src" id="video_src"/>
@@ -396,26 +396,26 @@
                                         <span class="required star"></span>
                                     </label>
                                 </div>
-                                <div>
-                                    <div class="col-md-12 margin-2 ">
-                                        <div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"
-                                             id="color">
-                                        </div>
-                                        <label class="control-label col-md-2 col-sm-4 col-xs-3" for="color">انتخاب رنگ
-                                            های محصول :
-                                        </label>
-                                    </div>
-                                </div>
-                                <div>
-                                    <div class="col-md-12 margin-2 margin-bot-1">
-                                        <div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"
-                                             id="size">
-                                        </div>
-                                        <label class="control-label col-md-2 col-sm-4 col-xs-3" for="size">انتخاب اندازه
-                                            های محصول :
-                                        </label>
-                                    </div>
-                                </div>
+                                {{--<div>--}}
+                                    {{--<div class="col-md-12 margin-2 ">--}}
+                                        {{--<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"--}}
+                                             {{--id="color">--}}
+                                        {{--</div>--}}
+                                        {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="color">انتخاب رنگ--}}
+                                            {{--های محصول :--}}
+                                        {{--</label>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
+                                {{--<div>--}}
+                                    {{--<div class="col-md-12 margin-2 margin-bot-1">--}}
+                                        {{--<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"--}}
+                                             {{--id="size">--}}
+                                        {{--</div>--}}
+                                        {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="size">انتخاب اندازه--}}
+                                            {{--های محصول :--}}
+                                        {{--</label>--}}
+                                    {{--</div>--}}
+                                {{--</div>--}}
                             </div>
                         </div>
                     </div>
@@ -832,8 +832,8 @@
                     })
                 }
 
-                appendItem("#color", "color", "{{url('api/v1/getColors')}}");
-                appendItem("#size", "size", "{{url('api/v1/getSizes')}}");
+                {{--appendItem("#color", "color", "{{url('api/v1/getColors')}}");--}}
+                {{--appendItem("#size", "size", "{{url('api/v1/getSizes')}}");--}}
             });
         </script>
         <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>

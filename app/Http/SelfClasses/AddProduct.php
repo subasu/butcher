@@ -72,7 +72,7 @@ class AddProduct
         $pr->video_src = $videoSrc;
         $pr->delivery_volume = $product->delivery_volume;
         $pr->warehouse_count = $product->warehouse_count;
-        $pr->warehouse_place = $product->warehouse_place;
+//        $pr->warehouse_place = $product->warehouse_place;
         $pr->barcode = $product->barcode;
         if (!empty($product->post_price))
             $pr->post_price = str_replace(',', '', $product->post_price);
@@ -83,29 +83,29 @@ class AddProduct
         //above line find product_id that now saved for use in pivot table
         // $lastProductId = Product::orderBy('created_at', 'desc')->offset(0)->limit(1)->value('id');
         //this block code save color array of product in color_product table
-        $countColor = count($product->color);
-        if ($countColor) {
-            for ($i = 0; $i < $countColor; $i++) {
-                $productColor = new ProductColor();
-                $productColor->product_id = $lastProductId;
-                $productColor->color_id = $product->color[$i];
-                $productColor->active = 1;
-                $productColor->save();
-            }
-        }
-        //this block code save size array of product in product_size table
-        $countSize = count($product->size);
-        if ($countSize) {
-            for ($i = 0; $i < $countSize; $i++) {
-                $productColor = new ProductSize();
-                $productColor->product_id = $lastProductId;
-                $productColor->size_id = $product->size[$i];
-                $productColor->active = 1;
-                $productColor->save();
-
-            }
-
-        }
+//        $countColor = count($product->color);
+//        if ($countColor) {
+//            for ($i = 0; $i < $countColor; $i++) {
+//                $productColor = new ProductColor();
+//                $productColor->product_id = $lastProductId;
+//                $productColor->color_id = $product->color[$i];
+//                $productColor->active = 1;
+//                $productColor->save();
+//            }
+//        }
+//        //this block code save size array of product in product_size table
+//        $countSize = count($product->size);
+//        if ($countSize) {
+//            for ($i = 0; $i < $countSize; $i++) {
+//                $productColor = new ProductSize();
+//                $productColor->product_id = $lastProductId;
+//                $productColor->size_id = $product->size[$i];
+//                $productColor->active = 1;
+//                $productColor->save();
+//
+//            }
+//
+//        }
         //this block code save and upload picture array of product in product_Images table
         $countPic = count($product->file);
         if ($countPic) {
