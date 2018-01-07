@@ -148,19 +148,7 @@ class AddProduct
         /**this section check user select which level of categories
          *and insert row to category_product table with latest product_id and category_id
          **/
-        $catId = 0;
-        if (empty($product->subCategories)) {
-            $catId = $product->categories;
-        } elseif (empty($product->brands)) {
-            $catId = $product->subCategories;
-        } else if (!empty($product->brands)) {
-            addCategoryProduct($lastProductId, $product->brands);
-        }
-        //find 'سایر' category_id
-        $subCatId = Category::where([['parent_id', $catId], ['active', 1]])->where('title', '=', 'سایر')->value('id');
-        if ($subCatId != 0 && $catId != 0) {
-            addCategoryProduct($lastProductId, $subCatId);
-        }
+        addCategoryProduct($lastProductId, $product->subCategories);
         return (true);
     }
 

@@ -110,17 +110,17 @@
                                         <span class="required star" title=" فیلد دسته بندی الزامی است">*</span>
                                     </label>
                                 </div>
-                                <div class="col-md-10 col-md-offset-1 margin-1" id="BrandsDiv" style="display: none;">
-                                    <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
-                                        <select id="brands" class="form-control col-md-12" name="brands">
-                                        </select>
-                                    </div>
-                                    <label class="control-label col-md-2 col-sm-4 col-xs-3" for="title"> زیردسته های
-                                        دسته
-                                        فوق :
-                                        <span class="required star" title=" فیلد دسته بندی الزامی است">*</span>
-                                    </label>
-                                </div>
+                                {{--<div class="col-md-10 col-md-offset-1 margin-1" id="BrandsDiv" style="display: none;">--}}
+                                {{--<div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">--}}
+                                {{--<select id="brands" class="form-control col-md-12" name="brands">--}}
+                                {{--</select>--}}
+                                {{--</div>--}}
+                                {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="title"> زیردسته های--}}
+                                {{--دسته--}}
+                                {{--فوق :--}}
+                                {{--<span class="required star" title=" فیلد دسته بندی الزامی است">*</span>--}}
+                                {{--</label>--}}
+                                {{--</div>--}}
                                 <div class="col-md-10 col-md-offset-1 margin-1" id="">
                                     <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
                                         <select id="oldProduct" class="form-control col-md-12">
@@ -224,16 +224,16 @@
                                     </label>
                                 </div>
                                 {{--<div class="col-md-10 col-md-offset-1 margin-1 ">--}}
-                                    {{--<div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">--}}
-                                        {{--<input id="warehouse_place" class="form-control col-md-12 col-xs-12"--}}
-                                               {{--name="warehouse_place"--}}
-                                               {{--type="text">--}}
-                                    {{--</div>--}}
-                                    {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="warehouse_place"> محل--}}
-                                        {{--فیزیکی در--}}
-                                        {{--انبار :--}}
-                                        {{--<span class="required star" title="پر کردن این فیلد الزامی است"></span>--}}
-                                    {{--</label>--}}
+                                {{--<div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">--}}
+                                {{--<input id="warehouse_place" class="form-control col-md-12 col-xs-12"--}}
+                                {{--name="warehouse_place"--}}
+                                {{--type="text">--}}
+                                {{--</div>--}}
+                                {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="warehouse_place"> محل--}}
+                                {{--فیزیکی در--}}
+                                {{--انبار :--}}
+                                {{--<span class="required star" title="پر کردن این فیلد الزامی است"></span>--}}
+                                {{--</label>--}}
                                 {{--</div>--}}
                                 <div class="col-md-10 col-md-offset-1 margin-1">
                                     <div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">
@@ -397,24 +397,24 @@
                                     </label>
                                 </div>
                                 {{--<div>--}}
-                                    {{--<div class="col-md-12 margin-2 ">--}}
-                                        {{--<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"--}}
-                                             {{--id="color">--}}
-                                        {{--</div>--}}
-                                        {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="color">انتخاب رنگ--}}
-                                            {{--های محصول :--}}
-                                        {{--</label>--}}
-                                    {{--</div>--}}
+                                {{--<div class="col-md-12 margin-2 ">--}}
+                                {{--<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"--}}
+                                {{--id="color">--}}
+                                {{--</div>--}}
+                                {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="color">انتخاب رنگ--}}
+                                {{--های محصول :--}}
+                                {{--</label>--}}
+                                {{--</div>--}}
                                 {{--</div>--}}
                                 {{--<div>--}}
-                                    {{--<div class="col-md-12 margin-2 margin-bot-1">--}}
-                                        {{--<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"--}}
-                                             {{--id="size">--}}
-                                        {{--</div>--}}
-                                        {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="size">انتخاب اندازه--}}
-                                            {{--های محصول :--}}
-                                        {{--</label>--}}
-                                    {{--</div>--}}
+                                {{--<div class="col-md-12 margin-2 margin-bot-1">--}}
+                                {{--<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"--}}
+                                {{--id="size">--}}
+                                {{--</div>--}}
+                                {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="size">انتخاب اندازه--}}
+                                {{--های محصول :--}}
+                                {{--</label>--}}
+                                {{--</div>--}}
                                 {{--</div>--}}
                             </div>
                         </div>
@@ -462,8 +462,7 @@
                                     type: "info",
                                     confirmButtonText: "بستن"
                                 });
-                                if(data.data == 'محصول شما با مؤفقیت درج شد')
-                                {
+                                if (data.data == 'محصول شما با مؤفقیت درج شد') {
                                     setTimeout(function () {
                                         window.location.reload(true);
                                     }, 3000);
@@ -571,50 +570,27 @@
                         location.href = '{{url("admin/addCategory")}}';
                     }
                     else if (depth != 0) {
-                        swal({
-                                title: '',
-                                text: 'آیا میخواهید زیردسته های دسته ی منتخب را ببینید و محصول را در یکی از زیر دسته ها ذخیره کنید؟',
-                                type: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "  #5cb85c",
-                                cancelButtonText: "خیر",
-                                confirmButtonText: "آری",
-                                closeOnConfirm: true,
-                                closeOnCancel: true
-                            },
-                            function (isConfirm) {
-                                if (isConfirm) {
-                                    //load all subCategory in select box in addProductForm
-                                    $.ajax
-                                    ({
-                                        cache: false,
-                                        url: "{{Url('api/v1/getSubCategories')}}/" + id,
-                                        dataType: "json",
-                                        type: "get",
-                                        success: function (response) {
-                                            var responses = response;
-                                            var selectBoxId = '#subCategories';
-                                            var msgOpt1 = "لطفا زیر دسته مورد نظر را انتخاب نمایید";
-                                            var msgOpt2 = "اگر زیر دسته مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
-                                            var valueOption2 = "000";
-                                            loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
-                                            $('#subCategoriesDiv').css('display', 'block');
-                                            //hide brands selector parent div after change categories and empty it's selector
-                                            $('#BrandsDiv').css('display', 'none');
-                                            $('#brands').empty();
-                                            findTitle(id)
-                                        }
-                                    });
-                                }
-                                else {//if user select 'خیر'
-                                    $('#subCategoriesDiv').css('display', 'none');
-                                    $('#subCategories').empty();
-                                    //hide brands selector parent div after change categories and empty it's selector
-                                    $('#BrandsDiv').css('display', 'none');
-                                    $('#brands').empty();
-                                    findTitle(id, 'method2')
-                                }
-                            });
+
+                        $.ajax
+                        ({
+                            cache: false,
+                            url: "{{Url('api/v1/getSubCategories')}}/" + id,
+                            dataType: "json",
+                            type: "get",
+                            success: function (response) {
+                                var responses = response;
+                                var selectBoxId = '#subCategories';
+                                var msgOpt1 = "لطفا زیر دسته مورد نظر را انتخاب نمایید";
+                                var msgOpt2 = "اگر زیر دسته مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
+                                var valueOption2 = "000";
+                                loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
+                                $('#subCategoriesDiv').css('display', 'block');
+                                //hide brands selector parent div after change categories and empty it's selector
+                                $('#BrandsDiv').css('display', 'none');
+                                $('#brands').empty();
+                                findTitle(id)
+                            }
+                        });
                     }
                     else {
                         $('#subCategoriesDiv').css('display', 'none');
@@ -622,10 +598,9 @@
                         $('#subCategories').empty();
                         $('#brands').empty();
                         console.log('100');
-                        findTitle(id,'method2')
+                        findTitle(id)
                     }
-                })
-
+                });
                 //load brands after ask do you want load it's brands or no then load product title related selected subCategory
                 $('#subCategories').on("change", function () {
                     var id = $(this).val();
@@ -634,59 +609,31 @@
                         location.href = '{{url("admin/addCategory")}}';
                     }
                     else if (depth1 != 0) {
-                        swal({
-                                title: '',
-                                text: 'آیا میخواهید زیردسته های دسته ی منتخب را ببینید و محصول را در یکی از برندها ذخیره کنید؟',
-                                type: "warning",
-                                showCancelButton: true,
-                                confirmButtonColor: "  #5cb85c",
-                                cancelButtonText: "خیر",
-                                confirmButtonText: "آری",
-                                closeOnConfirm: true,
-                                closeOnCancel: true
-                            },
-                            function (isConfirm) {
-                                if (isConfirm) {
-                                    //load all subCategory in select box in addProductForm
-                                    $.ajax
-                                    ({
-                                        cache: false,
-                                        url: "{{Url('api/v1/getBrands')}}/" + id,
-                                        dataType: "json",
-                                        type: "get",
-                                        success: function (response) {
-                                            var responses = response;
-                                            var selectBoxId = '#brands';
-                                            var msgOpt1 = "لطفا زیر دسته مورد نظر را انتخاب نمایید";
-                                            var msgOpt2 = "اگر زیر دسته مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
-                                            var valueOption2 = "000";
-                                            loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
-                                            $('#BrandsDiv').css('display', 'block');
-                                            findTitle(id)
-                                        }
-                                    });
-                                }
-                                else {//if user select 'خیر'
-                                    //hide brands selector parent div after change categories and empty it's selector
-                                    $('#BrandsDiv').css('display', 'none');
-                                    $('#brands').empty();
-                                    findTitle(id, 'method2')
-                                }
-                            });
+
+                        //load all subCategory in select box in addProductForm
+                        $.ajax
+                        ({
+                            cache: false,
+                            url: "{{Url('api/v1/getBrands')}}/" + id,
+                            dataType: "json",
+                            type: "get",
+                            success: function (response) {
+                                var responses = response;
+                                var selectBoxId = '#brands';
+                                var msgOpt1 = "لطفا زیر دسته مورد نظر را انتخاب نمایید";
+                                var msgOpt2 = "اگر زیر دسته مورد نظر در این لیست وجود ندارد این گزینه انتخاب نمایید";
+                                var valueOption2 = "000";
+                                loadItems(responses, selectBoxId, msgOpt1, msgOpt2, valueOption2)
+                                $('#BrandsDiv').css('display', 'block');
+                                findTitle(id)
+                            }
+                        });
                     }
                     else {
                         $('#BrandsDiv').css('display', 'none');
                         $('#brands').empty();
-                        findTitle(id, 'method2')
+                        findTitle(id)
                     }
-                })
-                //check option 2 selected or not, if yes redirect to addCategory view
-                $('#brands').on("change", function () {
-                    var id = $(this).val();
-                    if (id == 000) {
-                        location.href = '{{url("admin/addCategory")}}';
-                    }
-                    findTitle(id)
                 })
                 //check option 2 selected or not, if yes redirect to add unit view//in main unit select box
                 $('#unit').on("change", function () {
@@ -764,52 +711,27 @@
                 }
 
                 //find categori's selected product title
-                function findTitle(cid, method) {
-                    if (method == "method2") {
-                        $.ajax
-                        ({
-                            cache: false,
-                            url: "{{url('api/v1/findCategoryProduct')}}",
-                            dataType: "json",
-                            type: "post",
-                            data: {'id': cid, 'my_method': 2},
-                            success: function (response) {
-                                var item = $('#oldProduct');
-                                item.empty();
-                                if (response != 0) {
-                                    $.each(response, function (key, value) {
-                                        item.append("<option disabled='disabled' selected='selected'>" + value + "</option>");
-                                    });
-                                }
-                                else {
-                                    item.append("<option  selected='selected'>تا کنون برای این دسته محصولی ثبت نشده است</option>");
-                                }
+                function findTitle(cid) {
+                    $.ajax
+                    ({
+                        cache: false,
+                        url: "{{url('api/v1/findCategoryProduct')}}",
+                        dataType: "json",
+                        type: "post",
+                        data: {'id': cid},
+                        success: function (response) {
+                            var item = $('#oldProduct');
+                            item.empty();
+                            if (response != 0) {
+                                $.each(response, function (key, value) {
+                                    item.append("<option disabled='disabled' selected='selected'>" + value + "</option>");
+                                });
                             }
-                        });
-                    }
-                    else {
-                        $.ajax
-                        ({
-                            cache: false,
-                            url: "{{url('api/v1/findCategoryProduct')}}",
-                            dataType: "json",
-                            type: "post",
-                            data: {'id': cid, 'my_method': '1'},
-                            success: function (response) {console.log(response);
-                                var item = $('#oldProduct');
-                                item.empty();
-                                if (response != 0) {
-                                    $.each(response, function (key, value) {
-                                        item.append("<option disabled='disabled' selected='selected'>" + value + "</option>");
-                                    });
-                                }
-                                else {
-                                    item.append("<option  selected='selected'>تا کنون برای این دسته محصولی ثبت نشده است</option>");
-                                }
+                            else {
+                                item.append("<option  selected='selected'>تا کنون برای این دسته محصولی ثبت نشده است</option>");
                             }
-                        });
-                    }
-
+                        }
+                    });
                 }//end find title of selected categories->we show title's product of this category to user that admin registered before
                 function appendItem(divId, inputName, myUrl) {
                     $.ajax({
