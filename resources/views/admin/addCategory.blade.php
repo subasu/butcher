@@ -697,7 +697,8 @@
                             }
                         }else
                             {
-                                untimelyAddCategory(subTitle,id);
+                               // untimelyAddCategory(subTitle,id);
+                                addProduct(subTitle);
                             }
                     })
 
@@ -745,7 +746,11 @@
                                     $('#disabledCategories').css('display','block');
                                     $('#disableOfEachCategory').css('display','block');
                                     $('#totalDisabled').css('display','none');
-                                }
+                                }else
+                                    {
+                                        $('#disabledCategories').css('display','none');
+                                        $('#disableOfEachCategory').css('display','none');
+                                    }
                         },error : function(error){
                             console.log(error);
                         }
@@ -794,6 +799,38 @@
                         console.log(error);
                     }
                 })
+            }
+        </script>
+
+        <script>
+            function addProduct(title) {
+
+                swal({
+                        title:   " آیا در نظر دارید برای دسته " +"(( "+ title +" ))"+  " محصول درج کنید ؟",
+                        text: "",
+                        type: "info",
+                        showCancelButton: true,
+                        confirmButtonColor: "	#5cb85c",
+                        cancelButtonText: "خیر",
+                        confirmButtonText: "آری",
+                        closeOnConfirm: true,
+                        closeOnCancel: true
+                    },
+                    function (isConfirm) {
+                        if (isConfirm) {
+                            window.location.href = 'addProduct';
+                        }else
+                        {
+                            $('#subCategories').css('display','none');
+                            $('#addSubCategory').css('display','none');
+                            $('#addBrands').css('display','none');
+                            $('#brands').css('display','none');
+                            $('#existedSub').css('display','none');
+                            $('#existedBrands').css('display','none');
+                            $('#subId').val('');
+                            $('#mainId').val('');
+                        }
+                    });
             }
         </script>
 @endsection

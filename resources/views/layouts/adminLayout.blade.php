@@ -8,9 +8,9 @@
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="املاک آنلاین خمینی شهر">
-    <meta name="keywords" content="املاک آنلاین خمینی شهر،خمینی شهر،املاک آنلاین،خرید و فروش آنلاین ملک،لیست املاک خمینی شهر،املاک خمینی شهر،مشاور املاک در خمینی شهر،مشاور املاک منظریه،مشاور املاک پاسدارن،مشاور املاک هفتصد دستگاه">
-    <meta name="author" content="www.melkomalek.ir">
+    <meta name="description" >
+    <meta name="keywords" content="">
+    <meta name="author" content="">
     <title>صفحه مورد نظر یافت نشد!</title>
 
     <!-- Bootstrap core CSS -->
@@ -84,6 +84,7 @@
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <title>@if(!empty($pageTitle)){{$pageTitle}}@endif</title>
 <link rel="short icon" href="{{URL::asset('public/main/assets/img/logo.png')}}"/>
+
 
 <!-- Bootstrap core CSS -->
 
@@ -217,22 +218,7 @@
                                     {{--</li>--}}
                                 {{--</ul>--}}
                             {{--</li>--}}
-                            <li><a><i class="fa fa-paint-brush"></i>مدیریت رنگها <span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu" style="display: none">
-                                    <li><a href="{{url('admin/colorsManagement')}}"> نمایش و مدیریت رنگها</a>
-                                    </li>
-                                    <li><a href="{{url('admin/addColors')}}">افزودن رنگها</a>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li><a><i class="fa fa-expand"></i>مدیریت سایزها<span class="fa fa-chevron-down"></span></a>
-                                <ul class="nav child_menu" style="display: none">
-                                    <li><a href="{{url('admin/sizesManagement')}}"> نمایش و مدیریت سایزها</a>
-                                    </li>
-                                    <li><a href="{{url('admin/addSizes')}}">افزودن سایزها</a>
-                                    </li>
-                                </ul>
-                            </li>
+
                             <li><a><i class="fa fa-dollar"></i>مدیریت وضعیتهای پرداخت<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
                                     <li><a href="{{url('admin/paymentTypesManagement')}}"> نمایش و مدیریت وضعیتهای پرداخت</a>
@@ -241,11 +227,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            {{--<li><a><i class="fa fa-dollar"></i>مدیریت پرینتر<span class="fa fa-chevron-down"></span></a>--}}
-                                {{--<ul class="nav child_menu" style="display: none">--}}
-                                    {{--<li><a href="{{url('admin/connectToPrinter')}}"> اتصال به پرینتر</a>--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
+
                             <li><a><i class="fa fa-print"></i>بررسی سفارش ها و فاکتورها<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
                                     <li><a href="{{url('admin/ordersManagement')}}">سفارش های جدید</a>
