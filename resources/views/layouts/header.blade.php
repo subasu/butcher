@@ -113,7 +113,7 @@
                                 @foreach($menu as $mnu)
                                     @if($mnu->hasProduct)
                                     <li class="dropdown mainMenu"  name="{{$mnu->id}}">
-                                        <a class="dropdown-toggle" data-toggle="dropdown">{{$mnu->title}}</a>
+                                        <a class="dropdown-toggle" data-toggle="dropdown" style="color: floralwhite;">{{$mnu->title}}</a>
                                         <ul class="dropdown-menu mega_dropdown submenu" role="menu" style="width: 830px;">
 
                                         </ul>

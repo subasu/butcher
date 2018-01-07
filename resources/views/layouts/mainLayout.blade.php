@@ -39,9 +39,9 @@
 @yield('content')
 <!-- Footer -->
 <footer id="footer">
-    <div class="container" dir="rtl">
+    <div class="container"  dir="rtl">
         <!-- introduce-box -->
-        <div id="introduce-box" class="row">
+        <div id="introduce-box" class="row" >
             <div class="col-md-3">
                 <div id="address-box">
                     <a href="#"><img src="{{url('public/main/assets/data/introduce-logo.png')}}" alt=""/></a>

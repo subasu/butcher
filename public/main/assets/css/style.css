@@ -1152,8 +1152,8 @@ span.notify-right {
  */
 .nav-top-menu {
     background: darkred;
-    margin-right: 8.85% ;
-    margin-left: 6.75% ;
+    margin-right: 126px;
+    margin-left: 97px ;
 }
 
 /*-----------------
@@ -1440,8 +1440,8 @@ span.notify-right {
 }
 
 #main-menu .navbar .navbar-nav > li:hover{
-    background: #72c805;
-    color: #fff;
+    background-color: orange;
+    color: w;
 }
 #main-menu .navbar .navbar-nav > li.active {
     background: #FFF;
@@ -1540,8 +1540,8 @@ span.notify-right {
 #main-menu li.dropdown:before {
     content: "\f0de";
     font-family: "FontAwesome";
-    font-size: 15px;
     color: #fff;
+    background-color: #fff;
     padding-left: 7px;
     position: absolute;
     bottom: -13px;
@@ -1551,7 +1551,8 @@ span.notify-right {
 }
 
 #main-menu li.dropdown:hover:before {
-    display: block;
+    display: none;
+
 }
 
 /*---------------
