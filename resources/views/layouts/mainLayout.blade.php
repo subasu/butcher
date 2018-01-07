@@ -301,7 +301,7 @@
 <script>
     $(document).ready(function () {
         $(".mainMenu").each(function () {
-            $(this).hover(function () {
+            $(this).mouseover(function () {
                 var id = $(this).attr('name');
                 var token = $(this).data("token");
                 $.ajax({
@@ -318,34 +318,34 @@
                         item.empty();
                         var x = 1;
                         $.each(response.submenu, function (key, value) {
+                            if (value.catImg != null && x == 1) {
+                                item.append('<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
+                                    '<ul class="block">' +
+                                    '<li class="img_container">' +
+                                    '<img src="{{url('public/dashboard/image')}}/' + value.catImg + '" alt="' + value.title + '" title="' + value.title + '" >' +
+                                    '</li>' +
+                                    '</ul></li>')
+                            }
                             if (value.hasProduct == 1) {
-                                if (value.catImg != null && x == 1) {
-                                    item.append('<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
-                                        '<ul class="block">' +
-                                        '<li class="img_container">' +
-                                        '<img src="{{url('public/dashboard/image')}}/' + value.catImg + '" alt="' + value.title + '" title="' + value.title + '" >' +
-                                        '</li>' +
-                                        '</ul></li>')
-                                }
                                 x = 0;
                                 var temp = '<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
                                     '<ul class="block">' +
                                     '<li class="link_container group_header">' +
-                                    '<a href="#">' + value.title + '</a>' +
+                                    '<a href="{{url('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +
                                     '</li>';
-                                $.each(value.brands, function (key, value) {
-                                    temp += '<li class="link_container" id="' + value.id + '">' +
-                                        '<a href="{{url('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +
-                                        '</li>';
-                                });
+                                {{--$.each(response.submenu, function (key, value) {--}}
+                                    {{--temp += '<li class="link_container" id="' + value.id + '">' +--}}
+                                        {{--'<a href="{{url('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +--}}
+                                        {{--'</li>';--}}
+                                {{--});--}}
                                 temp += '</ul>' + '</li>';
                                 item.append(temp)
                             }
 
                         });
                     }
-                })
-                //$(".submenu").show(100);
+                });//end ajax
+                $('.submenu').mouseover(function (){return false;});
             });
             $(this).mouseleave(function () {
                 var item = $(".mainMenu>ul");
