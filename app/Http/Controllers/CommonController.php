@@ -58,8 +58,8 @@ class CommonController extends Controller
         $catImg = Category::where('id','=',$id)->value('image_src');
         foreach ($submenu as $sm) {
             $sm->catImg = $catImg;
-            $x=$sm->brands = Category::where([['parent_id', $sm->id], ['active', 1]])->get();
-            if ($x)
+            $x= CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->value('id');
+            if ($x>0)
                 $sm->hasProduct = 1;
             else
                 $sm->hasProduct = 0;

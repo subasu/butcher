@@ -1,9 +1,6 @@
 @extends('layouts.mainLayout')
 @section('content')
     <!-- Home slideder-->
-    <style>
-        .height-450{height:603px !important;}
-    </style>
     <div id="home-slider">
         <div class="container">
             <div class="row">

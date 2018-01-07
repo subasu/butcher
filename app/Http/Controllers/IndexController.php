@@ -216,11 +216,12 @@ class IndexController extends Controller
         $menu = $menu = $this->loadMenu();
         $pageTitle = 'لیست محصولات';
         $categories = Category::find($id);
+        $image=Category::where('id','=',$categories->parent_id)->value('image_src');
         $products = $categories->products()->paginate(12);
         if ($request->ajax()) {
-            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products'));
+            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image'));
         }
-        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products'));
+        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image'));
     }
 
     //below function is to return show product blade

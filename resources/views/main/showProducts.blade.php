@@ -515,10 +515,10 @@
                     <div class="category-slider">
                         <ul class="owl-carousel owl-style2" data-dots="false" data-loop="true" data-nav = "true" data-autoplayTimeout="1000" data-autoplayHoverPause = "true" data-items="1">
                             <li>
-                                <img src="{{url('public/main/assets/data/category-slide.jpg')}}" alt="category-slider">
+                                <img height="300" src="{{url('public/dashboard/image') ."/" .$image}}" alt="category-slider">
                             </li>
                             <li>
-                                <img src="{{url('public/main/assets/data/slide-cart2.jpg')}}" alt="category-slider">
+                                <img height="300" src="{{url('public/dashboard/image') ."/" .$image}}" alt="category-slider">
                             </li>
                         </ul>
                     </div>
