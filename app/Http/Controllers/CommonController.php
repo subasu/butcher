@@ -51,17 +51,14 @@ class CommonController extends Controller
     }
 
     //below function is to get brands from database
+    //if has product = 0 this category dose not show in menu
     public function getSubmenu($id)
     {
         $submenu = Category::where([['parent_id', $id], ['active', 1]])->orderBy('depth', 'DESC')->get();
-        $catImg = Category::find($id)->value('image_src');
+        $catImg = Category::where('id','=',$id)->value('image_src');
         foreach ($submenu as $sm) {
             $sm->catImg = $catImg;
-            $sm->brands = Category::where([['parent_id', $sm->id], ['active', 1]])->get();
-            $x = 0;
-            foreach ($sm->brands as $val) {
-                $x = CategoryProduct::where('product_id', '=', $val->id)->get();
-            }
+            $x=$sm->brands = Category::where([['parent_id', $sm->id], ['active', 1]])->get();
             if ($x)
                 $sm->hasProduct = 1;
             else
@@ -124,27 +121,14 @@ class CommonController extends Controller
     public function findCategoryProduct(Request $request)
     {
         $id = $request->id;
-        $method = $request->my_method;
-        if ($method == 2) {
-            $categoryId = Category::where([['parent_id', '=', $id], ['active', '=', 1], ['title', '=', 'سایر']])->value('id');
-            $category = Category::find($categoryId);
-            $title = Array();
-            $i = 0;
-            foreach ($category->products as $pr) {
-                $title[$i] = Product::where([['id', $pr->pivot->product_id], ['active', 1]])->value('title');
-                $i++;
-            }
-            return response()->json($title);
-        } else {
-            $category = Category::find($id);
-            $title = Array();
-            $i = 0;
-            foreach ($category->products as $pr) {
-                $title[$i] = Product::where([['id', $pr->pivot->product_id], ['active', 1]])->value('title');
-                $i++;
-            }
-            return response()->json($title);
+        $category = Category::find($id);
+        $title = Array();
+        $i = 0;
+        foreach ($category->products as $pr) {
+            $title[$i] = Product::where([['id', $pr->pivot->product_id], ['active', 1]])->value('title');
+            $i++;
         }
+        return response()->json($title);
     }
 
     //below function is related to existed colors
@@ -168,6 +152,7 @@ class CommonController extends Controller
             return response()->json(0);
         }
     }
+
     //below function is related to existed payment types
     public function getPaymentTypes()
     {
@@ -178,6 +163,7 @@ class CommonController extends Controller
             return response()->json(0);
         }
     }
+
     //below function is related to show disabled categories of each category
     public function getDisabledCategories($id)
     {
@@ -188,6 +174,7 @@ class CommonController extends Controller
             return response()->json(0);
         }
     }
+
     // below function is related to get all disabled categories
     public function getAllDisabledCategories()
     {

@@ -18,7 +18,7 @@ class CheckProduct
         $validation=Validator::make($request->all(),[
 
             'categories' => 'required|numeric',
-            'subCategories' => 'numeric',
+            'subCategories' => 'required|numeric',
             'brands' => 'numeric',
             'title' => 'required|max:255',
             'description' => 'required',

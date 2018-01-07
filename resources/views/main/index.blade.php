@@ -1,6 +1,9 @@
 @extends('layouts.mainLayout')
 @section('content')
     <!-- Home slideder-->
+    <style>
+        .height-450{height:603px !important;}
+    </style>
     <div id="home-slider">
         <div class="container">
             <div class="row">
@@ -8,11 +11,13 @@
                     <div class="homeslider">
                         <div class="content-slide">
                             <ul id="contenhomeslider">
-                                <li><img alt="Funky roots" src="public/main/assets/data/slide.jpg" title="Funky roots"/>
+                                <li><img alt="Funky roots" class="height-450"  src="{{url('public/main/assets/slider/1.jpg')}}" title="Funky roots"/>
                                 </li>
-                                <li><img alt="Funky roots" src="public/main/assets/data/slide.jpg" title="Funky roots"/>
+                                <li><img alt="Funky roots" class="height-450" src="{{url('public/main/assets/slider/2.jpg')}}" title="Funky roots"/>
                                 </li>
-                                <li><img alt="Funky roots" src="public/main/assets/data/slide.jpg" title="Funky roots"/>
+                                <li><img alt="Funky roots" class="height-450" src="{{url('public/main/assets/slider/3.jpg')}}" title="Funky roots"/>
+                                </li>
+                                <li><img alt="Funky roots" class="height-450" src="{{url('public/main/assets/slider/4.jpg')}}" title="Funky roots"/>
                                 </li>
                             </ul>
                         </div>
