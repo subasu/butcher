@@ -516,6 +516,7 @@ img.alignright {
     background: #eee;
     z-index: 101;
     box-shadow: 0 1px 1px 0 rgba(50, 50, 50, 0.1);
+    margin-left: 0 !important;
 }
 
 .nav-ontop span.notify-right {
@@ -611,6 +612,7 @@ img.alignright {
     position: absolute;
     top: 0;
     right: -15%;
+    display: none;
     /*mee*/
 }
 
@@ -684,6 +686,7 @@ img.alignright {
     top: 0;
     right: -20%;
     height: 50px;
+    display: none;
 /*mee*/
 }
 
