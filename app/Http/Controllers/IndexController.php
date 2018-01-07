@@ -44,7 +44,7 @@ class IndexController extends Controller
             $submenu = Category::where([['parent_id', $sub->id], ['active', 1]])->orderBy('depth', 'DESC')->get();
             $x = 0;
             foreach ($submenu as $sm) {
-                $x=$sm->brands = Category::where([['parent_id', $sm->id], ['active', 1]])->get();
+                $x=$sm->brands = CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->get();
             }
             if ($x)
                 $sub->hasProduct = 1;

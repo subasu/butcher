@@ -314,6 +314,7 @@
                         "_token": token
                     },
                     success: function (response) {
+
                         var item = $(".submenu");
                         item.empty();
                         var x = 1;
