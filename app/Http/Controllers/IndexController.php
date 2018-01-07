@@ -31,30 +31,6 @@ class IndexController extends Controller
 
     public function search(Request $request)
     {
-//        if($request->search_type==1)
-//        {
-//
-//        }
-//        elseif($request->search_type==2)
-//        {
-//            $result=Category::where('title','like','%'.$request->search_key.'%')->get();
-//            foreach ($result as $item) {
-//                if($item->depth==2)
-//                {
-//                    $item->subcat=Category::where('parent_id','=',$item->id)->get();
-//                }
-//                if($item->depth==1)
-//                {
-//                    $item->brand=Category::where('parent_id','=',$item->id)->get();
-//                }
-//                $results1=CategoryProduct::where('category_id','=','383')->get();
-//                $results2=CategoryProduct::where('category_id','=','383')->get();
-//                $results = array_merge($results1->toArray(), $results2->toArray());
-//                $collection = collect($results);
-//            }
-//            dd($collection);
-//        }
-
         $results = Product::where('title', 'like', '%' . $request->search_key . '%')
             ->orWhere('description', 'like', '%' . $request->search_key . '%')->get();
         $menu = $this->loadMenu();
@@ -221,8 +197,8 @@ class IndexController extends Controller
             'cellphone' => $data['cellphone'],
             'birth_date' => $data['birth_date'],
             'address' => $data['address'],
-            'capital_city_id' => $capital,
-            'town_city_id' => $data['town'],
+            'capital_city' => $capital,
+            'town_city' => $data['town'],
             'telephone' => $data['telephone'],
             'role_id' => $role_id,
             'zipCode' => $data['zipCode'],
