@@ -213,15 +213,22 @@ class IndexController extends Controller
     //first time show by view second time show by ajax
     public function showProducts($id, Request $request)
     {
+        $productScore = 0;
+        $count        = 0;
         $menu = $menu = $this->loadMenu();
         $pageTitle = 'لیست محصولات';
         $categories = Category::find($id);
         $image=Category::where('id','=',$categories->parent_id)->value('image_src');
         $products = $categories->products()->paginate(12);
-        if ($request->ajax()) {
-            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image'));
+        foreach ($categories->products[0]->score as $score)
+        {
+            $productScore += $score->score;
+            $count += 1;
         }
-        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image'));
+        if ($request->ajax()) {
+            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image','productScore','count'));
+        }
+        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image','productScore','count'));
     }
 
     //below function is to return show product blade

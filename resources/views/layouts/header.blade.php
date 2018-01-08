@@ -70,7 +70,7 @@
             <a class="cart-link" >
                 {{--<span class="title" id="basketCount">سبدخرید شما<span class="">0</span></span>--}}
                 <span id="totalPrice" class="total">0</span>
-                <span id="basketCountNotify" class="notify notify-left">0</span>
+                <span id="basketCountNotify" class="notify notify-left" >0</span>
             </a>
             <div class="cart-block">
                 <div class="cart-block-content">

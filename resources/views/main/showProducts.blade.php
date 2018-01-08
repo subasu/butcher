@@ -961,6 +961,7 @@
             basketCountNotify();
             basketTotalPrice();
             basketContent();
+            scoreHandling();
         })
     </script>
     <script>
@@ -1146,6 +1147,55 @@
                 {
                     alert('No response from server');
                 });
+        }
+    </script>
+    <script>
+        function scoreHandling()
+        {
+            var totalScore = $('#score').val();
+            var count = $('#count').val();
+            if(totalScore == 0)
+            {
+                $('.product-star').append
+                (
+                    '<i class="fa fa-star-o"></i>'+
+                    '<i class="fa fa-star-o"></i>'+
+                    '<i class="fa fa-star-o"></i>'+
+                    '<i class="fa fa-star-o"></i>'+
+                    '<i class="fa fa-star-o"></i>'
+                );
+            }else
+                {
+                    var finalScore = totalScore / count;
+                    if(finalScore % 1 === 0)
+                    {
+                        while(finalScore > 0)
+                        {
+                            $('.product-star').append
+                            (
+                                '<i class="fa fa-star"></i>'
+                            );
+                            finalScore--;
+                        }
+                    }
+                    if(finalScore % 1 !== 0)
+                    {
+                        var finalScoreArray = finalScore.split('/');
+                        while(finalScoreArray[0] > 0)
+                        {
+                            $('.product-star').append
+                            (
+                                '<i class="fa fa-star"></i>'
+                            );
+                            finalScoreArray[0]--;
+                        }
+                        $('.product-star').append
+                        (
+                            '<i class="fa fa-star-half-o"></i>'
+                        );
+
+                    }
+                }
         }
     </script>
 @endsection

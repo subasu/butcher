@@ -45,19 +45,17 @@
                         <div class=" text-right">
                             <div class="col-md-12">
                                 <div class="col-md-6">
-                                                    <span class="product-star">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-half-o"></i>
-                                                    </span>
+                                    <span class="product-star">
+
+                                    </span>
                                 </div>
                                 <div class="col-md-6">
                                     <span class="price product-price">  :امتیاز  </span>
                                 </div>
                             </div>
                         </div>
+                        <input type="hidden" id="score" value="{{$productScore}}">
+                        <input type="hidden" id="count" value="{{$count}}">
                     </div>
                     {{--<div class="right-block display-inline">--}}
                     {{--<div class="add-to-cart" >--}}
