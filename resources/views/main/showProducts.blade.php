@@ -6,7 +6,9 @@
             <div class="breadcrumb clearfix">
                 <a class="home" href="#" title="Return to Home">خانه</a>
                 <span class="navigation-pipe">&nbsp;</span>
-                <span class="navigation_page">نام دسته</span>
+                <span class="navigation_page">{{$categories->title}}</span>
+                <span class="navigation-pipe">&nbsp;</span>
+                <span class="navigation_page">{{$categories->title}}</span>
             </div>
             <!-- ./breadcrumb -->
             <!-- row -->
