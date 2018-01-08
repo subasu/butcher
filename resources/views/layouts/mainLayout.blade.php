@@ -376,6 +376,59 @@
     })
 </script>
 <!-- below script is related to add to basket -->
+
+<script>
+    $(document).on('click', '#addToBasket', function () {
+
+        var productFlag = $(this).attr('content');
+        var productId = $(this).attr('name');
+        var token = $('#token').val();
+        var formOrderOption=new FormData($('#orderOptionForm')[0])
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax
+        ({
+            url: "{{url('user/addToBasket')}}",
+            type: "post",
+            data: formOrderOption,
+            dataType: "json",
+            success: function (response) {
+                console.log(response);
+                if (response.code == 1) {
+                    var myStack = {"dir1": "down", "dir2": "right", "push": "top"};
+                    new PNotify({
+                        title: response.message,
+                        text: "",
+                        addclass: "stack-custom",
+                        type: "success",
+                        stack: myStack
+                    });
+                    basketCountNotify();
+                    basketTotalPrice();
+                    basketContent();
+                } else {
+                    var myStack = {"dir1": "down", "dir2": "right", "push": "top"};
+                    new PNotify({
+                        title: response.message,
+                        text: '',
+                        addclass: "stack-custom",
+                        type: "success",
+                        stack: myStack
+                    });
+                }
+
+            }, error: function (error) {
+                console.log(error);
+                alert('خطایی رخ داده است')
+            }
+        })
+    })
+</script>
+
+
 <script>
     //below function is related to make pay button shown or not shown
     //    function handlePayButton(response)
