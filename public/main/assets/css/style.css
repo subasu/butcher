@@ -2343,7 +2343,7 @@ span.notify-right {
 }
 
 .product-list li .add-to-cart:hover {
-    background-color: rgba(21, 117, 0, 0.8);
+    background-color: #ff9900;
 }
 
 .product-list li .add-to-cart a {
@@ -4648,16 +4648,19 @@ span.notify-right {
     text-transform: uppercase;
     font-weight: bold;
     padding-bottom: 17px;
+    text-align: right;
 }
 
 .page-product-box .owl-next {
     top: -20px;
+    right: inherit;
+    left: 26px;
 }
 
 .page-product-box .owl-prev {
     top: -20px;
-    left: inherit;
-    right: 26px;
+    /*right: inherit;*/
+    /*left: 26px;*/
 }
 
 /* ----------------

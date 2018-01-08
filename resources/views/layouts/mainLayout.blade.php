@@ -342,7 +342,6 @@
                                 temp += '</ul>' + '</li>';
                                 item.append(temp)
                             }
-
                         });
                     }
                 });//end ajax

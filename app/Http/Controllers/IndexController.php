@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
+use SebastianBergmann\CodeCoverage\Report\Xml\Project;
 
 class IndexController extends Controller
 {
@@ -44,9 +45,9 @@ class IndexController extends Controller
             $submenu = Category::where([['parent_id', $sub->id], ['active', 1]])->orderBy('depth', 'DESC')->get();
             $x = 0;
             foreach ($submenu as $sm) {
-                $x=$sm->brands = CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->get();
+                $x = CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->get();
             }
-            if ($x)
+            if (count($x)>0)
                 $sub->hasProduct = 1;
             else
                 $sub->hasProduct = 0;
@@ -228,13 +229,22 @@ class IndexController extends Controller
     public function productDetail($id)
     {
         $menu = $menu = $this->loadMenu();
-        $product = Product::find($id);
         $pageTitle = Product::where('id', '=', $id)->value('title');
+        $product = Product::find($id);
         $brand = $product->categories[0]->id;
+        $category=Category::find($brand);
+        $similarProduct = Array();$i=0;
+        foreach ($category->products as $val)
+        {
+            $similarProduct[$i] = Product::where([['id', $val->pivot->product_id], ['active', 1]])->get();
+            $i++;
+        }
+        $similarProduct=collect($similarProduct);
+//        dd($similarProduct);
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
-        $subcat = \App\Models\Category::where('id', '=', $subcatId)->value('title');
+        $subcat =Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');
-        return view('main.productDetail', compact('menu', 'pageTitle', 'product', 'cat', 'subcat'));
+        return view('main.productDetail', compact('menu', 'pageTitle', 'product', 'cat', 'subcat','similarProduct'));
     }
 
 

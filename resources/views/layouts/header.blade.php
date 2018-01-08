@@ -1,4 +1,4 @@
-{{dd($menu)}}
+
 <div id="header" class="header">
     <div class="top-header">
     <div class="container">
