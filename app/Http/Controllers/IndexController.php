@@ -219,6 +219,7 @@ class IndexController extends Controller
         $menu = $menu = $this->loadMenu();
         $pageTitle = 'لیست محصولات';
         $categories = Category::find($id);
+        $parentCat = Category::where('id','=',$categories->parent_id)->value('title');
         $image=Category::where('id','=',$categories->parent_id)->value('image_src');
         $products = $categories->products()->paginate(12);
         foreach ($categories->products[0]->score as $score)
@@ -227,9 +228,9 @@ class IndexController extends Controller
             $count += 1;
         }
         if ($request->ajax()) {
-            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image','productScore','count'));
+            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image','productScore','count','parentCat'));
         }
-        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image','productScore','count'));
+        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image','productScore','count','parentCat'));
     }
 
     //below function is to return show product blade
@@ -247,7 +248,6 @@ class IndexController extends Controller
             $i++;
         }
         $similarProduct=collect($similarProduct);
-//        dd($similarProduct);
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
         $subcat =Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');

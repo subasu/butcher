@@ -82,5 +82,10 @@ class Product extends Model
     {
         return $this->belongsToMany('App\Models\Size');
     }
+    //relation of product and productOption
+    public function productOption()
+    {
+        return $this->hasMany('App\Models\productOption','product_id');
+    }
 
 }

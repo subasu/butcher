@@ -396,6 +396,22 @@
                                         <span class="required star"></span>
                                     </label>
                                 </div>
+                                <div id="addOption">
+                                    <div class="col-md-12 margin-1">
+                                        <div class="col-md-1 col-sm-1 col-xs-1 col-md-offset-2">
+                                            <a id="addOptionBtn" class="glyphicon glyphicon-plus btn btn-success"
+                                               title="افزودن گزینه های توضیحات"></a>
+                                        </div>
+                                        <div class="col-md-5 col-sm-6 col-xs-9 ">
+                                            <input class="form-control col-md-12 col-xs-12"
+                                                   type="text" name="option[]" id="option"/>
+                                        </div>
+                                        <label class="control-label col-md-2 col-sm-4 col-xs-3" for="file"> گزینه های محصول
+                                            :
+                                            <span class="required star"></span>
+                                        </label>
+                                    </div>
+                                </div>
                                 {{--<div>--}}
                                 {{--<div class="col-md-12 margin-2 ">--}}
                                 {{--<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3 margin-1 padding-right-2"--}}
@@ -541,7 +557,21 @@
                     }
                     else {
                     }
-                })
+                });
+                //add option for product when user want order product
+                $('#addOptionBtn').on('click', function () {
+                        $('#addOption').append
+                        (
+                            '<div class="col-md-12 margin-1">' +
+                            '<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3">' +
+                            '<input class="form-control col-md-12 col-xs-12" type="text" name="option[]" id="option"/>' +
+                            '</div>' +
+                            '<label class="control-label col-md-2 col-sm-4 col-xs-3" for="pic"> گزینه های محصول :' +
+                            '<span class="required star"></span>' +
+                            '</label></div>'
+                        );
+                        counter++;
+                });
                 //load all main category in select box in addProductForm
                 $.ajax({
                     cache: false,
