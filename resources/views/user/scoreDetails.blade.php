@@ -83,17 +83,19 @@
                                                     </p>
                                                 </div>
                                                 @if($product->scoreFlag == 0 )
-                                                <div class="col-xs-12 col-sm-4 emphasis">
-                                                    <input type="number" min="1" max="5" id="score"    class="form-control input-sm" style="border-radius: 5px;">
-                                                </div>
-                                                <div class="col-xs-12 col-sm-4 emphasis">
-                                                    <button id="addScore" type="button" class="btn btn-danger btn-sm col-md-12 " style="border-radius: 5px;"> <i class="fa fa-star"></i> امتیاز دهی </button>
+                                                <div id="parent">
+                                                    <div  class="col-xs-12 col-sm-4">
+                                                        <input type="number" min="1" max="5"    class="form-control input-sm" style="border-radius: 5px;">
+                                                    {{--</div>--}}
+                                                    {{--<div class="col-xs-12 col-sm-4 emphasis">--}}
+                                                        <button  type="button" content="{{$product->id}}" class="btn btn-danger btn-sm col-md-12 addScore" style="border-radius: 5px; margin-left: 110%; margin-top: -19%;"> <i class="fa fa-star"></i> امتیاز دهی </button>
+                                                    </div>
                                                 </div>
                                                 @endif
                                                 @if($product->scoreFlag == 1 )
 
                                                     <div class="col-xs-12 col-sm-6 emphasis">
-                                                        <button  type="button" class="btn btn-default btn-sm col-md-12 "  style="border-radius: 5px;"> <i class="fa fa-star"></i> امتیاز داد ه شده </button>
+                                                        <button  type="button" class="btn btn-default btn-sm col-md-12 "  style="border-radius: 5px;  "> <i class="fa fa-star"></i> امتیاز داد ه شده </button>
                                                     </div>
                                                 @endif
                                                 {{--<input type="hidden" id="totalScore" value="{{$productScore}}">--}}
@@ -183,21 +185,23 @@
                     {{--}--}}
                 {{--</script>--}}
                 <script>
-                    $(document).on('click','#addScore',function(){
-                        var score     = $('#score').val();
-                        var productId = $('#productId').val();
+                    $(document).on('click','.addScore',function(){
+                        var me         = $(this);
+                        var score      = $(this).closest('div').find('input.input-sm').val();
+                        var productId  = $(this).attr('content');
                         var token     = $('#token').val();
                         $.ajax
                         ({
                             url        : "{{url('user/addScore')}}",
                             type       : "post",
                             data       : {'productId' : productId ,'score' : score, '_token' : token},
+                            context    : me,
                             beforeSend : function()
                             {
                                 if(score == '' || score == 0)
                                 {
-                                    $('#score').focus();
-                                    $('#score').css('border-color','red');
+                                    $(me).closest('div').find('input.input-sm').focus();
+                                    $(me).closest('div').find('input.input-sm').focus().css('border-color','red');
                                     return false;
                                 }
                             },
@@ -212,6 +216,7 @@
                                         type:'success',
                                         confirmButtonText: "بستن"
                                     });
+                                    setTimeout(function(){window.location.reload(true);},3000);
                                 }else
                                     {
                                         swal
