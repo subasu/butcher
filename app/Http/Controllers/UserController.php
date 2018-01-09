@@ -34,41 +34,42 @@ class UserController extends Controller
     //below function is related to add products into basket with cookie
     public function addToBasket(Request $request)
     {
-        $now = Carbon::now(new \DateTimeZone('Asia/Tehran'));
-        if (isset($_COOKIE['addToBasket'])) {
-            $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
-            $count = DB::table('basket_product')->where([['basket_id', $basketId], ['product_id', $request->productId]])->count();
-
-            if ($oldBasket = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->count() > 0 && $count > 0) {
-
-                $update = DB::table('basket_product')->where([['basket_id', $basketId], ['product_id', $request->productId]])->increment('count');
-                if ($update) {
-                    return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید', 'code' => 1]);
-                } else {
-                    return response()->json(['message' => 'خطایی رخ داده است']);
-                }
-
-            } else if ($oldBasket = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 1]])->count() > 0) {
-                return $this->newCookie($now, $request);
-            } else {
-                $pivotInsert = DB::table('basket_product')->insert
-                ([
-                    'basket_id' => $basketId,
-                    'product_id' => $request->productId,
-                    'product_price' => $request->productFlag,
-                    'time' => $now->toTimeString(),
-                    'date' => $now->toDateString(),
-                    'count' => 1
-                ]);
-                if ($pivotInsert) {
-                    return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید', 'code' => 1]);
-                } else {
-                    return response()->json(['message' => 'خطایی رخ داده است']);
-                }
-            }
-        } else {
-            return $this->newCookie($now, $request);
-        }
+        return response()->json($request->all());
+//        $now = Carbon::now(new \DateTimeZone('Asia/Tehran'));
+//        if (isset($_COOKIE['addToBasket'])) {
+//            $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
+//            $count = DB::table('basket_product')->where([['basket_id', $basketId], ['product_id', $request->productId]])->count();
+//
+//            if ($oldBasket = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->count() > 0 && $count > 0) {
+//
+//                $update = DB::table('basket_product')->where([['basket_id', $basketId], ['product_id', $request->productId]])->increment('count');
+//                if ($update) {
+//                    return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید', 'code' => 1]);
+//                } else {
+//                    return response()->json(['message' => 'خطایی رخ داده است']);
+//                }
+//
+//            } else if ($oldBasket = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 1]])->count() > 0) {
+//                return $this->newCookie($now, $request);
+//            } else {
+//                $pivotInsert = DB::table('basket_product')->insert
+//                ([
+//                    'basket_id' => $basketId,
+//                    'product_id' => $request->productId,
+//                    'product_price' => $request->productFlag,
+//                    'time' => $now->toTimeString(),
+//                    'date' => $now->toDateString(),
+//                    'count' => 1
+//                ]);
+//                if ($pivotInsert) {
+//                    return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید', 'code' => 1]);
+//                } else {
+//                    return response()->json(['message' => 'خطایی رخ داده است']);
+//                }
+//            }
+//        } else {
+//            return $this->newCookie($now, $request);
+//        }
 
     }
 

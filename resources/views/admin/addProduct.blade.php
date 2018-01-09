@@ -457,6 +457,7 @@
                             }
                         });
                         var formData = new FormData($("#productForm")[0])
+                        console.log(formData)
                         $.ajax({
                             url: '{{url('admin/addNewProduct')}}',
                             type: 'post',

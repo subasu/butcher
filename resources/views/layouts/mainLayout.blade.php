@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="{{url('public/main/assets/lib/bootstrap/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" type="text/css"
@@ -292,9 +293,9 @@
         </div><!-- /#footer-menu-box -->
     </div>
 </footer>
-{{csrf_field()}}
+{{--{{csrf_field()}}--}}
 <a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
-<input type="hidden" id="token" value="{{csrf_token()}}" name="_token">
+{{--<input type="hidden" id="token" value="{{csrf_token()}}" name="_token">--}}
 <!-- Script-->
 <script type="text/javascript" src="{{url('public/main/assets/lib/jquery/jquery-1.11.2.min.js')}}"></script>
 <!-- below script get and load sub menu -->
@@ -378,22 +379,26 @@
 <!-- below script is related to add to basket -->
 
 <script>
-    $(document).on('click', '#addToBasket', function () {
+    $('.addToBasket').on('click', function () {
 
-//        var productFlag = $(this).attr('content');
-//        var productId = $(this).attr('name');
+//        var productFlag = $('#productFlag').val();
+//        var productId = $('#productId').val();
         var formOrderOption=new FormData($("#orderOptionForm")[0]);
+        console.log(formOrderOption);
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
         $.ajax
         ({
             url: "{{url('user/addToBasket')}}",
             type: "post",
-            data: formOrderOption ,
-            dataType: "json",
+//            data       : { name: "John", location: "Boston" },
+            data: $("#orderOptionForm").serialize(),
+//            data     : {'productId' : productId , '_token' : token , 'productFlag' : productFlag},
+//            dataType: "json",
+            cache: false,
             contentType: false,
             processData: false,
             success: function (response) {
@@ -422,13 +427,11 @@
                 }
 
             }, error: function (error) {
-                console.log(error);
                 alert('خطایی رخ داده است')
             }
         })
     })
 </script>
-
 
 <script>
     //below function is related to make pay button shown or not shown
