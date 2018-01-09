@@ -395,10 +395,10 @@
             url: "{{url('user/addToBasket')}}",
             type: "post",
 //            data       : { name: "John", location: "Boston" },
-            data: formOrderOption,
+            data: $("#orderOptionForm").serialize(),
 //            data     : {'productId' : productId , '_token' : token , 'productFlag' : productFlag},
-            dataType: "json",
-//            cache: false,
+//            dataType: "json",
+            cache: false,
             contentType: false,
             processData: false,
             success: function (response) {
