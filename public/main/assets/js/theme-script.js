@@ -317,6 +317,7 @@
             if( h > (max_h + vertical_menu_height)-50){
                 // fix top menu
                 $('#nav-top-menu').addClass('nav-ontop');
+                $('#main-menu').css('margin-left','-5%');
                 //$('#nav-top-menu').find('.vertical-menu-content').hide();
                 //$('#nav-top-menu').find('.title').removeClass('active');
                 // add cart box on top menu
@@ -326,6 +327,7 @@
                 $('#header .header-search-box form').appendTo('#form-search-opntop');
             }else{
                 $('#nav-top-menu').removeClass('nav-ontop');
+                $('#main-menu').css('margin-left','-1px');
                 if($('body').hasClass('home')){
                     $('#nav-top-menu').find('.vertical-menu-content').removeAttr('style');
                     if(width > 1024)

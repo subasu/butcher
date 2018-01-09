@@ -212,7 +212,7 @@ class IndexController extends Controller
 
     //below function is to return show product blade with pagination
     //first time show by view second time show by ajax
-    public function showProducts($id, Request $request)
+public function showProducts($id, Request $request)
     {
 
         $menu = $menu = $this->loadMenu();
@@ -253,7 +253,6 @@ class IndexController extends Controller
             $i++;
         }
         $similarProduct=collect($similarProduct);
-//        dd($similarProduct);
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
         $subcat =Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');

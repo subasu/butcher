@@ -587,7 +587,7 @@ img.alignright {
     font-size: 20px;
     text-align: center;
     width: 100%;
-    color: #999;
+    color: #fff;
 }
 
 #shopping-cart-box-ontop .shopping-cart-box-ontop-content {
@@ -1408,7 +1408,7 @@ span.notify-right {
  */
 #main-menu {
     padding: 0;
-    margin-left: -5%;
+    margin-left: -1px;
 }
 
 #main-menu .container-fluid {
@@ -4645,7 +4645,7 @@ span.notify-right {
 .page-product-box .heading {
     font-size: 16px;
     color: #333333;
-    text-transform: uppercase;
+    text-decoration: underline;
     font-weight: bold;
     padding-bottom: 17px;
     text-align: right;
@@ -6088,3 +6088,10 @@ span.notify-right {
     color: #ff3524 !important;
 }
 .height-450{height:603px !important;}
+.similar-product-image{
+    height: 300px;
+}
+.margin-r-5{
+    margin-right: 7px;
+    margin-top: -5px;
+}

@@ -111,7 +111,7 @@
                                     </div>
                                     <div id="navbar" class="navbar-collapse collapse">
                                         <ul class="nav navbar-nav">
-                                            <li class="active"><a href="#">صفحه ی اصلی</a></li>
+                                            <li class="active"><a href="{{url('/')}}">صفحه ی اصلی</a></li>
                                             @foreach($menu as $mnu)
                                                 @if($mnu->hasProduct)
                                                     <li class="dropdown mainMenu"  name="{{$mnu->id}}">
@@ -122,130 +122,11 @@
                                                     </li>
                                                 @endif
                                             @endforeach
-                                            {{--<li class="dropdown">--}}
-                                            {{--<a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Foods</a>--}}
-                                            {{--<ul class="mega_dropdown dropdown-menu" style="width: 830px;">--}}
-                                            {{--<li class="block-container col-sm-3">--}}
-                                            {{--<ul class="block">--}}
-                                            {{--<li class="link_container group_header">--}}
-                                            {{--<a href="#">Asian</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Vietnamese Pho</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Noodles</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Seafood</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container group_header">--}}
-                                            {{--<a href="#">Sausages</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Meat Dishes</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Desserts</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Tops</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Tops</a>--}}
-                                            {{--</li>--}}
-                                            {{--</ul>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="block-container col-sm-3">--}}
-                                            {{--<ul class="block">--}}
-                                            {{--<li class="link_container group_header">--}}
-                                            {{--<a href="#">European</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Greek Potatoes</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Famous Spaghetti</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Famous Spaghetti</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container group_header">--}}
-                                            {{--<a href="#">Chicken</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Italian Pizza</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">French Cakes</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Tops</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Tops</a>--}}
-                                            {{--</li>--}}
-                                            {{--</ul>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="block-container col-sm-3">--}}
-                                            {{--<ul class="block">--}}
-                                            {{--<li class="link_container group_header">--}}
-                                            {{--<a href="#">FAST</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Hamberger</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Pizza</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Noodles</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container group_header">--}}
-                                            {{--<a href="#">Sandwich</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Salad</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Paste</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Tops</a>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="link_container">--}}
-                                            {{--<a href="#">Tops</a>--}}
-                                            {{--</li>--}}
-                                            {{--</ul>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="block-container col-sm-3">--}}
-                                            {{--<ul class="block">--}}
-                                            {{--<li class="img_container">--}}
-                                            {{--<img src="public/main/assets/data/banner-topmenu.jpg" alt="Banner">--}}
-                                            {{--</li>--}}
-                                            {{--</ul>--}}
-                                            {{--</li>--}}
-                                            {{--</ul>--}}
-                                            {{--</li>--}}
-                                            {{--<li class="dropdown">--}}
-                                            {{--<a href="category.html" class="dropdown-toggle" data-toggle="dropdown">Digital</a>--}}
-                                            {{--<ul class="dropdown-menu container-fluid">--}}
-                                            {{--<li class="block-container">--}}
-                                            {{--<ul class="block">--}}
-                                            {{--<li class="link_container"><a href="#">Mobile</a></li>--}}
-                                            {{--<li class="link_container"><a href="#">Tablets</a></li>--}}
-                                            {{--<li class="link_container"><a href="#">Laptop</a></li>--}}
-                                            {{--<li class="link_container"><a href="#">Memory Cards</a></li>--}}
-                                            {{--<li class="link_container"><a href="#">Accessories</a></li>--}}
-                                            {{--</ul>--}}
-                                            {{--</li>--}}
-                                            {{--</ul>--}}
-                                            {{--</li>--}}
                                         </ul>
                                     </div><!--/.nav-collapse -->
                                 </div>                </nav>
                         </div>
-                        <!-- دسته بندی ها--->
+                        {{--<!-- دسته بندی ها--->--}}
                         {{--<div class="col-sm-3" id="box-vertical-megamenus">--}}
                         {{--<div class="box-vertical-megamenus">--}}
                         {{--<h4 class="title">--}}

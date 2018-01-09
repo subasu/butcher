@@ -380,20 +380,22 @@
 <script>
     $(document).on('click', '#addToBasket', function () {
 
-        var productFlag = $(this).attr('content');
-        var productId = $(this).attr('name');
-        var token = $('#token').val();
+//        var productFlag = $(this).attr('content');
+//        var productId = $(this).attr('name');
+        var formOrderOption=new FormData($("#orderOptionForm")[0]);
         $.ajaxSetup({
             headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             }
         });
         $.ajax
         ({
             url: "{{url('user/addToBasket')}}",
             type: "post",
-            data: {'productId': productId, '_token': token, 'productFlag': productFlag},
+            data: formOrderOption ,
             dataType: "json",
+            contentType: false,
+            processData: false,
             success: function (response) {
                 console.log(response);
                 if (response.code == 1) {
@@ -404,7 +406,7 @@
                         addclass: "stack-custom",
                         type: "success",
                         stack: myStack
-                    })
+                    });
                     basketCountNotify();
                     basketTotalPrice();
                     basketContent();
@@ -416,7 +418,7 @@
                         addclass: "stack-custom",
                         type: "success",
                         stack: myStack
-                    })
+                    });
                 }
 
             }, error: function (error) {

@@ -15,6 +15,7 @@ use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductFlag;
 use App\Models\ProductImage;
+use App\Models\ProductOption;
 use App\Models\ProductSize;
 use App\Models\SubUnitCount;
 use App\Models\UnitCount;
@@ -149,6 +150,18 @@ class AddProduct
          *and insert row to category_product table with latest product_id and category_id
          **/
         addCategoryProduct($lastProductId, $product->subCategories);
+
+        //add product options
+        $countOption = count($product->option);
+        if ($countOption) {
+            for ($i = 0; $i < $countOption; $i++) {
+                $productOption = new ProductOption();
+                $productOption->product_id = $lastProductId;
+                $productOption->title = $product->option[$i];
+                $productOption->active = 1;
+                $productOption->save();
+            }
+        }
         return (true);
     }
 
