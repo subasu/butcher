@@ -1151,53 +1151,74 @@
                 });
         }
     </script>
-    <script>
-        function scoreHandling()
-        {
-            var totalScore = $('#score').val();
-            var count = $('#count').val();
-            if(totalScore == 0)
-            {
-                $('.product-star').append
-                (
-                    '<i class="fa fa-star-o"></i>'+
-                    '<i class="fa fa-star-o"></i>'+
-                    '<i class="fa fa-star-o"></i>'+
-                    '<i class="fa fa-star-o"></i>'+
-                    '<i class="fa fa-star-o"></i>'
-                );
-            }else
-                {
-                    var finalScore = totalScore / count;
-                    if(finalScore % 1 === 0)
-                    {
-                        while(finalScore > 0)
-                        {
-                            $('.product-star').append
-                            (
-                                '<i class="fa fa-star"></i>'
-                            );
-                            finalScore--;
-                        }
-                    }
-                    if(finalScore % 1 !== 0)
-                    {
-                        var finalScoreArray = finalScore.split('/');
-                        while(finalScoreArray[0] > 0)
-                        {
-                            $('.product-star').append
-                            (
-                                '<i class="fa fa-star"></i>'
-                            );
-                            finalScoreArray[0]--;
-                        }
-                        $('.product-star').append
-                        (
-                            '<i class="fa fa-star-half-o"></i>'
-                        );
+    {{--<script>--}}
+        {{--function scoreHandling()--}}
+        {{--{--}}
+            {{--$('.score').each(function () {--}}
 
-                    }
-                }
-        }
-    </script>
+                {{--var parent = $(this).parentsUntil('#parent').attr('content');--}}
+                {{--alert(parent);--}}
+                {{--return;--}}
+                {{--var totalScore = $(this).val();--}}
+                {{--//    var count = $('#count').val();--}}
+                {{--//  var finalScore = totalScore / count;--}}
+                {{--if(totalScore == 0)--}}
+                {{--{--}}
+                    {{--$('.product-star').append--}}
+                    {{--(--}}
+                        {{--'<i class="fa fa-star-o"></i>'+--}}
+                        {{--'<i class="fa fa-star-o"></i>'+--}}
+                        {{--'<i class="fa fa-star-o"></i>'+--}}
+                        {{--'<i class="fa fa-star-o"></i>'+--}}
+                        {{--'<i class="fa fa-star-o"></i>'--}}
+                    {{--);--}}
+                {{--}else--}}
+                {{--{--}}
+
+                    {{--if(totalScore % 1 === 0)--}}
+                    {{--{--}}
+                        {{--while(totalScore > 0)--}}
+                        {{--{--}}
+                            {{--$('.product-star').append--}}
+                            {{--(--}}
+                                {{--'<i class="fa fa-star"></i>'--}}
+                            {{--);--}}
+                            {{--totalScore--;--}}
+                        {{--}--}}
+                        {{--$('.product-star').append--}}
+                        {{--(--}}
+                            {{--'<i class="fa fa-star-o"></i>'--}}
+                        {{--);--}}
+                    {{--}--}}
+                    {{--if(totalScore % 1 !== 0)--}}
+                    {{--{--}}
+                        {{--var str = totalScore.toString();--}}
+                        {{--var finalScoreArray = str.split('');--}}
+                        {{--var sub = 5 - finalScoreArray[0];--}}
+                        {{--while(finalScoreArray[0] > 0)--}}
+                        {{--{--}}
+                            {{--$('.product-star').append--}}
+                            {{--(--}}
+                                {{--'<i class="fa fa-star"></i>'--}}
+                            {{--);--}}
+                            {{--finalScoreArray[0]--;--}}
+                        {{--}--}}
+                        {{--$('.product-star').append--}}
+                        {{--(--}}
+                            {{--'<i class="fa fa-star-half-o"></i>'--}}
+                        {{--);--}}
+                        {{--while(sub-1 > 0)--}}
+                        {{--{--}}
+                            {{--$('.product-star').append--}}
+                            {{--(--}}
+                                {{--'<i class="fa fa-star-o"></i>'--}}
+                            {{--);--}}
+                            {{--sub--;--}}
+                        {{--}--}}
+
+                    {{--}--}}
+                {{--}--}}
+            {{--})--}}
+        {{--}--}}
+    {{--</script>--}}
 @endsection

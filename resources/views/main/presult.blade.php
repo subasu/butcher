@@ -46,7 +46,40 @@
                             <div class="col-md-12">
                                 <div class="col-md-6">
                                     <span class="product-star">
-
+                                        @if($product->productScore == null ||  $product->productScore == 0 )
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        @endif
+                                        @if($product->productScore != null ||  $product->productScore != 0 )
+                                            @if(filter_var($product->productScore,FILTER_VALIDATE_INT))
+                                                <?php $i=0;   ?>
+                                                @while($product->productScore > $i)
+                                                     <i class="fa fa-star"></i>
+                                                    <?php $i++; ?>
+                                                @endwhile
+                                                <?php $sub= 5 - $product->productScore ?>
+                                                @while($sub > 0 )
+                                                    <i class="fa fa-star-o"></i>
+                                                    <?php $sub--; ?>
+                                                @endwhile
+                                            @endif
+                                                @if(!filter_var($product->productScore,FILTER_VALIDATE_INT))
+                                                <?php $array = explode('.',$product->productScore);?>
+                                                @while($array[0] > 0)
+                                                        <i class="fa fa-star"></i>
+                                                        <?php $array[0]--; ?>
+                                                @endwhile
+                                                    <i class="fa fa-star-half-o"></i>
+                                                <?php $sub= 5 - $product->productScore ?>
+                                                @while($sub-1 > 0 )
+                                                   <i class="fa fa-star-o"></i>
+                                                   <?php $sub--; ?>
+                                                @endwhile
+                                            @endif
+                                        @endif
                                     </span>
                                 </div>
                                 <div class="col-md-6">
@@ -54,8 +87,8 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" id="score" value="{{$productScore}}">
-                        <input type="hidden" id="count" value="{{$count}}">
+                        <input type="hidden" class="score" value="{{$product->scores[0]->score}}">
+                        {{--<input type="hidden" id="count" value="{{$count}}">--}}
                     </div>
                     {{--<div class="right-block display-inline">--}}
                     {{--<div class="add-to-cart" >--}}

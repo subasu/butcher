@@ -47,7 +47,7 @@ class IndexController extends Controller
             foreach ($submenu as $sm) {
                 $x = CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->get();
             }
-            if (count($x)>0)
+            if ($x)
                 $sub->hasProduct = 1;
             else
                 $sub->hasProduct = 0;
@@ -214,22 +214,28 @@ class IndexController extends Controller
     //first time show by view second time show by ajax
     public function showProducts($id, Request $request)
     {
-        $productScore = 0;
-        $count        = 0;
+
         $menu = $menu = $this->loadMenu();
         $pageTitle = 'لیست محصولات';
         $categories = Category::find($id);
         $image=Category::where('id','=',$categories->parent_id)->value('image_src');
         $products = $categories->products()->paginate(12);
-        foreach ($categories->products[0]->score as $score)
+        $i=0;
+        while (count($products) > $i)
         {
-            $productScore += $score->score;
-            $count += 1;
+            foreach ($products[$i]->scores as $score)
+            {
+                $products[$i]->totalScore += $score->score;
+                $products[$i]->count += 1;
+                $products[$i]->productScore = $products[$i]->totalScore / $products[$i]->count;
+            }
+            $i++;
         }
+        //dd($products);
         if ($request->ajax()) {
-            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image','productScore','count'));
+            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image'));
         }
-        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image','productScore','count'));
+        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image'));
     }
 
     //below function is to return show product blade

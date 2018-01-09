@@ -102,11 +102,13 @@ Route::group(['middleware' => ['auth']], function () {
     //end admin panel routes
     //user panel routes
     Route::group(['prefix' => 'user'], function () {
-        Route::get('userOrders', 'UserController@userOrders');
+        Route::get('userOrders/{parameter}', 'UserController@userOrders');
         Route::get('orderDetails/{id}', 'UserController@orderDetails');
         Route::get('userShowFactor/{id}', 'UserController@userShowFactor');
         Route::get('changePassword', 'UserController@changePassword');
         Route::post('saveNewPassword', 'UserController@saveNewPassword');
+        Route::get('scoreDetails/{id}','UserController@scoreDetails');
+        Route::post('addScore','UserController@addScore');
     });
     //end user panel routes
     Route::post('logout', 'Auth\LoginController@logout');//rayat 20-9-96
