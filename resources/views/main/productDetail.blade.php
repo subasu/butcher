@@ -23,7 +23,7 @@
                     <div id="product">
                         <form id="orderOptionForm">
                             {{--<input type="hidden" id="token" value="{{csrf_token()}}" name="_token">--}}
-                            {{csrf_field()}}
+
                             <div class="primary-box row">
                                 <div class="pb-right-column col-xs-12 col-sm-7">
                                     <h1 class="product-name" dir="rtl">{{$product->title}}</h1>
@@ -89,9 +89,9 @@
                                         <div class="button-group">
                                             <div class="right-block display-inline" dir="rtl">
                                                 <div class="add-to-cart">
-                                                    <input type="button" class="btn btn-warning" id="addToBasket" value="افزودن به سبدخرید">
-                                                    <input type="hidden" name="productId" value="{{$product->id}}" >
-                                                    <input type="hidden" name="productFlag"
+                                                    <input type="button" class="btn btn-warning addToBasket" id="addToBasket" value="افزودن به سبدخرید">
+                                                    <input type="hidden" name="productId" id="productId" value="{{$product->id}}" >
+                                                    <input type="hidden" name="productFlag" id="productFlag"
                                                            @foreach($product->productFlags as $flag)
                                                            @if($flag->active == 1)
                                                            value="{{$flag->price}}"
@@ -197,5 +197,6 @@
             <!-- ./row-->
         </div>
         </div>
+
 
 @endsection
