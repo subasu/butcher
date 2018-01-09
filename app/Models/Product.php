@@ -66,7 +66,7 @@ class Product extends Model
     }
 
     //relation of product and score
-    public function score()
+    public function scores()
     {
         return $this->hasMany('App\Models\ProductScore','product_id');
     }

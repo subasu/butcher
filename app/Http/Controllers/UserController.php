@@ -8,8 +8,10 @@ use App\Http\SelfClasses\CheckUserCellphone;
 use App\Models\Basket;
 use App\Models\Order;
 use App\Models\Product;
+use App\Models\ProductScore;
 use App\User;
 use Carbon\Carbon;
+use function Couchbase\defaultDecoder;
 use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -288,16 +290,28 @@ class UserController extends Controller
     }
 
     //below function is related to show user orders
-    public function userOrders()
+    public function userOrders($parameter)
     {
-        $pageTitle = 'مشاهده و بررسی سفارشات';
         $data = Order::where([['user_id', Auth::user()->id], ['pay', '<>', null], ['transaction_code', '<>', null]])->get();
         $baskets = Basket::find($data[0]->basket_id);
         foreach ($data as $datum) {
             $datum->orderDate = $this->toPersian($datum->created_at->toDateString());
         }
+        switch ($parameter)
+        {
+            case 'factor' :
+                $pageTitle = 'سفارشات و فاکتورها';
+                return view('user.ordersList', compact('data', 'pageTitle', 'baskets'));
+            break;
+            case 'score' :
+                $pageTitle = 'سفارشات و امتیاز دهی';
+                return view('user.ordersScore', compact('data', 'pageTitle', 'baskets'));
+            break;
 
-        return view('user.ordersList', compact('data', 'pageTitle', 'baskets'));
+            default:
+                return view('errors.403');
+        }
+
     }
 
     //
@@ -335,6 +349,33 @@ class UserController extends Controller
         } else {
             return view('errors.403');
         }
+    }
+    //below function is related to show order detail and manage them to give score
+    public function scoreDetails($id)
+    {
+        $userIdentifier = 0;
+        $baskets   = Basket::find($id);
+        $pageTitle = 'جزئیات سفارش';
+        foreach ($baskets->products as $basket) {
+            $basket->product_price = $basket->pivot->product_price;
+        }
+        $i = 0;
+        while (count($baskets->products) > $i)
+        {
+            foreach ($baskets->products[$i]->scores as $score)
+            {
+                $baskets->products[$i]->totalScore += $score->score;
+                $baskets->products[$i]->count += 1;
+                $baskets->products[$i]->productScore = $baskets->products[$i]->totalScore / $baskets->products[$i]->count;
+                if($score->user_id == Auth::user()->id && $score->product_id == $baskets->products[$i]->id)
+                {
+                    $baskets->products[$i]->scoreFlag = 1 ;
+                }
+            }
+            $i++;
+        }
+        //dd($baskets);
+        return view('user.scoreDetails',compact('baskets','pageTitle'));
     }
 
     //below function is related to get information of factor
@@ -434,6 +475,38 @@ class UserController extends Controller
             {
                 abort(403);
             }
+    }
+
+    //below function is related to add score for each product
+    public function addScore(Request $request)
+    {
+        if($request->ajax())
+        {
+            if(ProductScore::where([['user_id',Auth::user()->id],['product_id',$request->productId]])->count() > 0)
+            {
+                return response()->json(['message' => 'شما قبلا امتیاز خود را برای این محصول ثبت نموده اید ، لطفا درخواست مجدد  نفرمائید']);
+            }
+            else
+            {
+                $score = new ProductScore();
+                $score->product_id   =  $request->productId;
+                $score->user_id      =  Auth::user()->id;
+                $score->score        =  $request->score;
+                $score->save();
+                if($score)
+                {
+                    return response()->json(['message' => 'امتیاز برای محصول مورد نظر ثبت گردید' , 'code' => 'success']);
+                }
+                else
+                {
+                    return response()->json(['message' => 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید']);
+                }
+            }
+        }else
+            {
+                abort('403');
+            }
+
     }
 }
 

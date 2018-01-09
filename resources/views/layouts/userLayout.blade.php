@@ -156,13 +156,19 @@
                         <h3 style="font-size: 16px;color:white">پروفایل</h3>
                         <ul class="nav side-menu">
                             {{--//system manager menu--}}
-                            <li><a><i class="fa f a-home"></i>پنل کاربر<span></span></a>
+                            <li><a><i class="fa fa-home"></i>پنل کاربر<span></span></a>
                             </li>
-                            <li><a><i class="fa fa-print"></i>بررسی سفارشات و فاکتورها<span class="fa fa-chevron-down"></span></a>
+                            <li><a><i class="fa fa-print"></i>سفارشات و فاکتورها<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="{{url('user/userOrders')}}">نمایش لیست سفارشات</a>
+                                    <li><a href="{{url('user/userOrders/factor')}}">نمایش لیست سفارشات</a>
                                     </li>
-                                    {{--<li><a href="{{url('admin/addPaymentType')}}">افزودن وضعیت پرداخت</a>--}}
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a><i class="fa fa-shopping-basket"></i>سفارشات و امتیاز دهی<span class="fa fa-chevron-down"></span></a>
+                                <ul class="nav child_menu" style="display: none">
+                                    <li><a href="{{url('user/userOrders/score')}}">مشاهده سفارشات و امتیاز دهی</a>
+                                    </li>
                                     </li>
                                 </ul>
                             </li>
@@ -173,31 +179,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            {{--@endif--}}
-                            {{--<li><a><i class="fa fa-handshake-o"></i>مدیریت وضعیتهای تحویل<span class="fa fa-chevron-down"></span></a>--}}
-                                {{--<ul class="nav child_menu" style="display: none">--}}
-                                    {{--<li><a href="{{url('admin/paymentTypesManagement')}}">  نمایش و مدیریت وضعیتهای تحویل</a>--}}
-                                    {{--</li>--}}
-                                    {{--<li><a href="{{url('admin/addPaymentType')}}">افزودن وضعیت تحویل</a>--}}
-                                    {{--</li>--}}
-                                {{--</ul>--}}
-                            {{--</li>--}}
-                            {{--<li><a><i class="fa fa-comments"></i> مدیریت نظرات<span class="fa fa-chevron-down"></span></a>--}}
-                                {{--<ul class="nav child_menu" style="display: none">--}}
-                                    {{--<li><a href="{{url('admin/systemManager')}}"> نمایش و مدیریت دسته بندی های پروژه</a>--}}
-                                        {{--</li>--}}
-                                    {{--<li><a href="{{url('systemManager')}}">درج دسته بندی جدید </a>--}}
-                                        {{--</li>--}}
-                                    {{--</ul>--}}
-                                {{--</li>--}}
-                            {{--<li><a><i class="fa fa-star-half-full"></i> مدیریت امتیازات<span class="fa fa-chevron-down"></span></a>--}}
-                                {{--<ul class="nav child_menu" style="display: none">--}}
-                                    {{--<li><a href="{{url('systemManager')}}"> نمایش و مدیریت دسته بندی های پروژه</a>--}}
-                                        {{--</li>--}}
-                                    {{--<li><a href="{{url('systemManager')}}">درج دسته بندی جدید </a>--}}
-                                        {{--</li>--}}
-                                    {{--</ul>--}}
-                                {{--</li>--}}
+
 
                             <li><a href="{{url('/')}}"><i class="fa fa-laptop"></i>صفحه ی اصلی سایت</a>
 
