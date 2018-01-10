@@ -354,7 +354,7 @@ class UserController extends Controller
     //below function is related to show order detail and manage them to give score
     public function scoreDetails($id)
     {
-        $userIdentifier = 0;
+
         $baskets = Basket::find($id);
         $pageTitle = 'جزئیات سفارش';
         foreach ($baskets->products as $basket) {

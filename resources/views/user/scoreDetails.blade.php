@@ -93,10 +93,8 @@
                                                             class="btn btn-danger btn-sm addScore"
                                                             style="border-radius: 5px;width: 47%;"><i class="fa fa-star"></i>امتیاز دهی
                                                     </button>
-                                                    <input type="number" min="1" max="5"
-                                                               class="form-control input-sm"
-                                                               style="border-radius: 5px;width: 47%;float: left;">
-
+                                                    <input class="input-sm" maxlength="1" style="border-radius: 5px;width: 47%;float: left;" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+                                                    </input>
                                                 </div>
                                             </div>
                                         @endif
@@ -211,6 +209,17 @@
                     if (score == '' || score == 0) {
                         $(me).closest('div').find('input.input-sm').focus();
                         $(me).closest('div').find('input.input-sm').focus().css('border-color', 'red');
+                        return false;
+                    }
+                    if(score < 1 || score > 5)
+                    {
+                        swal
+                        ({
+                            title: '',
+                            text: 'عدد وارد شده برای امتیاز باید بین 1 تا 5 باشد',
+                            type: 'warning',
+                            confirmButtonText: "بستن"
+                        });
                         return false;
                     }
                 },
