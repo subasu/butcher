@@ -1430,7 +1430,7 @@ span.notify-right {
 }
 
 #main-menu .navbar .navbar-nav > li > a {
-    color: #333;
+    color: floralwhite;
     margin: 15px 0;
     padding: 0;
     border-right: 1px solid #cacaca;
@@ -2173,8 +2173,8 @@ span.notify-right {
 }
 
 .service .service-item .icon {
-    width: 40px;
-    height: 40px;
+    width: 46px;
+    height: 50px;
     float: left;
 }
 
@@ -3191,7 +3191,7 @@ span.notify-right {
 }
 
 .scroll_top:hover {
-    background: #F36;
+    background: darkred;
 }
 
 .scroll_top:before {
@@ -6087,11 +6087,14 @@ span.notify-right {
 .color-red{
     color: #ff3524 !important;
 }
-.height-450{height:603px !important;}
+.height-slider{height:603px !important;}
 .similar-product-image{
     height: 300px;
 }
 .margin-r-5{
     margin-right: 7px;
     margin-top: -5px;
+}
+.service-parent-div-class{
+    margin-right: 11.4%;
 }

@@ -509,7 +509,7 @@
 	#main-menu .navbar-header {
 	  display: block;
 	  margin: 0;
-	  background: #92c841;
+	  background: darkred;
 	  color: #fff;
 	  margin-left: 15px;
 	}
@@ -683,6 +683,9 @@
 [5. Styles for devices(<=480px)]
 */
 @media (max-width: 480px) {
+	.height-slider{
+		height: 380px !important;
+	}
 	.top-banner{
 		display: none;
 	}
@@ -964,9 +967,10 @@
 	#main-menu .navbar-header {
 	  display: block;
 	  margin: 0;
-	  background: #92c841;
+	  background: darkred;
 	  color: #fff;
 	  margin-left: 15px;
+		margin-right: -5%;
 	}
 	#main-menu .navbar-header .navbar-brand {
 		padding: 0;
@@ -993,7 +997,7 @@
 	#main-menu .navbar-collapse{
 		padding: 0 15px;
 		margin-left: 15px;
-		margin-right: 0px;
+		margin-right: -5%;
 		background: #eee;
 	}
 	#main-menu .container-fluid{
@@ -1016,6 +1020,7 @@
 		padding: 10px;
 		border-right: none;
 		position: relative;
+		color: darkred;
 	}
 	#main-menu .navbar .navbar-nav>li:hover>a, 
 	#main-menu .navbar .navbar-nav>li.active>a {
@@ -1077,7 +1082,7 @@
 		margin-top: 10px;
 	}
 	.page-order ul.step li.current-step{
-		border-left: 3px solid #92c841;
+		border-left: 3px solid darkred;
 		border-bottom: none;
 	}
 	#footer2 .footer-top .footer-menu li{
