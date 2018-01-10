@@ -218,6 +218,7 @@ public function showProducts($id, Request $request)
         $menu = $menu = $this->loadMenu();
         $pageTitle = 'لیست محصولات';
         $categories = Category::find($id);
+        $parentCat = Category::where('id','=',$categories->parent_id)->value('title');
         $image=Category::where('id','=',$categories->parent_id)->value('image_src');
         $products = $categories->products()->paginate(12);
         $i=0;
@@ -233,9 +234,9 @@ public function showProducts($id, Request $request)
         }
         //dd($products);
         if ($request->ajax()) {
-            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image'));
+            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat'));
         }
-        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image'));
+        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat'));
     }
 
     //below function is to return show product blade

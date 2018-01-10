@@ -87,7 +87,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" class="score" value="{{$product->scores[0]->score}}">
+                        {{--<input type="hidden" class="score" value="{{$product->scores[0]->score}}">--}}
                         {{--<input type="hidden" id="count" value="{{$count}}">--}}
                     </div>
                     {{--<div class="right-block display-inline">--}}

@@ -456,8 +456,7 @@
                                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                             }
                         });
-                        var formData = new FormData($("#productForm")[0])
-                        console.log(formData)
+                        var formData = new FormData($("#productForm")[0]);
                         $.ajax({
                             url: '{{url('admin/addNewProduct')}}',
                             type: 'post',

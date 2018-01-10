@@ -4,18 +4,18 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{url('public/main/assets/lib/bootstrap/css/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/lib/bootstrap/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" type="text/css"
-          href="{{url('public/main/assets/lib/font-awesome/css/font-awesome.min.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('public/main/assets/lib/select2/css/select2.min.css')}}"/>
+          href="{{URL::asset('public/main/assets/lib/font-awesome/css/font-awesome.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/lib/select2/css/select2.min.css')}}"/>
     <link rel="stylesheet" type="text/css"
-          href="{{url('public/main/assets/lib/jquery.bxslider/jquery.bxslider.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('public/main/assets/lib/owl.carousel/owl.carousel.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('public/main/assets/lib/jquery-ui/jquery-ui.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('public/main/assets/css/animate.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('public/main/assets/css/reset.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('public/main/assets/css/style.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{url('public/main/assets/css/responsive.css')}}"/>
+          href="{{URL::asset('public/main/assets/lib/jquery.bxslider/jquery.bxslider.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/lib/owl.carousel/owl.carousel.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/lib/jquery-ui/jquery-ui.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/css/animate.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/css/reset.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/css/style.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/css/responsive.css')}}"/>
     <link rel="stylesheet" href="{{URL::asset('public/css/persianDatepicker-default.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/css/sweetalert.css')}}">
     <link href="{{URL::asset('public/css/pnotify.custom.min.css')}}" media="all" rel="stylesheet" type="text/css"/>
@@ -45,7 +45,7 @@
         <div id="introduce-box" class="row" >
             <div class="col-md-3">
                 <div id="address-box">
-                    <a href="#"><img src="{{url('public/main/assets/data/introduce-logo.png')}}" alt=""/></a>
+                    <a href="#"><img src="{{URL::asset('public/main/assets/data/introduce-logo.png')}}" alt=""/></a>
                     <div id="address-list">
                         <div class="tit-name">آدرس:</div>
                         <div class="tit-contain">Example Street 68, Mahattan, New York, USA.</div>
@@ -297,7 +297,7 @@
 <a href="#" class="scroll_top" title="Scroll to Top" style="display: inline;">Scroll</a>
 {{--<input type="hidden" id="token" value="{{csrf_token()}}" name="_token">--}}
 <!-- Script-->
-<script type="text/javascript" src="{{url('public/main/assets/lib/jquery/jquery-1.11.2.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/lib/jquery/jquery-1.11.2.min.js')}}"></script>
 <!-- below script get and load sub menu -->
 <script>
     $(document).ready(function () {
@@ -356,17 +356,17 @@
         })
     })
 </script>
-<script type="text/javascript" src="{{url('public/main/assets/lib/bootstrap/js/bootstrap.min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/main/assets/lib/select2/js/select2.min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/main/assets/lib/jquery.bxslider/jquery.bxslider.min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/main/assets/lib/owl.carousel/owl.carousel.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/lib/bootstrap/js/bootstrap.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/lib/select2/js/select2.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/lib/jquery.bxslider/jquery.bxslider.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/lib/owl.carousel/owl.carousel.min.js')}}"></script>
 <script type="text/javascript"
-        src="{{url('public/main/assets/lib/jquery.countdown/jquery.countdown.min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/main/assets/js/jquery.actual.min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/main/assets/lib/jquery-ui/jquery-ui.min.js')}}"></script>
-<script type="text/javascript" src="{{url('public/main/assets/lib/jquery.elevatezoom.js')}}"></script>
-<script type="text/javascript" src="{{url('public/main/assets/js/theme-script.js')}}"></script>
-<script src="{{url('public/js/sweetalert.min.js')}}"></script>
+        src="{{URL::asset('public/main/assets/lib/jquery.countdown/jquery.countdown.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/js/jquery.actual.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/lib/jquery-ui/jquery-ui.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/lib/jquery.elevatezoom.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/js/theme-script.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/js/sweetalert.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/js/pnotify.custom.min.js')}}"></script>
 <script>
     $(document).ready(function () {
@@ -377,14 +377,9 @@
     })
 </script>
 <!-- below script is related to add to basket -->
-
 <script>
     $('.addToBasket').on('click', function () {
-
-//        var productFlag = $('#productFlag').val();
-//        var productId = $('#productId').val();
         var formOrderOption=new FormData($("#orderOptionForm")[0]);
-        console.log(formOrderOption);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -393,11 +388,9 @@
         $.ajax
         ({
             url: "{{url('user/addToBasket')}}",
-            type: "post",
-//            data       : { name: "John", location: "Boston" },
-            data: $("#orderOptionForm").serialize(),
-//            data     : {'productId' : productId , '_token' : token , 'productFlag' : productFlag},
-//            dataType: "json",
+            type: "POST",
+            data: formOrderOption,
+            dataType: "json",
             cache: false,
             contentType: false,
             processData: false,
@@ -407,9 +400,9 @@
                     var myStack = {"dir1": "down", "dir2": "right", "push": "top"};
                     new PNotify({
                         title: response.message,
-                        text: "",
+                        text: '',
                         addclass: "stack-custom",
-                        type: "success",
+                        type: "info",
                         stack: myStack
                     });
                     basketCountNotify();
@@ -418,10 +411,11 @@
                 } else {
                     var myStack = {"dir1": "down", "dir2": "right", "push": "top"};
                     new PNotify({
+//                        title: ' محصول شما به سبد خرید اضافه شد',
                         title: response.message,
-                        text: '',
+                        text:'',
                         addclass: "stack-custom",
-                        type: "success",
+                        type: "info",
                         stack: myStack
                     });
                 }
@@ -432,6 +426,7 @@
         })
     })
 </script>
+
 
 <script>
     //below function is related to make pay button shown or not shown
