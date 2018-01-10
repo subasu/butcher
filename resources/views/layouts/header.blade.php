@@ -107,7 +107,7 @@
                                                 aria-expanded="false" aria-controls="navbar">
                                             <i class="fa fa-bars"></i>
                                         </button>
-                                        <a class="navbar-brand" href="#">MENU</a>
+                                        <a class="navbar-brand" href="#">قصابی برادران</a>
                                     </div>
                                     <div id="navbar" class="navbar-collapse collapse">
                                         <ul class="nav navbar-nav">
@@ -115,7 +115,7 @@
                                             @foreach($menu as $mnu)
                                                 @if($mnu->hasProduct)
                                                     <li class="dropdown mainMenu"  name="{{$mnu->id}}">
-                                                        <a class="dropdown-toggle" data-toggle="dropdown" style="color: floralwhite;">{{$mnu->title}}</a>
+                                                        <a class="dropdown-toggle" data-toggle="dropdown">{{$mnu->title}}</a>
                                                         <ul class="dropdown-menu mega_dropdown submenu" role="menu" style="width: 830px;">
 
                                                         </ul>
