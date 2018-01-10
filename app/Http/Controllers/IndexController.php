@@ -214,29 +214,17 @@ class IndexController extends Controller
     //first time show by view second time show by ajax
 public function showProducts($id, Request $request)
     {
-
         $menu = $menu = $this->loadMenu();
         $pageTitle = 'لیست محصولات';
         $categories = Category::find($id);
         $parentCat = Category::where('id','=',$categories->parent_id)->value('title');
         $image=Category::where('id','=',$categories->parent_id)->value('image_src');
         $products = $categories->products()->paginate(12);
-        $i=0;
-        while (count($products) > $i)
-        {
-            foreach ($products[$i]->scores as $score)
-            {
-                $products[$i]->totalScore += $score->score;
-                $products[$i]->count += 1;
-                $products[$i]->productScore = $products[$i]->totalScore / $products[$i]->count;
-            }
-            $i++;
-        }
-        //dd($products);
+        $productScore = $this->productScore($products);
         if ($request->ajax()) {
-            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat'));
+            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat','productScore'));
         }
-        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat'));
+        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat','productScore'));
     }
 
     //below function is to return show product blade
@@ -330,4 +318,19 @@ public function showProducts($id, Request $request)
 
     }
 
+    //
+    public function productScore($products)
+    {
+        $i=0;
+        while (count($products) > $i)
+        {
+            foreach ($products[$i]->scores as $score)
+            {
+                $products[$i]->totalScore += $score->score;
+                $products[$i]->count += 1;
+                $products[$i]->productScore = $products[$i]->totalScore / $products[$i]->count;
+            }
+            $i++;
+        }
+    }
 }

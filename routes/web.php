@@ -109,6 +109,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('saveNewPassword', 'UserController@saveNewPassword');
         Route::get('scoreDetails/{id}','UserController@scoreDetails');
         Route::post('addScore','UserController@addScore');
+        Route::get('checkScore','UserController@checkScore');
     });
     //end user panel routes
     Route::post('logout', 'Auth\LoginController@logout');//rayat 20-9-96

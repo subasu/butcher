@@ -354,7 +354,6 @@ class UserController extends Controller
     //below function is related to show order detail and manage them to give score
     public function scoreDetails($id)
     {
-
         $baskets = Basket::find($id);
         $pageTitle = 'جزئیات سفارش';
         foreach ($baskets->products as $basket) {
@@ -493,6 +492,22 @@ class UserController extends Controller
             abort('403');
         }
 
+    }
+
+    //below function is to check scores
+    public function checkScore()
+    {
+       $baskets  = Order::where('user_id',Auth::user()->id)->pluck('basket_id');
+       $products = DB::table('basket_product')->whereIn('basket_id',$baskets)->pluck('product_id');
+       $count = count($products);
+       if(ProductScore::where('user_id',Auth::user()->id)->count('product_id') == $count)
+       {
+            return response()->json(['data' => 0]);
+       }
+       else
+           {
+               return response()->json(['data' => 1]);
+           }
     }
 }
 

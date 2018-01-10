@@ -165,9 +165,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li><a><i class="fa fa-shopping-basket"></i>سفارشات و امتیاز دهی<span class="fa fa-chevron-down"></span></a>
+                            <li id="checkScore"><a id="textScore"><i class="fa fa-shopping-basket"></i>سفارشات و امتیاز دهی<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a href="{{url('user/userOrders/score')}}">مشاهده سفارشات و امتیاز دهی</a>
+                                    <li><a  href="{{url('user/userOrders/score')}}">مشاهده سفارشات و امتیاز دهی</a>
                                     </li>
                                     </li>
                                 </ul>
@@ -594,29 +594,32 @@
     });
 </script>
 
-{{--<script>--}}
-    {{--$(document).ready(function(){--}}
-        {{--setInterval(function(){--}}
+<script>
+    $(document).ready(function(){
+        setInterval(function(){
 
-            {{--$.ajax--}}
-            {{--({--}}
-                {{--url      : "{{url('admin/checkOrders')}}",--}}
-                {{--type     : "get",--}}
-                {{--dataType : "JSON",--}}
-                {{--success : function(response)--}}
-                {{--{--}}
-                    {{--if(response.data > 0)--}}
-                    {{--{--}}
-                        {{--window.open('adminShowFactor/'+response.data);--}}
-                    {{--}--}}
-                {{--},error:function (error) {--}}
-                  {{--console.log(error);--}}
-                {{--}--}}
-            {{--})--}}
+            $.ajax
+            ({
+                url      : "{{url('user/checkScore')}}",
+                type     : "get",
+                dataType : "JSON",
+                success : function(response)
+                {
+                    if(response.data > 0)
+                    {
+                        $('#checkScore').css('background-color','orange');
+                        setTimeout(function () {
+                            $('#checkScore').css('background-color','');
+                        },3000);
+                    }
+                },error:function (error) {
+                  console.log(error);
+                }
+            })
 
-        {{--},1000);--}}
-    {{--})--}}
-{{--</script>--}}
+        },100000);
+    })
+</script>
 
 </body>
 </html>
