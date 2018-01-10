@@ -1,17 +1,16 @@
 @extends('layouts.mainLayout')
 @section('content')
-    <form class="columns-container">
         <div class="container" id="columns">
             <!-- breadcrumb -->
             <div class="breadcrumb clearfix">
                 <a class="home" href="#" title="Return to Home">خانه</a>
-                <a href="#" title="Return to Home">{{$cat}}</a>
+                <a href="#" title="">{{$cat}}</a>
                 <span class="navigation-pipe">&nbsp;</span>
-                <a href="#" title="Return to Home">{{$subcat}}</a>
+                <a href="#" title="">{{$subcat}}</a>
                 <span class="navigation-pipe">&nbsp;</span>
-                <a href="#" title="Return to Home">{{$product->categories[0]->title}}</a>
+                <a href="{{url('showProducts/'.$product->categories[0]->id)}}" title="">{{$product->categories[0]->title}}</a>
                 <span class="navigation-pipe">&nbsp;</span>
-                <a href="#" title="Return to Home">{{$product->title}}</a>
+                <a href="#" title="">{{$product->title}}</a>
             </div>
             <!-- ./breadcrumb -->
             <!-- row -->
@@ -23,7 +22,6 @@
                     <div id="product">
                         <form id="orderOptionForm">
                             {{--<input type="hidden" id="token" value="{{csrf_token()}}" name="_token">--}}
-
                             <div class="primary-box row">
                                 <div class="pb-right-column col-xs-12 col-sm-7">
                                     <h1 class="product-name" dir="rtl">{{$product->title}}</h1>
@@ -197,6 +195,4 @@
             <!-- ./row-->
         </div>
         </div>
-
-
 @endsection

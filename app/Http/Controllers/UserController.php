@@ -34,43 +34,54 @@ class UserController extends Controller
     //below function is related to add products into basket with cookie
     public function addToBasket(Request $request)
     {
-        return response()->json($request->all());
-//        $now = Carbon::now(new \DateTimeZone('Asia/Tehran'));
-//        if (isset($_COOKIE['addToBasket'])) {
-//            $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
-//            $count = DB::table('basket_product')->where([['basket_id', $basketId], ['product_id', $request->productId]])->count();
-//
-//            if ($oldBasket = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->count() > 0 && $count > 0) {
-//
-//                $update = DB::table('basket_product')->where([['basket_id', $basketId], ['product_id', $request->productId]])->increment('count');
-//                if ($update) {
-//                    return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید', 'code' => 1]);
-//                } else {
-//                    return response()->json(['message' => 'خطایی رخ داده است']);
-//                }
-//
-//            } else if ($oldBasket = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 1]])->count() > 0) {
-//                return $this->newCookie($now, $request);
-//            } else {
-//                $pivotInsert = DB::table('basket_product')->insert
-//                ([
-//                    'basket_id' => $basketId,
-//                    'product_id' => $request->productId,
-//                    'product_price' => $request->productFlag,
-//                    'time' => $now->toTimeString(),
-//                    'date' => $now->toDateString(),
-//                    'count' => 1
-//                ]);
-//                if ($pivotInsert) {
-//                    return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید', 'code' => 1]);
-//                } else {
-//                    return response()->json(['message' => 'خطایی رخ داده است']);
-//                }
-//            }
-//        } else {
-//            return $this->newCookie($now, $request);
-//        }
+        //order option of a product send in input array format
+        //below function concatenate array value in a one variable for save in database
+        $orderOptionArr = '';
+        $countOption = count($request->orderOption);
+        if ($countOption) {
+            for ($i = 0; $i < $countOption; $i++) {
+                if ($i+1 < $countOption )
+                    $orderOptionArr .= $request->orderOption[$i] . "،";
+                else
+                    $orderOptionArr .= $request->orderOption[$i];
+            }
+        }
+//        return response()->json($orderOptionArr);
+        $now = Carbon::now(new \DateTimeZone('Asia/Tehran'));
+        if (isset($_COOKIE['addToBasket'])) {
+            $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
+            $count = DB::table('basket_product')->where([['basket_id', $basketId], ['product_id', $request->productId]])->count();
 
+            if ($oldBasket = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->count() > 0 && $count > 0) {
+
+                $update = DB::table('basket_product')->where([['basket_id', $basketId], ['product_id', $request->productId]])->increment('count');
+                if ($update) {
+                    return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید', 'code' => 1]);
+                } else {
+                    return response()->json(['message' => 'خطایی رخ داده است']);
+                }
+
+            } else if ($oldBasket = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 1]])->count() > 0) {
+                return $this->newCookie($now, $request);
+            } else {
+                $pivotInsert = DB::table('basket_product')->insert
+                ([
+                    'basket_id' => $basketId,
+                    'product_id' => $request->productId,
+                    'product_price' => $request->productFlag,
+                    'time' => $now->toTimeString(),
+                    'date' => $now->toDateString(),
+                    'count' => 1
+                ]);
+                if ($pivotInsert) {
+                    return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید', 'code' => 1]);
+                } else {
+                    return response()->json(['message' => 'خطایی رخ داده است']);
+                }
+            }
+        } else {
+            return $this->newCookie($now, $request);
+        }
     }
 
     //below function is related to make new cookie
@@ -216,8 +227,7 @@ class UserController extends Controller
     public function addToOrder($request, $user, $newPassword)
     {
         $product = $this->addToSellCount($request);
-        if($product)
-        {
+        if ($product) {
             $now = Carbon::now(new\DateTimeZone('Asia/Tehran'));
             $order = new Order();
             $order->user_id = $user->id;
@@ -232,7 +242,7 @@ class UserController extends Controller
             $order->payment_type = $request->paymentType;
             $order->pay = 1;
             $order->transaction_code = 46456464;
-            $order->comments         = $request->comments;
+            $order->comments = $request->comments;
             $order->save();
             if ($order) {
                 $update = Basket::find($request->basketId);
@@ -251,9 +261,7 @@ class UserController extends Controller
                 }
 
             }
-        }
-        else
-        {
+        } else {
             return response()->json(['message' => 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید']);
         }
 
@@ -262,31 +270,23 @@ class UserController extends Controller
     //below function is related to add sell count of product
     public function addToSellCount($request)
     {
-        if(count($request) > 1)
-        {
-            for($i=0; $i <= count($request);$i++)
-            {
-                $product = DB::table('products')->where('id',$request->productId[$i])->increment('sell_count');
+        if (count($request) > 1) {
+            for ($i = 0; $i <= count($request); $i++) {
+                $product = DB::table('products')->where('id', $request->productId[$i])->increment('sell_count');
             }
-            if($product)
-            {
+            if ($product) {
                 return true;
-            }
-            else
-            {
+            } else {
                 return false;
             }
-        }else
-            {
-                $product = DB::table('products')->where('id',$request->productId)->increment('sell_count');
-                if($product)
-                {
-                    return true;
-                }else
-                    {
-                        return false;
-                    }
+        } else {
+            $product = DB::table('products')->where('id', $request->productId)->increment('sell_count');
+            if ($product) {
+                return true;
+            } else {
+                return false;
             }
+        }
 
     }
 
@@ -298,16 +298,15 @@ class UserController extends Controller
         foreach ($data as $datum) {
             $datum->orderDate = $this->toPersian($datum->created_at->toDateString());
         }
-        switch ($parameter)
-        {
+        switch ($parameter) {
             case 'factor' :
                 $pageTitle = 'سفارشات و فاکتورها';
                 return view('user.ordersList', compact('data', 'pageTitle', 'baskets'));
-            break;
+                break;
             case 'score' :
                 $pageTitle = 'سفارشات و امتیاز دهی';
                 return view('user.ordersScore', compact('data', 'pageTitle', 'baskets'));
-            break;
+                break;
 
             default:
                 return view('errors.403');
@@ -346,36 +345,35 @@ class UserController extends Controller
                 $basket->basketCount = $basket->pivot->count;
             }
 
-            return view('user.orderDetails', compact('baskets', 'pageTitle','comments'));
+            return view('user.orderDetails', compact('baskets', 'pageTitle', 'comments'));
         } else {
             return view('errors.403');
         }
     }
+
     //below function is related to show order detail and manage them to give score
     public function scoreDetails($id)
     {
-        $baskets   = Basket::find($id);
+
+        $baskets = Basket::find($id);
         $pageTitle = 'جزئیات سفارش';
         foreach ($baskets->products as $basket) {
             $basket->product_price = $basket->pivot->product_price;
         }
         $i = 0;
-        while (count($baskets->products) > $i)
-        {
-            foreach ($baskets->products[$i]->scores as $score)
-            {
+        while (count($baskets->products) > $i) {
+            foreach ($baskets->products[$i]->scores as $score) {
                 $baskets->products[$i]->totalScore += $score->score;
                 $baskets->products[$i]->count += 1;
                 $baskets->products[$i]->productScore = $baskets->products[$i]->totalScore / $baskets->products[$i]->count;
-                if($score->user_id == Auth::user()->id && $score->product_id == $baskets->products[$i]->id)
-                {
-                    $baskets->products[$i]->scoreFlag = 1 ;
+                if ($score->user_id == Auth::user()->id && $score->product_id == $baskets->products[$i]->id) {
+                    $baskets->products[$i]->scoreFlag = 1;
                 }
             }
             $i++;
         }
         //dd($baskets);
-        return view('user.scoreDetails',compact('baskets','pageTitle'));
+        return view('user.scoreDetails', compact('baskets', 'pageTitle'));
     }
 
     //below function is related to get information of factor
@@ -406,7 +404,7 @@ class UserController extends Controller
 
             }
             $finalPrice += ($total + $totalPostPrice) - $basket->sumOfDiscount;
-            return view('user.userFactor', compact('pageTitle', 'baskets', 'total', 'totalPostPrice', 'finalPrice', 'paymentTypes','comments'));
+            return view('user.userFactor', compact('pageTitle', 'baskets', 'total', 'totalPostPrice', 'finalPrice', 'paymentTypes', 'comments'));
         } else {
             return view('errors.403');
         }
@@ -459,53 +457,41 @@ class UserController extends Controller
     //below function is related to add to seen count
     public function addToSeenCount(Request $request)
     {
-        if($request->ajax())
-        {
-           $product = Product::find($request->productId);
-           $product->seen_count += 1;
-           $product->save();
-           if($product)
-           {
-               return response()->json(['message' => 'success']);
-           }else
-               {
-                   return response()->json(['message' => 'error']);
-               }
-        }else
-            {
-                abort(403);
+        if ($request->ajax()) {
+            $product = Product::find($request->productId);
+            $product->seen_count += 1;
+            $product->save();
+            if ($product) {
+                return response()->json(['message' => 'success']);
+            } else {
+                return response()->json(['message' => 'error']);
             }
+        } else {
+            abort(403);
+        }
     }
 
     //below function is related to add score for each product
     public function addScore(Request $request)
     {
-        if($request->ajax())
-        {
-            if(ProductScore::where([['user_id',Auth::user()->id],['product_id',$request->productId]])->count() > 0)
-            {
+        if ($request->ajax()) {
+            if (ProductScore::where([['user_id', Auth::user()->id], ['product_id', $request->productId]])->count() > 0) {
                 return response()->json(['message' => 'شما قبلا امتیاز خود را برای این محصول ثبت نموده اید ، لطفا درخواست مجدد  نفرمائید']);
-            }
-            else
-            {
+            } else {
                 $score = new ProductScore();
-                $score->product_id   =  $request->productId;
-                $score->user_id      =  Auth::user()->id;
-                $score->score        =  $request->score;
+                $score->product_id = $request->productId;
+                $score->user_id = Auth::user()->id;
+                $score->score = $request->score;
                 $score->save();
-                if($score)
-                {
-                    return response()->json(['message' => 'امتیاز برای محصول مورد نظر ثبت گردید' , 'code' => 'success']);
-                }
-                else
-                {
+                if ($score) {
+                    return response()->json(['message' => 'امتیاز برای محصول مورد نظر ثبت گردید', 'code' => 'success']);
+                } else {
                     return response()->json(['message' => 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید']);
                 }
             }
-        }else
-            {
-                abort('403');
-            }
+        } else {
+            abort('403');
+        }
 
     }
 }
