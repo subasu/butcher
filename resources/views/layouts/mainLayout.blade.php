@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/lib/bootstrap/css/bootstrap.min.css')}}"/>
+    <link rel="stylesheet" type="text/css"
+          href="{{URL::asset('public/main/assets/lib/bootstrap/css/bootstrap.min.css')}}"/>
     <link rel="stylesheet" type="text/css"
           href="{{URL::asset('public/main/assets/lib/font-awesome/css/font-awesome.min.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/lib/select2/css/select2.min.css')}}"/>
     <link rel="stylesheet" type="text/css"
           href="{{URL::asset('public/main/assets/lib/jquery.bxslider/jquery.bxslider.css')}}"/>
-    <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/lib/owl.carousel/owl.carousel.css')}}"/>
+    <link rel="stylesheet" type="text/css"
+          href="{{URL::asset('public/main/assets/lib/owl.carousel/owl.carousel.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/lib/jquery-ui/jquery-ui.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/css/animate.css')}}"/>
     <link rel="stylesheet" type="text/css" href="{{URL::asset('public/main/assets/css/reset.css')}}"/>
@@ -28,9 +30,9 @@
 @yield('content')
 <!-- Footer -->
 <footer id="footer">
-    <div class="container"  dir="rtl">
+    <div class="container" dir="rtl">
         <!-- introduce-box -->
-        <div id="introduce-box" class="row" >
+        <div id="introduce-box" class="row">
             <div class="col-md-3">
                 <div id="address-box">
                     <a href="#"><img src="{{URL::asset('public/main/assets/data/introduce-logo.png')}}" alt=""/></a>
@@ -74,11 +76,13 @@
 
             </div>
         </div><!-- /#introduce-box -->
-    <!-- #trademark-text-box -->
+        <!-- #trademark-text-box -->
         <div id="trademark-text-box" class="row">
         </div><!-- /#trademark-text-box -->
         <div id="footer-menu-box">
-            <p class="text-center">کلیه حقوق این سایت متعلق به <a class="text-danger" href="{{url('http://www.artansoftware.ir/')}}"> گروه برنامه نویسی آرتان</a> می باشد.</p>
+            <p class="text-center">کلیه حقوق این سایت متعلق به <a class="text-danger"
+                                                                  href="{{url('http://www.artansoftware.ir/')}}"> گروه
+                    برنامه نویسی آرتان</a> می باشد.</p>
         </div><!-- /#footer-menu-box -->
     </div>
 </footer>
@@ -104,7 +108,6 @@
                         "_token": token
                     },
                     success: function (response) {
-
                         var item = $(".submenu");
                         item.empty();
                         var x = 1;
@@ -125,17 +128,19 @@
                                     '<a href="{{url('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +
                                     '</li>';
                                 {{--$.each(response.submenu, function (key, value) {--}}
-                                    {{--temp += '<li class="link_container" id="' + value.id + '">' +--}}
+                                        {{--temp += '<li class="link_container" id="' + value.id + '">' +--}}
                                         {{--'<a href="{{url('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +--}}
                                         {{--'</li>';--}}
-                                {{--});--}}
-                                temp += '</ul>' + '</li>';
+                                        {{--});--}}
+                                    temp += '</ul>' + '</li>';
                                 item.append(temp)
                             }
                         });
                     }
                 });//end ajax
-                $('.submenu').mouseover(function (){return false;});
+                $('.submenu').mouseover(function () {
+                    return false;
+                });
             });
             $(this).mouseleave(function () {
                 var item = $(".mainMenu>ul");
@@ -143,11 +148,40 @@
                 //$(".submenu").hide(1);
             })
         })
-    })
+    });
+</script>
+<script>
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    {{--$.ajax({--}}
+        {{--dataType: "json",--}}
+        {{--url: "{{url('getSubmenu')}}" + '/' + 15,--}}
+        {{--cash: false,--}}
+        {{--type: "get",--}}
+        {{--data: {--}}
+            {{--"_method": 'get',--}}
+        {{--},--}}
+        {{--success: function (response) {--}}
+            {{--var item = $(".m3ySubcategoryList");--}}
+            {{--item.empty();--}}
+            {{--item.append('');--}}
+            {{--$.each(response.submenu, function (key, value) {--}}
+                {{--if (value.hasProduct == 1) {--}}
+                    {{--var temp = '<li><a data-toggle="tab" href="#tab-5">'+value.title+'</a></li>';--}}
+                    {{--item.append(temp)--}}
+                {{--}--}}
+            {{--});--}}
+        {{--}--}}
+    {{--});//end ajax--}}
 </script>
 <script type="text/javascript" src="{{URL::asset('public/main/assets/lib/bootstrap/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/assets/lib/select2/js/select2.min.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('public/main/assets/lib/jquery.bxslider/jquery.bxslider.min.js')}}"></script>
+<script type="text/javascript"
+        src="{{URL::asset('public/main/assets/lib/jquery.bxslider/jquery.bxslider.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/assets/lib/owl.carousel/owl.carousel.min.js')}}"></script>
 <script type="text/javascript"
         src="{{URL::asset('public/main/assets/lib/jquery.countdown/jquery.countdown.min.js')}}"></script>
@@ -168,7 +202,7 @@
 <!-- below script is related to add to basket -->
 <script>
     $('.addToBasket').on('click', function () {
-        var formOrderOption=new FormData($("#orderOptionForm")[0]);
+        var formOrderOption = new FormData($("#orderOptionForm")[0]);
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -202,7 +236,7 @@
                     new PNotify({
 //                        title: ' محصول شما به سبد خرید اضافه شد',
                         title: response.message,
-                        text:'',
+                        text: '',
                         addclass: "stack-custom",
                         type: "info",
                         stack: myStack

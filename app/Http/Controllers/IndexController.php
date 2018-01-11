@@ -60,6 +60,31 @@ class IndexController extends Controller
     public function home()
     {
         $menu = $this->loadMenu();
+        //this block code add sub category to each main category collection
+        foreach ($menu as $mnu) {
+            $mnu->submenu = $submenu = Category::where([['parent_id', $mnu->id], ['active', 1]])->orderBy('depth', 'DESC')->get();
+            foreach ($submenu as $sm) {
+                $x = CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->value('id');
+                if ($x > 0)
+                    $sm->hasProduct = 0;
+                else
+                    $sm->hasProduct = 0;
+                //this block code add product to each sub category collection
+                $categories = Category::find($sm->id);
+                $products = $categories->products()->get();
+                $count = count($products);
+                $i = 0;
+                while ($i < $count) {
+                    foreach ($products[$i]->scores as $product) {
+                        $product->productScore = $this->productScore($products);
+                    }
+                    $i++;
+
+                }
+                $sm->products=$products;
+            }
+        }
+//        dd($menu);
         $pageTitle = 'صفحه ی اصلی';
         return view('main.index', compact('pageTitle', 'menu'));
     }
@@ -212,29 +237,27 @@ class IndexController extends Controller
 
     //below function is to return show product blade with pagination
     //first time show by view second time show by ajax
-public function showProducts($id, Request $request)
+    public function showProducts($id, Request $request)
     {
         $menu = $menu = $this->loadMenu();
         $pageTitle = 'لیست محصولات';
         $categories = Category::find($id);
-        $parentCat = Category::where('id','=',$categories->parent_id)->value('title');
-        $image=Category::where('id','=',$categories->parent_id)->value('image_src');
+        $parentCat = Category::where('id', '=', $categories->parent_id)->value('title');
+        $image = Category::where('id', '=', $categories->parent_id)->value('image_src');
         $products = $categories->products()->paginate(12);
         //$productScore = $this->productScore($products);
         $count = count($products);
         $i = 0;
-        while($i < $count)
-        {
-            foreach ($products[$i]->scores as $product)
-            {
+        while ($i < $count) {
+            foreach ($products[$i]->scores as $product) {
                 $product->productScore = $this->productScore($products);
             }
             $i++;
         }
         if ($request->ajax()) {
-            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat'));
+            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products', 'image', 'parentCat'));
         }
-        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat'));
+        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products', 'image', 'parentCat'));
     }
 
     //below function is to return show product blade
@@ -244,20 +267,20 @@ public function showProducts($id, Request $request)
         $pageTitle = Product::where('id', '=', $id)->value('title');
         $product = Product::find($id);
         $brand = $product->categories[0]->id;
-        $category=Category::find($brand);
-        $similarProduct = Array();$i=0;
-        foreach ($category->products as $val)
-        {
+        $category = Category::find($brand);
+        $similarProduct = Array();
+        $i = 0;
+        foreach ($category->products as $val) {
             $similarProduct[$i] = Product::where([['id', $val->pivot->product_id], ['active', 1]])->get();
             $i++;
         }
-        $similarProduct=collect($similarProduct);
+        $similarProduct = collect($similarProduct);
 //        $productScore = $this->productScore($category->products[0]->scores);
 //        dd($productScore);
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
-        $subcat =Category::where('id', '=', $subcatId)->value('title');
+        $subcat = Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');
-        return view('main.productDetail', compact('menu', 'pageTitle', 'product', 'cat', 'subcat','similarProduct'));
+        return view('main.productDetail', compact('menu', 'pageTitle', 'product', 'cat', 'subcat', 'similarProduct'));
     }
 
 
@@ -333,11 +356,9 @@ public function showProducts($id, Request $request)
     //
     public function productScore($products)
     {
-        $i=0;
-        while (count($products) > $i)
-        {
-            foreach ($products[$i]->scores as $score)
-            {
+        $i = 0;
+        while (count($products) > $i) {
+            foreach ($products[$i]->scores as $score) {
                 $products[$i]->totalScore += $score->score;
                 $products[$i]->count += 1;
                 $products[$i]->productScore = $products[$i]->totalScore / $products[$i]->count;
