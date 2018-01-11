@@ -114,9 +114,9 @@ class AddProduct
                 $productPicture = new ProductImage();
                 $productPicture->product_id = $lastProductId;
                 $imageExtension = $product->file[$i]->getClientOriginalExtension();
-                $imageName=microtime();
-                $productPicture->image_src = $imageName.'.'.$imageExtension;
-                $product->file[$i]->move('public/dashboard/productFiles/picture/', $imageName.'.'.$imageExtension);
+                $imageName = microtime();
+                $productPicture->image_src = $imageName . '.' . $imageExtension;
+                $product->file[$i]->move('public/dashboard/productFiles/picture/', $imageName . '.' . $imageExtension);
                 $productPicture->active = 1;
                 $productPicture->save();
             }
@@ -153,19 +153,22 @@ class AddProduct
 
         //add product options
         $countOption = count($product->option);
-        if ($countOption) {
+        //if any option send and not empty
+        if ($countOption && $product->option[0] != "") {
             for ($i = 0; $i < $countOption; $i++) {
-                $productOption = new ProductOption();
-                $productOption->product_id = $lastProductId;
-                $productOption->title = $product->option[$i];
-                $productOption->active = 1;
-                $productOption->save();
+                if ($product->option[$i] != "") {
+                    $productOption = new ProductOption();
+                    $productOption->product_id = $lastProductId;
+                    $productOption->title = $product->option[$i];
+                    $productOption->active = 1;
+                    $productOption->save();
+                }
             }
         }
         return (true);
     }
 
-    //below function is related to convert jalali date to Miladi date
+    //below function is related to convert jalali date to Milady date
     function dateConvert($jalaliDate)
     {
         if (count($jalaliDate) > 0) {
@@ -181,7 +184,8 @@ class AddProduct
         return;
     }
 
-    public function jalaliToGregorian($year, $month, $day)
+    public
+    function jalaliToGregorian($year, $month, $day)
     {
         return Verta::getGregorian($year, $month, $day);
     }
