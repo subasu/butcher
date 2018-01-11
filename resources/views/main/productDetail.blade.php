@@ -168,16 +168,22 @@
                                                 </div>
                                                 <div class="right-block">
                                                     <h5 class="product-name"><a href="#">{{$val->title}}</a></h5>
-                                                    <div class="product-star">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-half-o"></i>
-                                                    </div>
+                                                    {{--<div class="product-star">--}}
+                                                        {{--<i class="fa fa-star"></i>--}}
+                                                        {{--<i class="fa fa-star"></i>--}}
+                                                        {{--<i class="fa fa-star"></i>--}}
+                                                        {{--<i class="fa fa-star"></i>--}}
+                                                        {{--<i class="fa fa-star-half-o"></i>--}}
+                                                    {{--</div>--}}
                                                     <div class="content_price">
-                                                        <span class="price product-price">$38,95</span>
-                                                        <span class="price old-price">$52,00</span>
+                                                        {{--<div class="col-md-6">--}}
+                                                            @foreach($val->productFlags as $flag)
+                                                                @if($flag->active == 1)
+                                                                    <b><a class="price" id="productFlag" data-toggle="" name="{{$flag->price}}" title="تومان"> &nbsp;{{number_format($flag->price)}}&nbsp; </a>
+                                                                    </b>&nbsp;<b style="float: left"> تومان </b> &nbsp;
+                                                                @endif
+                                                            @endforeach
+                                                        {{--</div>--}}
                                                     </div>
                                                 </div>
                                             </div>

@@ -53,27 +53,27 @@
                                             <i class="fa fa-star-o"></i>
                                             <i class="fa fa-star-o"></i>
                                         @endif
-                                        @if($productScore != null ||  $productScore != 0 )
-                                            @if(filter_var($productScore,FILTER_VALIDATE_INT))
+                                        @if($product->productScore != null ||  $product->productScore != 0 )
+                                            @if(filter_var($product->productScore,FILTER_VALIDATE_INT))
                                                 <?php $i=0;   ?>
-                                                @while($productScore > $i)
+                                                @while($product->productScore > $i)
                                                      <i class="fa fa-star"></i>
                                                     <?php $i++; ?>
                                                 @endwhile
-                                                <?php $sub= 5 - $productScore ?>
+                                                <?php $sub= 5 - $product->productScore ?>
                                                 @while($sub > 0 )
                                                     <i class="fa fa-star-o"></i>
                                                     <?php $sub--; ?>
                                                 @endwhile
                                             @endif
-                                                @if(!filter_var($productScore,FILTER_VALIDATE_INT))
-                                                <?php $array = explode('.',$productScore);?>
+                                                @if(!filter_var($product->productScore,FILTER_VALIDATE_INT))
+                                                <?php $array = explode('.',$product->productScore);?>
                                                 @while($array[0] > 0)
                                                         <i class="fa fa-star"></i>
                                                         <?php $array[0]--; ?>
                                                 @endwhile
                                                     <i class="fa fa-star-half-o"></i>
-                                                <?php $sub= 5 - $productScore ?>
+                                                <?php $sub= 5 - $product->productScore ?>
                                                 @while($sub-1 > 0 )
                                                    <i class="fa fa-star-o"></i>
                                                    <?php $sub--; ?>

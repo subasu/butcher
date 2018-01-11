@@ -220,11 +220,21 @@ public function showProducts($id, Request $request)
         $parentCat = Category::where('id','=',$categories->parent_id)->value('title');
         $image=Category::where('id','=',$categories->parent_id)->value('image_src');
         $products = $categories->products()->paginate(12);
-        $productScore = $this->productScore($products);
-        if ($request->ajax()) {
-            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat','productScore'));
+        //$productScore = $this->productScore($products);
+        $count = count($products);
+        $i = 0;
+        while($i < $count)
+        {
+            foreach ($products[$i]->scores as $product)
+            {
+                $product->productScore = $this->productScore($products);
+            }
+            $i++;
         }
-        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat','productScore'));
+        if ($request->ajax()) {
+            return view('main.presult', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat'));
+        }
+        return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products','image','parentCat'));
     }
 
     //below function is to return show product blade
@@ -242,6 +252,8 @@ public function showProducts($id, Request $request)
             $i++;
         }
         $similarProduct=collect($similarProduct);
+//        $productScore = $this->productScore($category->products[0]->scores);
+//        dd($productScore);
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
         $subcat =Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');
