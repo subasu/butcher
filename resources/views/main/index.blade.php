@@ -8,20 +8,20 @@
                     <div class="homeslider">
                         <div class="content-slide">
                             <ul id="contenhomeslider">
-                                <li><img alt="Funky roots" class="height-slider"  src="{{url('public/main/assets/slider/1.jpg')}}" title="Funky roots"/>
+                                <li><img alt="قصابی برادران" class="height-slider"  src="{{url('public/main/assets/slider/1.jpg')}}" title="قصابی برادران"/>
                                 </li>
-                                <li><img alt="Funky roots" class="height-slider" src="{{url('public/main/assets/slider/2.jpg')}}" title="Funky roots"/>
+                                <li><img alt="قصابی برادران" class="height-slider" src="{{url('public/main/assets/slider/2.jpg')}}" title="قصابی برادران"/>
                                 </li>
-                                <li><img alt="Funky roots" class="height-slider" src="{{url('public/main/assets/slider/3.jpg')}}" title="Funky roots"/>
+                                <li><img alt="قصابی برادران" class="height-slider" src="{{url('public/main/assets/slider/3.jpg')}}" title="قصابی برادران"/>
                                 </li>
-                                <li><img alt="Funky roots" class="height-slider" src="{{url('public/main/assets/slider/4.jpg')}}" title="Funky roots"/>
+                                <li><img alt="قصابی برادران" class="height-slider" src="{{url('public/main/assets/slider/4.jpg')}}" title="قصابی برادران"/>
                                 </li>
                             </ul>
                         </div>
                     </div>
-                    <div class="header-banner banner-opacity">
-                        <a href="#"><img alt="Funky roots" src="public/main/assets/data/ads1.jpg"/></a>
-                    </div>
+                    {{--<div class="header-banner banner-opacity">--}}
+                        {{--<a href="#"><img alt="Funky roots" src="public/main/assets/data/ads1.jpg"/></a>--}}
+                    {{--</div>--}}
                 </div>
                 <div class="col-sm-3 slider-left"></div>
 
@@ -522,6 +522,12 @@
                                 </li>
                             </ul>
                         </div>
+                    </div>
+                </div>
+                <div class="banner-featured">
+                    <div class="featured-text"><span>featured</span></div>
+                    <div class="banner-img">
+                        <a href="#"><img alt="Featurered 1" src="public/main/assets/data/f1.jpg"/></a>
                     </div>
                 </div>
             </div>

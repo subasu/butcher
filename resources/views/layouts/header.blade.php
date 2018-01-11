@@ -6,40 +6,15 @@
             <a class="first-item" href="#"><img alt="phone"  src="{{url('public/main/assets/images/phone.png')}}" />00-62-658-658</a>
             <a href="#"><img alt="email"  src="{{url('public/main/assets/images/email.png')}}" />تماس با ما</a>
         </div>
-        <div class="currency ">
-            <div class="dropdown">
-                <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">واحد پول</a>
-                <ul class="dropdown-menu text-right" role="menu">
-                    <li><a href="#">تومان</a></li>
-                    <li><a href="#">ریال</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="language ">
-            <div class="dropdown">
-                <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#">
-                    <img alt="email" src="{{url('public/main/assets/images/fr.jpg')}}" />فارسی
-
-                </a>
-                <ul class="dropdown-menu text-right" role="menu">
-                    <li><a href="#"><img alt="email" src="{{url('public/main/assets/images/en.jpg')}}" />انگلیسی</a></li>
-                    <li><a href="#"><img alt="email" src="{{url('public/main/assets/images/fr.jpg')}}" />فارسی</a></li>
-                </ul>
-            </div>
-        </div>
-
         <div class="support-link">
             <a href="#">خدمات</a>
             <a href="#">پشتیبانی</a>
         </div>
-
         <div id="user-info-top" class="user-info pull-right">
             <div class="dropdown">
                 <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span>حساب من</span></a>
                 <ul class="dropdown-menu mega_dropdown text-right" role="menu">
                     <li><a href="{{url('login')}}">ورود/ثبت نام</a></li>
-                    {{--<li><a href="#">مقایسه</a></li>--}}
-                    {{--<li><a href="#">علاقه مندی ها</a></li>--}}
                 </ul>
             </div>
         </div>
@@ -49,7 +24,7 @@
 <div class="container main-header">
     <div class="row">
         <div class="col-xs-12 col-sm-3 logo">
-            <a href="{{url('/')}}"><img alt="KernelShop"  src="{{url('public/main/assets/images/logo.png')}}" /></a>
+            <a href="{{url('/')}}"><img alt="قصابی برادران"  src="{{url('public/main/assets/images/logo.png')}}" /></a>
         </div>
         <div class="col-xs-7 col-sm-7 header-search-box">
             <form class="form-inline" id="search_form" action="{{url('search')}}" method="post">
