@@ -351,29 +351,6 @@ class UserController extends Controller
         }
     }
 
-    //below function is related to show order detail and manage them to give score
-    public function scoreDetails($id)
-    {
-        $baskets = Basket::find($id);
-        $pageTitle = 'جزئیات سفارش';
-        foreach ($baskets->products as $basket) {
-            $basket->product_price = $basket->pivot->product_price;
-        }
-        $i = 0;
-        while (count($baskets->products) > $i) {
-            foreach ($baskets->products[$i]->scores as $score) {
-                $baskets->products[$i]->totalScore += $score->score;
-                $baskets->products[$i]->count += 1;
-                $baskets->products[$i]->productScore = $baskets->products[$i]->totalScore / $baskets->products[$i]->count;
-                if ($score->user_id == Auth::user()->id && $score->product_id == $baskets->products[$i]->id) {
-                    $baskets->products[$i]->scoreFlag = 1;
-                }
-            }
-            $i++;
-        }
-        //dd($baskets);
-        return view('user.scoreDetails', compact('baskets', 'pageTitle'));
-    }
 
     //below function is related to get information of factor
     public function userShowFactor($id)
@@ -509,5 +486,35 @@ class UserController extends Controller
                return response()->json(['data' => 1]);
            }
     }
+
+    //below function is to redirect score details
+    public function scoreDetails($id)
+    {
+        $baskets = Basket::find($id);
+        $pageTitle = 'جزئیات سفارش';
+        foreach ($baskets->products as $basket) {
+            $basket->product_price = $basket->pivot->product_price;
+        }
+        $i = 0;
+        while (count($baskets->products) > $i) {
+            foreach ($baskets->products[$i]->scores as $score) {
+                $baskets->products[$i]->totalScore += $score->score;
+                $baskets->products[$i]->count += 1;
+                $baskets->products[$i]->productScore = $baskets->products[$i]->totalScore / $baskets->products[$i]->count;
+                if ($score->user_id == Auth::user()->id && $score->product_id == $baskets->products[$i]->id) {
+                    $baskets->products[$i]->scoreFlag = 1;
+                }
+            }
+            $i++;
+        }
+        //dd($baskets);
+        return view('user.scoreDetails', compact('baskets', 'pageTitle'));
+    }
+
+    //below function is related to redirect comment details
+//    public function commentDetails($id)
+//    {
+//
+//    }
 }
 

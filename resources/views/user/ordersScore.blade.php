@@ -38,9 +38,9 @@
                         <input type="hidden" id="token" value="{{ csrf_token() }}">
                         <thead>
                         <tr>
-                            <th style="text-align: center">ردیف</th>
-                            <th style="text-align: center">تاریخ ثبت سفارش</th>
-                            <th style="text-align: center">جزئیات سفارش</th>
+                            <th style="text-align: center; font-size: 120%;">ردیف</th>
+                            <th style="text-align: center;font-size: 120%;">تاریخ ثبت سفارش</th>
+                            <th style="text-align: center;font-size: 120%;">جزئیات امتیازات</th>
                         </tr>
                         </thead>
 
@@ -50,15 +50,11 @@
                             <tr class="unit">
                                 <td style="font-size: 120%"> {{++$i}}</td>
                                 <td style="font-size: 120%">{{$datum->orderDate}}</td>
-                                <td ><strong><a style="font-size: 120%" class="btn btn-dark col-md-8 col-md-offset-2" href="{{url('user/scoreDetails/'.$datum->basket_id)}}">مشاهده جزئیات</a></strong></td>
-                        @endforeach
-
+                                <td ><strong><a style="font-size: 120%" class="btn btn-primary col-md-8 col-md-offset-2" href="{{url('user/scoreDetails/'.$datum->id)}}" >امتیازات</a></strong></td>
                         </tbody>
-
+                        @endforeach
                     </table>
                 </div>
             </div>
         </div>
-
-
 @endsection

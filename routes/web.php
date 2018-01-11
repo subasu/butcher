@@ -107,7 +107,10 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('userShowFactor/{id}', 'UserController@userShowFactor');
         Route::get('changePassword', 'UserController@changePassword');
         Route::post('saveNewPassword', 'UserController@saveNewPassword');
+        Route::post('detectWhatToDo','UserController@detectWhatToDo');
+       // Route::get('scoreDetails/{id}',['as' => 'scoreDetails' , 'uses' => 'UserController@scoreDetails']);
         Route::get('scoreDetails/{id}','UserController@scoreDetails');
+        Route::get('commentDetails/{id}','UserController@commentDetails');
         Route::post('addScore','UserController@addScore');
         Route::get('checkScore','UserController@checkScore');
     });

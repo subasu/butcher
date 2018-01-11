@@ -165,13 +165,20 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li id="checkScore"><a id="textScore"><i class="fa fa-shopping-basket"></i>سفارشات و امتیاز دهی<span class="fa fa-chevron-down"></span></a>
+                            <li id="checkScore"><a id="textScore"><i class="fa fa-eye"></i>سفارشات ، امتیازات <span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
-                                    <li><a  href="{{url('user/userOrders/score')}}">مشاهده سفارشات و امتیاز دهی</a>
+                                    <li><a  href="{{url('user/userOrders/score')}}">مشاهده سفارشات ، امتیازات </a>
                                     </li>
                                     </li>
                                 </ul>
                             </li>
+                            {{--<li id="checkScore"><a id="textScore"><i class="fa fa-edit"></i>سفارشات و نظرات<span class="fa fa-chevron-down"></span></a>--}}
+                                {{--<ul class="nav child_menu" style="display: none">--}}
+                                    {{--<li><a  href="{{url('user/userOrders/score')}}">مشاهده سفارشات و نظرات</a>--}}
+                                    {{--</li>--}}
+                                    {{--</li>--}}
+                                {{--</ul>--}}
+                            {{--</li>--}}
                             <li><a><i class="fa fa-key"></i>مدیرت رمز عبور<span class="fa fa-chevron-down"></span></a>
                                 <ul class="nav child_menu" style="display: none">
                                     <li><a href="{{url('user/changePassword')}}">تغییر رمز عبور</a>
