@@ -770,7 +770,8 @@
                                     <!-- tab product -->
                                         <?php $j = 1;?>
                                         @foreach($mnu->submenu as $submenu)
-                                            <div class="tab-panel @if($j==1) active @endif" id="tab-{{$j++}}" {{$submenu->title}}>
+                                            <div class="tab-panel @if($j==1) active @endif"
+                                                 id="tab-{{$j++}}" {{$submenu->title}}>
                                                 <ul class="product-list owl-carousel" data-dots="false" data-loop="true"
                                                     data-nav="true" data-margin="0" data-autoplayTimeout="1000"
                                                     data-autoplayHoverPause="true"
@@ -787,32 +788,40 @@
                                                                     @endif
                                                                 </a>
                                                                 <div class="quick-view">
-                                                                    <a title="افزودن به علاقه مندی ها" class="heart" ></a>
-                                                                    <a title="مقایسه" class="compare" ></a>
-                                                                    <a title="نمایش جزئیات" class="search" id="goToDetail" content="{{$product->id}}" href="{{url('productDetail/'.$product->id)}}"></a>
+                                                                    <a title="افزودن به علاقه مندی ها"
+                                                                       class="heart"></a>
+                                                                    <a title="مقایسه" class="compare"></a>
+                                                                    <a title="نمایش جزئیات" class="search"
+                                                                       id="goToDetail" content="{{$product->id}}"
+                                                                       href="{{url('productDetail/'.$product->id)}}"></a>
                                                                 </div>
                                                             </div>
-                                                            <div class="right-block margin-top-20">
+                                                            <div class="right-block">
                                                                 <h3 class="product-name text-right col-md-12">
                                                                     @if(strlen($product->title) != mb_strlen($product->title, 'utf-8'))
-                                                                        <a  class="text-right">{{$product->title}}</a>
+                                                                        <a class="text-right">{{$product->title}}</a>
                                                                     @endif
                                                                     @if(strlen($product->title) == mb_strlen($product->title, 'utf-8'))
-                                                                        <a  class="text-left">{{$product->title}}</a>
+                                                                        <a class="text-left">{{$product->title}}</a>
                                                                     @endif
                                                                 </h3>
                                                                 <div class="text-left">
                                                                     <div class="">
-                                                                        <div class="col-md-6">
+                                                                        <div class="col-md-6 padding-r-l-0">
                                                                             @foreach($product->productFlags as $flag)
                                                                                 @if($flag->active == 1)
-                                                                                    <b><a class="price" id="productFlag" data-toggle="" name="{{$flag->price}}" title="تومان"> &nbsp;{{number_format($flag->price)}}&nbsp; </a>
-                                                                                    </b>&nbsp;<b style="float: left"> تومان </b> &nbsp;
+                                                                                    <b><a class="price" id="productFlag"
+                                                                                          data-toggle=""
+                                                                                          name="{{$flag->price}}"
+                                                                                          title="تومان">
+                                                                                            &nbsp{{number_format($flag->price)}}
+                                                                                            &nbsp</a>
+                                                                                    </b><b style="float: left">تومان </b>
                                                                                 @endif
                                                                             @endforeach
                                                                         </div>
-                                                                        <div class=" col-md-6">
-                                                                            <span class="price product-price pull-right"> : قیمت اصلی </span>
+                                                                        <div class=" col-md-6 padding-r-l-0">
+                                                                            <span class="price product-price pull-right  text-right"> : قیمت اصلی </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -831,25 +840,25 @@
                                         @endif
                                         @if($product->productScore != null ||  $product->productScore != 0 )
                                             @if(filter_var($product->productScore,FILTER_VALIDATE_INT))
-                                                <?php $i=0;   ?>
+                                                <?php $i = 0;   ?>
                                                 @while($product->productScore > $i)
                                                     <i class="fa fa-star"></i>
                                                     <?php $i++; ?>
                                                 @endwhile
-                                                <?php $sub= 5 - $product->productScore ?>
+                                                <?php $sub = 5 - $product->productScore ?>
                                                 @while($sub > 0 )
                                                     <i class="fa fa-star-o"></i>
                                                     <?php $sub--; ?>
                                                 @endwhile
                                             @endif
                                             @if(!filter_var($product->productScore,FILTER_VALIDATE_INT))
-                                                <?php $array = explode('.',$product->productScore);?>
+                                                <?php $array = explode('.', $product->productScore);?>
                                                 @while($array[0] > 0)
                                                     <i class="fa fa-star"></i>
                                                     <?php $array[0]--; ?>
                                                 @endwhile
                                                 <i class="fa fa-star-half-o"></i>
-                                                <?php $sub= 5 - $product->productScore ?>
+                                                <?php $sub = 5 - $product->productScore ?>
                                                 @while($sub-1 > 0 )
                                                     <i class="fa fa-star-o"></i>
                                                     <?php $sub--; ?>
@@ -866,7 +875,6 @@
                                                                 {{--<input type="hidden" class="score" value="{{$product->scores[0]->score}}">--}}
                                                                 {{--<input type="hidden" id="count" value="{{$count}}">--}}
                                                             </div>
-
                                                         </li>
                                                     @endforeach
                                                 </ul>

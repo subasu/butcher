@@ -24,10 +24,13 @@ class IndexController extends Controller
         $role_id = Auth::user()->role_id;
         $admin_id = Role::where('title', '=', 'admin')->value('id');
         $user_id = Role::where('title', '=', 'user')->value('id');
-        if ($role_id == $admin_id)
-            return view('layouts.adminLayout');
-        elseif ($role_id == $user_id)
-            return view('layouts.userLayout');
+        if ($role_id == $admin_id) {
+            return redirect()->route('productsManagement');
+        } elseif ($role_id == $user_id)
+        {
+//            return view('layouts.userLayout');
+            return redirect()->route('userOrders','factor');
+        }
     }
 
     public function search(Request $request)
@@ -81,7 +84,7 @@ class IndexController extends Controller
                     $i++;
 
                 }
-                $sm->products=$products;
+                $sm->products = $products;
             }
         }
 //        dd($menu);

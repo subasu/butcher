@@ -328,7 +328,7 @@
                         '</div>' +
                         '<div class="p-right">' +
                         '<p class="p-name"><span>عنوان : </span><span class="color-black">' + response.products[i].title + '</span></p>' +
-                        '<p><span> قیمت : </span><span class="p-rice color-black">' + formatNumber(response.products[i].price) + '</span></p>' +
+                        '<p><span> قیمت واحد : </span><span class="p-rice color-black">' + formatNumber(response.products[i].price) + '</span></p>' +
                         '<p><span>تعداد : </span><span class="color-black">' + response.products[i].count + '</span></p>' +
                         '</div>' +
                         '</li>' +

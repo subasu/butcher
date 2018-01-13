@@ -166,7 +166,9 @@
                 <!-- sidebar menu -->
                 <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
                     <div class="menu_section" style="margin-bottom:10px;">
-                        <h3 style="font-size: 16px;color:white">پروفایل</h3>
+                        <h3 style="font-size: 16px;color:white">
+                            {{Auth::user()->name .' '. Auth::user()->family}}
+                        </h3>
                         <ul class="nav side-menu">
                             {{--//system manager menu--}}
                             <li><a><i class="fa f a-home"></i>پنل مدیریت<span></span></a>

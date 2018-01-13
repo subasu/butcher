@@ -70,7 +70,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::post('enableOrDisableSubUnitCount', 'UnitController@enableOrDisableSubUnitCount');
         //product
         Route::get('addProduct', 'ProductController@addProduct');//show add product view
-        Route::get('productsManagement', 'ProductController@productsManagement');//show view of all product's details
+        Route::get('productsManagement', 'ProductController@productsManagement')->name('productsManagement');//show view of all product's details
         Route::post('addNewProduct', 'ProductController@addNewProduct');// add new product in database
         Route::post('updateProduct', 'ProductController@updateProduct');// update Product in database
         Route::get('productDetails/{id}', 'ProductController@productDetailsGet');
@@ -102,7 +102,7 @@ Route::group(['middleware' => ['auth']], function () {
     //end admin panel routes
     //user panel routes
     Route::group(['prefix' => 'user'], function () {
-        Route::get('userOrders/{parameter}', 'UserController@userOrders');
+        Route::get('userOrders/{parameter}', 'UserController@userOrders')->name('userOrder');
         Route::get('orderDetails/{id}', 'UserController@orderDetails');
         Route::get('userShowFactor/{id}', 'UserController@userShowFactor');
         Route::get('changePassword', 'UserController@changePassword');

@@ -6099,3 +6099,7 @@ span.notify-right {
 .service-parent-div-class{
     margin-right: 7%;
 }
+.padding-r-l-0{
+    padding-right:0 !important;
+    padding-left:0 !important;
+}
