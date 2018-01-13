@@ -816,7 +816,8 @@
                                                                                           title="تومان">
                                                                                             &nbsp{{number_format($flag->price)}}
                                                                                             &nbsp</a>
-                                                                                    </b><b style="float: left">تومان </b>
+                                                                                    </b>
+                                                                                    <b style="float: left">تومان </b>
                                                                                 @endif
                                                                             @endforeach
                                                                         </div>
@@ -891,19 +892,19 @@
             @endif
         @endforeach
         <!-- Baner bottom -->
-            <div class="row banner-bottom">
-                <div class="col-sm-6">
-                    <div class="banner-boder-zoom">
-                        <a href="#"><img alt="ads" class="img-responsive" src="public/main/assets/data/ads17.jpg"/></a>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="banner-boder-zoom">
-                        <a href="#"><img alt="ads" class="img-responsive" src="public/main/assets/data/ads18.jpg"/></a>
-                    </div>
-                </div>
-            </div>
-            <!-- end banner bottom -->
+        {{--<div class="row banner-bottom">--}}
+        {{--<div class="col-sm-6">--}}
+        {{--<div class="banner-boder-zoom">--}}
+        {{--<a href="#"><img alt="ads" class="img-responsive" src="public/main/assets/data/ads17.jpg"/></a>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--<div class="col-sm-6">--}}
+        {{--<div class="banner-boder-zoom">--}}
+        {{--<a href="#"><img alt="ads" class="img-responsive" src="public/main/assets/data/ads18.jpg"/></a>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        {{--</div>--}}
+        <!-- end banner bottom -->
         </div>
     </div>
 

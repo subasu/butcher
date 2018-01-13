@@ -367,7 +367,10 @@
                             <div class="container">
                                 <div id="addPic">
                                     <div class="col-md-12 margin-1">
-                                        <div class="col-md-1 col-sm-1 col-xs-1 col-md-offset-2">
+                                        <div id="removeInputDiv" class="col-md-1 col-sm-1 col-xs-1 col-md-offset-1">
+                                            <a id="removeInput" class="glyphicon glyphicon-remove btn btn-danger" data-toggle="" title="حذف تصویر'" ></a>
+                                        </div>
+                                        <div class="col-md-1 col-sm-1 col-xs-1 ">
                                             <a id="addInput" class="glyphicon glyphicon-plus btn btn-success"
                                                data-toggle=""
                                                title="افزودن تصویر"></a>
@@ -539,9 +542,11 @@
         <!-- send product form -->
         <script>
             $(document).ready(function () {
-                //add input type file for add pic for product
+                $('#removeInputDiv').css('opacity', '0');
+//                add input type file for add pic for product
                 var counter = 0
                 $('#addInput').on('click', function () {
+                    $('#removeInputDiv').css('opacity', '1');
                     if (counter < 3) {
                         $('#addPic').append
                         (
@@ -786,6 +791,21 @@
 
                 {{--appendItem("#color", "color", "{{url('api/v1/getColors')}}");--}}
                 {{--appendItem("#size", "size", "{{url('api/v1/getSizes')}}");--}}
+            });
+        </script>
+        <!-- below script is related to remove input from change  -->
+        <script>
+            $(function () {
+                $(document).on('click','#removeInput',function () {
+                    removeFromChange();
+                });
+                function removeFromChange() {
+                    if ($('#change > #child').length >= 2 )
+                    {
+                        $('#change > #child').last().remove();
+                    };
+
+                }
             });
         </script>
         <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>

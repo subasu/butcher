@@ -29,49 +29,39 @@
 <!-- end header -->
 @yield('content')
 <!-- Footer -->
-<footer id="footer">
+<footer id="footer" class="bg-red">
     <div class="container" dir="rtl">
         <!-- introduce-box -->
         <div id="introduce-box" class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div id="address-box">
-                    <a href="#"><img src="{{URL::asset('public/main/assets/data/introduce-logo.png')}}" alt=""/></a>
+                    <a href="#"><img src="{{URL::asset('public/main/assets/data/introduce-logo.png')}}" alt="قصابی برادران"/></a>
                     <div id="address-list">
-                        <div class="tit-name">آدرس:</div>
-                        <div class="tit-contain">Example Street 68, Mahattan, New York, USA.</div>
-                        <div class="tit-name">تلفن:</div>
-                        <div class="tit-contain">+00 123 456 789</div>
-                        <div class="tit-name">ایمیل:</div>
-                        <div class="tit-contain">support@business.com</div>
+                        <div class="tit-name">آدرس :</div>
+                        <div class="tit-contain">دروازه تهران خ رباط اول بعداز آبشار سنگی مابین کوچه 69 و 71 </div>
+                        <div class="tit-name">تلفن 1 :</div>
+                        <div class="tit-contain">09130913273</div>
+                        <div class="tit-name">تلفن 2 :</div>
+                        <div class="tit-contain">09130913293</div>
+                        <div class="tit-name">تلفن 3 :</div>
+                        <div class="tit-contain text-right">34427230</div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="introduce-title">فروشگاه</div>
-                        <ul id="introduce-company" class="introduce-list">
-                            <li><a href="#about-us">درباره ما</a></li>
-                            <li><a href="#contact-us">تماس با ما</a></li>
-                        </ul>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="introduce-title">حساب کاربری</div>
-                        <ul id="introduce-Account" class="introduce-list">
-                            <li><a href="{{url('login')}}">ورود</a></li>
-                            <li><a href="{{url('login')}}">ثبت نام</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
+            {{--<div class="col-md-3">--}}
+                {{--<div class="row">--}}
+                    {{--<div class="col-sm-12">--}}
+                        {{--<div class="introduce-title">سوپرگوشت برادران</div>--}}
+                        {{--<ul id="introduce-company" class="introduce-list">--}}
+                            {{--<li><a href="{{url('login')}}">ورود</a></li>--}}
+                            {{--<li><a href="{{url('login')}}">ثبت نام</a></li>--}}
+                        {{--</ul>--}}
+                    {{--</div>--}}
+                {{--</div>--}}
+            {{--</div>--}}
+            <div class="col-md-8">
                 <div id="contact-box">
-                    <div class="introduce-title">با ما در شبکه های اجتماعی</div>
-                    <div class="social-link">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                        <a href="#"><i class="fa fa-vk"></i></a>
-                    </div>
+                    <iframe height="300" class="col-md-12" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d989.619751326974!2d51.65720958110365!3d32.69847666679253!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3fbc3515f65d712f%3A0x95741513c04da51a!2sIsfahan+Province%2C+Isfahan%2C+Robat+Street%2C+Ir%C3%A3o!5e1!3m2!1spt-BR!2sbr!4v1515853047532" frameborder="0" style="border:0" allowfullscreen></iframe>
                 </div>
 
             </div>
