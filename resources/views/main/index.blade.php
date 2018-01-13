@@ -807,22 +807,21 @@
                                                                 </h3>
                                                                 <div class="text-left">
                                                                     <div class="">
-                                                                        <div class="col-md-6">
+                                                                        <div class="col-md-6 padding-r-l-0">
                                                                             @foreach($product->productFlags as $flag)
                                                                                 @if($flag->active == 1)
                                                                                     <b><a class="price" id="productFlag"
                                                                                           data-toggle=""
                                                                                           name="{{$flag->price}}"
                                                                                           title="تومان">
-                                                                                            &nbsp;{{number_format($flag->price)}}
-                                                                                            &nbsp; </a>
-                                                                                    </b>&nbsp;<b style="float: left">
-                                                                                        تومان </b> &nbsp;
+                                                                                            &nbsp{{number_format($flag->price)}}
+                                                                                            &nbsp</a>
+                                                                                    </b><b style="float: left">تومان </b>
                                                                                 @endif
                                                                             @endforeach
                                                                         </div>
-                                                                        <div class=" col-md-6">
-                                                                            <span class="price product-price pull-right"> : قیمت اصلی </span>
+                                                                        <div class=" col-md-6 padding-r-l-0">
+                                                                            <span class="price product-price pull-right  text-right"> : قیمت اصلی </span>
                                                                         </div>
                                                                     </div>
                                                                 </div>

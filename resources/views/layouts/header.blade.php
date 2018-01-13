@@ -1,73 +1,85 @@
-
 <div id="header" class="header">
     <div class="top-header">
-    <div class="container">
-        <div class="nav-top-links">
-            <a class="first-item" href="#"><img alt="phone"  src="{{url('public/main/assets/images/phone.png')}}" />00-62-658-658</a>
-            <a href="#"><img alt="email"  src="{{url('public/main/assets/images/email.png')}}" />تماس با ما</a>
-        </div>
-        <div class="support-link">
-            <a href="#">خدمات</a>
-            <a href="#">پشتیبانی</a>
-        </div>
-        <div id="user-info-top" class="user-info pull-right">
-            <div class="dropdown">
-                <a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" href="#"><span>حساب من</span></a>
-                <ul class="dropdown-menu mega_dropdown text-right" role="menu">
-                    <li><a href="{{url('login')}}">ورود/ثبت نام</a></li>
-                </ul>
+        <div class="container">
+            <div class="nav-top-links">
+                <a class="first-item" href="#"><img alt="phone" src="{{url('public/main/assets/images/phone.png')}}"/>00-62-658-658</a>
+                <a href="#"><img alt="email" src="{{url('public/main/assets/images/email.png')}}"/>تماس با ما</a>
             </div>
+            <div class="support-link">
+                @if(Auth::guest())
+                    <a href="{{url('login')}}">ورود / ثبت نام</a>
+                @else
+                    <a href="{{url('/panel')}}">پنل مدیریت</a>
+                    <a href="{{url('logout')}}"> خروج از حساب کاربری </a>
+                @endif
+            </div>
+            {{--<div id="user-info-top" class="user-info pull-right">--}}
+                {{--<div class="dropdown">--}}
+                    {{--<a class="current-open" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"--}}
+                       {{--href="#"><span>حساب من</span></a>--}}
+                    {{--<ul class="dropdown-menu mega_dropdown text-right" role="menu">--}}
+                        {{--@if(Auth::guest())--}}
+                            {{--<li><a href="{{url('login')}}">ورود/ثبت نام</a></li>--}}
+                        {{--@else--}}
+                            {{--<li><a href="{{url('logout')}}"> خروج </a></li>--}}
+                            {{--<li><a href="{{url('/panel')}}">مدیریت</a></li>--}}
+                        {{--@endif--}}
+                    {{--</ul>--}}
+                {{--</div>--}}
+            {{--</div>--}}
         </div>
     </div>
-</div>
-<!-- MAIN HEADER -->
-<div class="container main-header">
-    <div class="row">
-        <div class="col-xs-12 col-sm-3 logo">
-            <a href="{{url('/')}}"><img alt="قصابی برادران"  src="{{url('public/main/assets/images/logo.png')}}" /></a>
-        </div>
-        <div class="col-xs-7 col-sm-7 header-search-box">
-            <form class="form-inline" id="search_form" action="{{url('search')}}" method="post">
-                {{csrf_field()}}
-                <div class="form-group form-category">
-                    {{--<select class="select-category1" name="search_type">--}}
+    <!-- MAIN HEADER -->
+    <div class="container main-header">
+        <div class="row">
+            <div class="col-xs-12 col-sm-3 logo">
+                <a href="{{url('/')}}"><img alt="قصابی برادران"
+                                            src="{{url('public/main/assets/images/logo.png')}}"/></a>
+            </div>
+            <div class="col-xs-7 col-sm-7 header-search-box">
+                <form class="form-inline" id="search_form" action="{{url('search')}}" method="post">
+                    {{csrf_field()}}
+                    <div class="form-group form-category">
+                        {{--<select class="select-category1" name="search_type">--}}
                         {{--<option value="1">جستجو نام محصول</option>--}}
                         {{--<option value="2">جستجو در دسته بندیها</option>--}}
-                    {{--</select>--}}
-                </div>
-                <div class="form-group input-serach ">
-                    <input type="text" class="text-right" name="search_key" placeholder="...جستجو در عنوان و توضیحات محصول">
-                </div>
-                <button type="submit" id="send_search" class="pull-right btn-search"></button>
-            </form>
-        </div>
-        <div id="cart-block" class="col-xs-5 col-sm-2 shopping-cart-box">
-            <a class="cart-link" >
-                {{--<span class="title" id="basketCount">سبدخرید شما<span class="">0</span></span>--}}
-                <span id="totalPrice" class="total">0</span>
-                <span id="basketCountNotify" class="notify notify-left" >0</span>
-            </a>
-            <div class="cart-block">
-                <div class="cart-block-content">
-                    <h2  align="center" dir="rtl">محتویات سبد خرید</h2>
-                    <br/>
-                    <div id="cartBlockList" class="cart-block-list">
+                        {{--</select>--}}
+                    </div>
+                    <div class="form-group input-serach ">
+                        <input type="text" class="text-right" name="search_key"
+                               placeholder="...جستجو در عنوان و توضیحات محصول">
+                    </div>
+                    <button type="submit" id="send_search" class="pull-right btn-search"></button>
+                </form>
+            </div>
+            <div id="cart-block" class="col-xs-5 col-sm-2 shopping-cart-box">
+                <a class="cart-link">
+                    {{--<span class="title" id="basketCount">سبدخرید شما<span class="">0</span></span>--}}
+                    <span id="totalPrice" class="total">0</span>
+                    <span id="basketCountNotify" class="notify notify-left">0</span>
+                </a>
+                <div class="cart-block">
+                    <div class="cart-block-content">
+                        <h2 align="center" dir="rtl">محتویات سبد خرید</h2>
+                        <br/>
+                        <div id="cartBlockList" class="cart-block-list">
 
-                    </div>
-                    <div class="toal-cart" style="text-align: right;direction: rtl" >
-                        <span class="pull-right">جمع کل</span>
-                        <span class="total"></span>
-                    </div>
-                    <div class="cart-buttons">
-                        <a href="{{url('order/basketDetail')}}" id="pay" class="btn-check-out" style="width: 100%; font-size: 120%;">مشاهده جزئیات سبد خرید</a>
+                        </div>
+                        <div class="toal-cart" style="text-align: right;direction: rtl">
+                            <span class="pull-right">جمع کل</span>
+                            <span class="total"></span>
+                        </div>
+                        <div class="cart-buttons">
+                            <a href="{{url('order/basketDetail')}}" id="pay" class="btn-check-out"
+                               style="width: 100%; font-size: 120%;">مشاهده جزئیات سبد خرید</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-</div>
-<!-- END MANIN HEADER -->
+    </div>
+    <!-- END MANIN HEADER -->
     <!--  my main menu -->
     <div class="container">
         <div class="row">
@@ -78,7 +90,8 @@
                             <nav class="navbar navbar-default">
                                 <div class="container-fluid">
                                     <div class="navbar-header">
-                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                                                data-target="#navbar"
                                                 aria-expanded="false" aria-controls="navbar">
                                             <i class="fa fa-bars"></i>
                                         </button>
@@ -89,9 +102,11 @@
                                             <li class="active"><a href="{{url('/')}}">صفحه ی اصلی</a></li>
                                             @foreach($menu as $mnu)
                                                 @if($mnu->hasProduct)
-                                                    <li class="dropdown mainMenu"  name="{{$mnu->id}}">
-                                                        <a class="dropdown-toggle" data-toggle="dropdown">{{$mnu->title}}</a>
-                                                        <ul class="dropdown-menu mega_dropdown submenu" role="menu" style="width: 830px;">
+                                                    <li class="dropdown mainMenu" name="{{$mnu->id}}">
+                                                        <a class="dropdown-toggle"
+                                                           data-toggle="dropdown">{{$mnu->title}}</a>
+                                                        <ul class="dropdown-menu mega_dropdown submenu" role="menu"
+                                                            style="width: 830px;">
 
                                                         </ul>
                                                     </li>
@@ -99,7 +114,8 @@
                                             @endforeach
                                         </ul>
                                     </div><!--/.nav-collapse -->
-                                </div>                </nav>
+                                </div>
+                            </nav>
                         </div>
                         {{--<!-- دسته بندی ها--->--}}
                         {{--<div class="col-sm-3" id="box-vertical-megamenus">--}}
