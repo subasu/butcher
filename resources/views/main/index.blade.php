@@ -12,9 +12,6 @@
                                          src="{{url('public/main/assets/slider/1.jpg')}}" title="قصابی برادران"/>
                                 </li>
                                 <li><img alt="قصابی برادران" class="height-slider"
-                                         src="{{url('public/main/assets/slider/2.jpg')}}" title="قصابی برادران"/>
-                                </li>
-                                <li><img alt="قصابی برادران" class="height-slider"
                                          src="{{url('public/main/assets/slider/3.jpg')}}" title="قصابی برادران"/>
                                 </li>
                                 <li><img alt="قصابی برادران" class="height-slider"
@@ -576,7 +573,7 @@
                         </div>
                         <div class="product-featured clearfix">
                             <div class="banner-featured">
-                                <div class="featured-text"><span>ویژه</span></div>
+                                <div class="featured-text1"><span></span></div>
                                 <div class="banner-img">
                                     <a href="#"><img alt="{{$mnu->title}}"
                                                      src="{{url('public/dashboard/image/'.$mnu->image_src)}}"/></a>

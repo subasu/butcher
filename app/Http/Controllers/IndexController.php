@@ -38,6 +38,14 @@ class IndexController extends Controller
         $results = Product::where('title', 'like', '%' . $request->search_key . '%')
             ->orWhere('description', 'like', '%' . $request->search_key . '%')->get();
         $menu = $this->loadMenu();
+        $count = count($results);
+        $i = 0;
+        while ($i < $count) {
+            foreach ($results[$i]->scores as $product) {
+                $product->productScore = $this->productScore($product);
+            }
+            $i++;
+        }
         return view('main.searchResult', compact('results', 'menu'));
     }
 
@@ -280,6 +288,10 @@ class IndexController extends Controller
         $similarProduct = collect($similarProduct);
 //        $productScore = $this->productScore($category->products[0]->scores);
 //        dd($productScore);
+        foreach ($product->scores as $product) {
+            $product->productScore = $this->productScore($product);
+        }
+
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
         $subcat = Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');
