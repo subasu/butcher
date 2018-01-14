@@ -2,8 +2,11 @@
     <div class="top-header">
         <div class="container">
             <div class="nav-top-links">
-                <a class="first-item" href="#"><img alt="phone" src="{{url('public/main/assets/images/phone.png')}}"/>00-62-658-658</a>
-                <a href="#"><img alt="email" src="{{url('public/main/assets/images/email.png')}}"/>تماس با ما</a>
+                <a href="#">آدرس:</a>
+                <a href="#"> دروازه تهران خ رباط اول بعداز آبشار سنگی مابین کوچه 69 و 71</a>
+                <a href="#">تلفن های تماس :</a>
+                <a class="first-item" href="#"><img alt="phone" src="{{url('public/main/assets/images/phone.png')}}"/>09130913293 <img alt="phone" src="{{url('public/main/assets/images/phone.png')}}"/> 09130913273 <img alt="phone" src="{{url('public/main/assets/images/phone.png')}}"/> 34427230</a>
+
             </div>
             <div class="support-link">
                 @if(Auth::guest())
