@@ -16,7 +16,45 @@
             <!-- ../page heading-->
             <div class="page-content" dir="rtl">
                 <div class="row">
-                    <div class="col-sm-6">
+                    <div class="col-md-6 col-xs-12">
+                        <div class="box-authentication">
+                            <h3 class="col-md-6">ورود</h3><br>
+                            <form id="loginForm">
+                                {{csrf_field()}}
+                                <div class="form-group col-md-12">
+                                    <div class="col-md-9">
+                                        <input type="text" pattern="^\d{11}$" required=" " tabindex="7"
+                                               value="{{ old('cellphone') }}" maxlength="11" name="cellphone"
+                                               class="form-control">
+                                    </div>
+                                    <label for="grade" class="col-md-3 control-label">تلفن همراه</label>
+                                </div>
+                                <div class="form-group col-md-12{{ $errors->has('password') ? ' has-error' : '' }}">
+                                    <div class="col-md-9">
+                                        <input id="password" type="password" class="form-control" name="password"
+                                               required maxlength="20">
+                                    </div>
+                                    <label for="password" class="col-md-3 control-label">پسورد</label>
+                                </div>
+                                <div class="form-group col-md-12{{ $errors->has('captcha') ? ' has-error' : '' }}">
+                                    <div class="col-md-9">
+                                        {{--<img src="{{url('reload.jpg')}}" class="captcha-reload "--}}
+                                        {{-->--}}
+                                        <i class="fa fa-refresh fa-lg captcha-reload col-md-1" height="25"
+                                           width="25"></i>
+                                        <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
+                                        <input id="captcha" class="form-control col-md-4" type="text"
+                                               name="captcha" value="" required tabindex="11">
+                                    </div>
+                                    <label for="captcha" class="col-md-3 control-label"> کد امنیتی</label>
+                                </div>
+                                <p class="forgot-pass"><a href="#">آیا رمز عبور خود را فراموش کرده اید؟</a></p>
+                                <button class="button" id="loginUser"><i class="fa fa-lock"></i> ورود</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-xs-12">
                         <div class="box-authentication register-form">
                             <h3 class="col-md-6">ثبت نام</h3><br>
                             {{--<p>لطفا تلفن خود را برای ثبت نام وارد نمائید</p>--}}
@@ -169,43 +207,6 @@
                                 </div>
                             </form>
 
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="box-authentication">
-                            <h3 class="col-md-6">ورود</h3><br>
-                            <form id="loginForm">
-                                {{csrf_field()}}
-                                <div class="form-group col-md-12">
-                                    <div class="col-md-9">
-                                        <input type="text" pattern="^\d{11}$" required=" " tabindex="7"
-                                               value="{{ old('cellphone') }}" maxlength="11" name="cellphone"
-                                               class="form-control">
-                                    </div>
-                                    <label for="grade" class="col-md-3 control-label">تلفن همراه</label>
-                                </div>
-                                <div class="form-group col-md-12{{ $errors->has('password') ? ' has-error' : '' }}">
-                                    <div class="col-md-9">
-                                        <input id="password" type="password" class="form-control" name="password"
-                                               required maxlength="20">
-                                    </div>
-                                    <label for="password" class="col-md-3 control-label">پسورد</label>
-                                </div>
-                                <div class="form-group col-md-12{{ $errors->has('captcha') ? ' has-error' : '' }}">
-                                    <div class="col-md-9">
-                                        {{--<img src="{{url('reload.jpg')}}" class="captcha-reload "--}}
-                                        {{-->--}}
-                                        <i class="fa fa-refresh fa-lg captcha-reload col-md-1" height="25"
-                                           width="25"></i>
-                                        <img class="captcha col-md-4" alt="captcha.png" id="captcha-image"/>
-                                        <input id="captcha" class="form-control col-md-4" type="text"
-                                               name="captcha" value="" required tabindex="11">
-                                    </div>
-                                    <label for="captcha" class="col-md-3 control-label"> کد امنیتی</label>
-                                </div>
-                                <p class="forgot-pass"><a href="#">آیا رمز عبور خود را فراموش کرده اید؟</a></p>
-                                <button class="button" id="loginUser"><i class="fa fa-lock"></i> ورود</button>
-                            </form>
                         </div>
                     </div>
                 </div>

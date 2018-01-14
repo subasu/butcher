@@ -5067,7 +5067,7 @@ span.notify-right {
 .box-authentication {
     border: 1px solid #eaeaea;
     padding: 30px;
-    min-height: 320px;
+    min-height: max-content;
 }
 
 .box-authentication > h3 {
@@ -6081,6 +6081,9 @@ span.notify-right {
 .product-image-size{
     min-width: 300px;
     min-height: 350px
+}
+.product-image-width{
+    width:100% !important;
 }
 .color-black{
     color: #000;

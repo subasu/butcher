@@ -30,6 +30,29 @@
                                                         <a title="نمایش جزئیات" class="search"
                                                            href="{{url('productDetail/'.$product->id)}}"></a>
                                                     </div>
+                                                    @foreach($product->productFlags as $flag)
+                                                        <div class="group-price">
+                                                            @if($flag->active == 1)
+                                                                <span class="product-sale">
+                                        @if($flag->title == "price")
+                                                                        <b>قیمت اصلی </b>
+                                                                    @endif
+                                                                    @if($flag->title == "special_price")
+                                                                        <b>قیمت ویژه </b>
+                                                                    @endif
+                                                                    @if($flag->title == "wholesale_price")
+                                                                        <b>قیمت عمده </b>
+                                                                    @endif
+                                                                    @if($flag->title == "sales_price")
+                                                                        <b>قیمت حراج </b>
+                                                                    @endif
+                                                                    @if($flag->title == "free_price")
+                                                                        <b>قیمت آزاد </b>
+                                                                    @endif
+                                        </span>
+                                                            @endif
+                                                        </div>
+                                                    @endforeach
                                                 </div>
 
                                                 <div class="right-block margin-top-20">
@@ -66,13 +89,42 @@
                                                     <div class=" text-right">
                                                         <div class="col-md-12">
                                                             <div class="col-md-6">
-                                                    <span class="product-star">
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star"></i>
-                                                        <i class="fa fa-star-half-o"></i>
-                                                    </span>
+                                    <span class="product-star">
+                                        @if($product->productScore == null ||  $product->productScore == 0 )
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                            <i class="fa fa-star-o"></i>
+                                        @endif
+                                        @if($product->productScore != null ||  $product->productScore != 0 )
+                                            @if(filter_var($product->productScore,FILTER_VALIDATE_INT))
+                                                <?php $i = 0;   ?>
+                                                @while($product->productScore > $i)
+                                                    <i class="fa fa-star"></i>
+                                                    <?php $i++; ?>
+                                                @endwhile
+                                                <?php $sub = 5 - $product->productScore ?>
+                                                @while($sub > 0 )
+                                                    <i class="fa fa-star-o"></i>
+                                                    <?php $sub--; ?>
+                                                @endwhile
+                                            @endif
+                                            @if(!filter_var($product->productScore,FILTER_VALIDATE_INT))
+                                                <?php $array = explode('.', $product->productScore);?>
+                                                @while($array[0] > 0)
+                                                    <i class="fa fa-star"></i>
+                                                    <?php $array[0]--; ?>
+                                                @endwhile
+                                                <i class="fa fa-star-half-o"></i>
+                                                <?php $sub = 5 - $product->productScore ?>
+                                                @while($sub-1 > 0 )
+                                                    <i class="fa fa-star-o"></i>
+                                                    <?php $sub--; ?>
+                                                @endwhile
+                                            @endif
+                                        @endif
+                                    </span>
                                                             </div>
                                                             <div class="col-md-6">
                                                                 <span class="price product-price">  :امتیاز  </span>
@@ -91,43 +143,43 @@
                             </ul>
                             <!-- ./PRODUCT LIST -->
                         </div>
-                        @if(count($results))
-                        <div class="sortPagiBar">
-                            <div class="bottom-pagination">
-                                <nav>
-                                    <ul class="pagination">
-                                        <li class="active"><a href="#">1</a></li>
-                                        <li><a href="#">2</a></li>
-                                        <li><a href="#">3</a></li>
-                                        <li><a href="#">4</a></li>
-                                        <li><a href="#">5</a></li>
-                                        <li>
-                                            <a href="#" aria-label="Next">
-                                                <span aria-hidden="true">Next &raquo;</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                            <div class="show-product-item">
-                                <select name="">
-                                    <option value="">Show 18</option>
-                                    <option value="">Show 20</option>
-                                    <option value="">Show 50</option>
-                                    <option value="">Show 100</option>
-                                </select>
-                            </div>
-                            <div class="sort-product">
-                                <select>
-                                    <option value="">Product Name</option>
-                                    <option value="">Price</option>
-                                </select>
-                                <div class="sort-product-icon">
-                                    <i class="fa fa-sort-alpha-asc"></i>
-                                </div>
-                            </div>
-                        </div>
-                            @endif
+                        {{--@if(count($results))--}}
+                        {{--<div class="sortPagiBar">--}}
+                            {{--<div class="bottom-pagination">--}}
+                                {{--<nav>--}}
+                                    {{--<ul class="pagination">--}}
+                                        {{--<li class="active"><a href="#">1</a></li>--}}
+                                        {{--<li><a href="#">2</a></li>--}}
+                                        {{--<li><a href="#">3</a></li>--}}
+                                        {{--<li><a href="#">4</a></li>--}}
+                                        {{--<li><a href="#">5</a></li>--}}
+                                        {{--<li>--}}
+                                            {{--<a href="#" aria-label="Next">--}}
+                                                {{--<span aria-hidden="true">Next &raquo;</span>--}}
+                                            {{--</a>--}}
+                                        {{--</li>--}}
+                                    {{--</ul>--}}
+                                {{--</nav>--}}
+                            {{--</div>--}}
+                            {{--<div class="show-product-item">--}}
+                                {{--<select name="">--}}
+                                    {{--<option value="">Show 18</option>--}}
+                                    {{--<option value="">Show 20</option>--}}
+                                    {{--<option value="">Show 50</option>--}}
+                                    {{--<option value="">Show 100</option>--}}
+                                {{--</select>--}}
+                            {{--</div>--}}
+                            {{--<div class="sort-product">--}}
+                                {{--<select>--}}
+                                    {{--<option value="">Product Name</option>--}}
+                                    {{--<option value="">Price</option>--}}
+                                {{--</select>--}}
+                                {{--<div class="sort-product-icon">--}}
+                                    {{--<i class="fa fa-sort-alpha-asc"></i>--}}
+                                {{--</div>--}}
+                            {{--</div>--}}
+                        {{--</div>--}}
+                            {{--@endif--}}
                     </div>
                     <!-- ./ Center colunm -->
                 </div>
