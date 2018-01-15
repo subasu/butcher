@@ -1,5 +1,8 @@
 @extends('layouts.mainLayout')
 @section('content')
+    <style>
+        .font-16{font-size: 16px !important;}
+    </style>
     <div class="columns-container">
         <div class="container" id="columns">
             <!-- row -->
@@ -138,7 +141,7 @@
                                         </li>
                                     @endforeach
                                 @else
-                                    <p  dir="rtl" data-dismiss="" class="alert alert-warning alert-dismissable">متاسفانه موردی نظر یافت نشد!</p>
+                                    <p  dir="rtl"  data-dismiss="" class="text-center font-16 alert alert-warning alert-dismissable">متاسفانه موردی یافت نشد!</p>
                                 @endif
                             </ul>
                             <!-- ./PRODUCT LIST -->

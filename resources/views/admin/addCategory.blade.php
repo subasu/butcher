@@ -94,11 +94,7 @@
                                     @endif
                                 </div>
                             </div>
-
                             <div class="item form-group" id="change" style="display:none;!important;">
-
-
-
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
@@ -122,15 +118,12 @@
                 <div class="col-md-3 col-sm-3 col-xs-12"></div>
             </div>
         </div>
-
-
         <!-- below script is to append html element to change tag -->
         <script>
             function appendToChange()
             {
                 $('#change').append
                 (
-
                     "<div id='child'>"+
                     "<br/><br/>"+
                         "<div class='col-md-4 col-sm-6 col-xs-9'>"+

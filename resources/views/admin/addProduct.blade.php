@@ -367,8 +367,9 @@
                             <div class="container">
                                 <div id="addPic">
                                     <div class="col-md-12 margin-1">
-                                        <div id="removeInputDiv" class="col-md-1 col-sm-1 col-xs-1 col-md-offset-1">
-                                            <a id="removeInput" class="glyphicon glyphicon-remove btn btn-danger" data-toggle="" title="حذف تصویر'" ></a>
+                                        <div id="removePicDiv" class="col-md-1 col-sm-1 col-xs-1 col-md-offset-1">
+                                            <a id="removePic" class="glyphicon glyphicon-remove btn btn-danger"
+                                               data-toggle="" title="حذف تصویر'"></a>
                                         </div>
                                         <div class="col-md-1 col-sm-1 col-xs-1 ">
                                             <a id="addInput" class="glyphicon glyphicon-plus btn btn-success"
@@ -401,7 +402,11 @@
                                 </div>
                                 <div id="addOption">
                                     <div class="col-md-12 margin-1">
-                                        <div class="col-md-1 col-sm-1 col-xs-1 col-md-offset-2">
+                                        <div id="removeOptionDiv" class="col-md-1 col-sm-1 col-xs-1 col-md-offset-1">
+                                            <a id="removeOption" class="glyphicon glyphicon-remove btn btn-danger"
+                                               data-toggle="" title="حذف تصویر'"></a>
+                                        </div>
+                                        <div class="col-md-1 col-sm-1 col-xs-1">
                                             <a id="addOptionBtn" class="glyphicon glyphicon-plus btn btn-success"
                                                title="افزودن گزینه های توضیحات"></a>
                                         </div>
@@ -409,7 +414,8 @@
                                             <input class="form-control col-md-12 col-xs-12"
                                                    type="text" name="option[]" id="option"/>
                                         </div>
-                                        <label class="control-label col-md-2 col-sm-4 col-xs-3" for="file"> گزینه های محصول
+                                        <label class="control-label col-md-2 col-sm-4 col-xs-3" for="file"> گزینه های
+                                            محصول
                                             :
                                             <span class="required star"></span>
                                         </label>
@@ -541,15 +547,41 @@
         </script>
         <!-- send product form -->
         <script>
+            <!--
+            below
+            script
+            is
+            related
+            to
+            remove
+            input
+            image
+            file
+            from
+            change  -->
+            $(function () {
+                $(document).on('click', '#removePic', function () {
+                    removeFromChange();
+                });
+                function removeFromChange() {
+                    if ($('#addPic > #child').length >= 1) {
+                        $('#addPic > #child').last().remove();
+                        counter--;
+                    }
+                    ;
+                }
+            });
+            var counter = 0
             $(document).ready(function () {
-                $('#removeInputDiv').css('opacity', '0');
+                $('#removePicDiv').css('opacity', '0');
+                $('#removeOptionDiv').css('opacity', '0');
 //                add input type file for add pic for product
-                var counter = 0
                 $('#addInput').on('click', function () {
-                    $('#removeInputDiv').css('opacity', '1');
+                    $('#removePicDiv').css('opacity', '1');
                     if (counter < 3) {
                         $('#addPic').append
                         (
+                            "<div id='child'>" +
                             '<div class="col-md-12 margin-1">' +
                             '<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3">' +
                             '<input class="form-control col-md-12 col-xs-12" type="file" name="file[]" id="file"/>' +
@@ -557,6 +589,7 @@
                             '<label class="control-label col-md-2 col-sm-4 col-xs-3" for="pic"> تصویر محصول :' +
                             '<span class="required star"></span>' +
                             '</label></div>'
+                            + '<div>'
                         );
                         counter++;
                     }
@@ -565,17 +598,28 @@
                 });
                 //add option for product when user want order product
                 $('#addOptionBtn').on('click', function () {
-                        $('#addOption').append
-                        (
-                            '<div class="col-md-12 margin-1">' +
-                            '<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3">' +
-                            '<input class="form-control col-md-12 col-xs-12" type="text" name="option[]" id="option"/>' +
-                            '</div>' +
-                            '<label class="control-label col-md-2 col-sm-4 col-xs-3" for="pic"> گزینه های محصول :' +
-                            '<span class="required star"></span>' +
-                            '</label></div>'
-                        );
-                        counter++;
+                    $('#removeOptionDiv').css('opacity', '1');
+                    $('#addOption').append
+                    (
+                        '<div id="OptionChild">' +
+                        '<div class="col-md-12 margin-1">' +
+                        '<div class="col-md-5 col-sm-6 col-xs-9 col-md-offset-3">' +
+                        '<input class="form-control col-md-12 col-xs-12" type="text" name="option[]" id="option"/>' +
+                        '</div>' +
+                        '<label class="control-label col-md-2 col-sm-4 col-xs-3" for="pic"> گزینه های محصول :' +
+                        '<span class="required star"></span>' +
+                        '</label></div></div>'
+                    );
+                    counter++;
+                });
+                <!-- below script is related to remove input option from change  -->
+                $(function () {
+                    $(document).on('click', '#removeOption', function () {
+                        removeFromChange();
+                    });
+                    function removeFromChange() {
+                        $('#addOption > #OptionChild').last().remove();
+                    }
                 });
                 //load all main category in select box in addProductForm
                 $.ajax({
@@ -791,21 +835,6 @@
 
                 {{--appendItem("#color", "color", "{{url('api/v1/getColors')}}");--}}
                 {{--appendItem("#size", "size", "{{url('api/v1/getSizes')}}");--}}
-            });
-        </script>
-        <!-- below script is related to remove input from change  -->
-        <script>
-            $(function () {
-                $(document).on('click','#removeInput',function () {
-                    removeFromChange();
-                });
-                function removeFromChange() {
-                    if ($('#change > #child').length >= 2 )
-                    {
-                        $('#change > #child').last().remove();
-                    };
-
-                }
             });
         </script>
         <script src="{{ URL::asset('public/js/persianDatepicker.js')}}"></script>
