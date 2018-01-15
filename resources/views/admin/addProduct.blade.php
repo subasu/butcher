@@ -563,6 +563,7 @@
                 $(document).on('click', '#removePic', function () {
                     removeFromChange();
                 });
+                //remove last file input product image that made by jquery
                 function removeFromChange() {
                     if ($('#addPic > #child').length >= 1) {
                         $('#addPic > #child').last().remove();
@@ -598,6 +599,7 @@
                 });
                 //add option for product when user want order product
                 $('#addOptionBtn').on('click', function () {
+                    //when add Option Button clicked remove option button showing to user
                     $('#removeOptionDiv').css('opacity', '1');
                     $('#addOption').append
                     (
@@ -612,7 +614,7 @@
                     );
                     counter++;
                 });
-                <!-- below script is related to remove input option from change  -->
+                <!-- below script is related to remove input option from addOption div   -->
                 $(function () {
                     $(document).on('click', '#removeOption', function () {
                         removeFromChange();
