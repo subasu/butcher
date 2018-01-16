@@ -547,18 +547,7 @@
         </script>
         <!-- send product form -->
         <script>
-            <!--
-            below
-            script
-            is
-            related
-            to
-            remove
-            input
-            image
-            file
-            from
-            change  -->
+            //below script is related to remove input image file from change
             $(function () {
                 $(document).on('click', '#removePic', function () {
                     removeFromChange();

@@ -1,7 +1,9 @@
 @extends('layouts.mainLayout')
 @section('content')
     <style>
-        .font-16{font-size: 16px !important;}
+        .font-16 {
+            font-size: 16px !important;
+        }
     </style>
     <div class="columns-container">
         <div class="container" id="columns">
@@ -83,8 +85,11 @@
                                                                 @endforeach
                                                             </div>
                                                             <div class=" col-md-6">
-                                                                <span class="price product-price pull-right"> : قیمت اصلی </span>
+                                                                <span class="price product-price pull-right" dir="rtl">
+                                                                        قیمت({{$product->unit_count }})
+                                                                </span>
                                                             </div>
+
                                                         </div>
                                                     </div>
                                                 </div>
@@ -130,7 +135,7 @@
                                     </span>
                                                             </div>
                                                             <div class="col-md-6">
-                                                                <span class="price product-price">  :امتیاز  </span>
+                                                                <span class="price product-price">   امتیاز  </span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -141,48 +146,50 @@
                                         </li>
                                     @endforeach
                                 @else
-                                    <p  dir="rtl"  data-dismiss="" class="text-center font-16 alert alert-warning alert-dismissable">متاسفانه موردی یافت نشد!</p>
+                                    <p dir="rtl" data-dismiss=""
+                                       class="text-center font-16 alert alert-warning alert-dismissable">متاسفانه موردی
+                                        یافت نشد!</p>
                                 @endif
                             </ul>
                             <!-- ./PRODUCT LIST -->
                         </div>
                         {{--@if(count($results))--}}
                         {{--<div class="sortPagiBar">--}}
-                            {{--<div class="bottom-pagination">--}}
-                                {{--<nav>--}}
-                                    {{--<ul class="pagination">--}}
-                                        {{--<li class="active"><a href="#">1</a></li>--}}
-                                        {{--<li><a href="#">2</a></li>--}}
-                                        {{--<li><a href="#">3</a></li>--}}
-                                        {{--<li><a href="#">4</a></li>--}}
-                                        {{--<li><a href="#">5</a></li>--}}
-                                        {{--<li>--}}
-                                            {{--<a href="#" aria-label="Next">--}}
-                                                {{--<span aria-hidden="true">Next &raquo;</span>--}}
-                                            {{--</a>--}}
-                                        {{--</li>--}}
-                                    {{--</ul>--}}
-                                {{--</nav>--}}
-                            {{--</div>--}}
-                            {{--<div class="show-product-item">--}}
-                                {{--<select name="">--}}
-                                    {{--<option value="">Show 18</option>--}}
-                                    {{--<option value="">Show 20</option>--}}
-                                    {{--<option value="">Show 50</option>--}}
-                                    {{--<option value="">Show 100</option>--}}
-                                {{--</select>--}}
-                            {{--</div>--}}
-                            {{--<div class="sort-product">--}}
-                                {{--<select>--}}
-                                    {{--<option value="">Product Name</option>--}}
-                                    {{--<option value="">Price</option>--}}
-                                {{--</select>--}}
-                                {{--<div class="sort-product-icon">--}}
-                                    {{--<i class="fa fa-sort-alpha-asc"></i>--}}
-                                {{--</div>--}}
-                            {{--</div>--}}
+                        {{--<div class="bottom-pagination">--}}
+                        {{--<nav>--}}
+                        {{--<ul class="pagination">--}}
+                        {{--<li class="active"><a href="#">1</a></li>--}}
+                        {{--<li><a href="#">2</a></li>--}}
+                        {{--<li><a href="#">3</a></li>--}}
+                        {{--<li><a href="#">4</a></li>--}}
+                        {{--<li><a href="#">5</a></li>--}}
+                        {{--<li>--}}
+                        {{--<a href="#" aria-label="Next">--}}
+                        {{--<span aria-hidden="true">Next &raquo;</span>--}}
+                        {{--</a>--}}
+                        {{--</li>--}}
+                        {{--</ul>--}}
+                        {{--</nav>--}}
                         {{--</div>--}}
-                            {{--@endif--}}
+                        {{--<div class="show-product-item">--}}
+                        {{--<select name="">--}}
+                        {{--<option value="">Show 18</option>--}}
+                        {{--<option value="">Show 20</option>--}}
+                        {{--<option value="">Show 50</option>--}}
+                        {{--<option value="">Show 100</option>--}}
+                        {{--</select>--}}
+                        {{--</div>--}}
+                        {{--<div class="sort-product">--}}
+                        {{--<select>--}}
+                        {{--<option value="">Product Name</option>--}}
+                        {{--<option value="">Price</option>--}}
+                        {{--</select>--}}
+                        {{--<div class="sort-product-icon">--}}
+                        {{--<i class="fa fa-sort-alpha-asc"></i>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--</div>--}}
+                        {{--@endif--}}
                     </div>
                     <!-- ./ Center colunm -->
                 </div>

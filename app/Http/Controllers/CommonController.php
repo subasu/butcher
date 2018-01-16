@@ -57,7 +57,6 @@ class CommonController extends Controller
         $submenu = Category::where([['parent_id', $id], ['active', 1]])->orderBy('depth', 'DESC')->get();
         $catImg = Category::where('id','=',$id)->value('image_src');
         foreach ($submenu as $sm) {
-            $sm->catImg = $catImg;
             $x= CategoryProduct::where([['category_id', $sm->id], ['active', 1]])->value('id');
             if ($x>0)
                 $sm->hasProduct = 1;
@@ -65,7 +64,7 @@ class CommonController extends Controller
                 $sm->hasProduct = 0;
         }
         if (count($submenu) > 0) {
-            return response()->json(['submenu' => $submenu]);
+            return response()->json(['submenu' => $submenu,'catImg'=>$catImg]);
         } else {
             return response()->json(0);
         }

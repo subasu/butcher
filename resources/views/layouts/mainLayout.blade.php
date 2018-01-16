@@ -35,7 +35,7 @@
         <div id="introduce-box" class="row">
             <div class="col-md-4">
                 <div id="address-box">
-                    <a href="#"><img src="{{URL::asset('public/main/assets/data/introduce-logo.png')}}" alt="قصابی برادران"/></a>
+                    <a href="#"><img src="{{URL::asset('public/main/assets/images/logo.png')}}" alt="قصابی برادران"/></a>
                     <div id="address-list">
                         <div class="tit-name">آدرس :</div>
                         <div class="tit-contain">دروازه تهران خ رباط اول بعداز آبشار سنگی مابین کوچه 69 و 71 </div>
@@ -71,7 +71,7 @@
         </div><!-- /#trademark-text-box -->
         <div id="footer-menu-box">
             <p class="text-center">کلیه حقوق این سایت متعلق به <a class="text-danger"
-                                                                  href="{{url('http://www.artansoftware.ir/')}}"> گروه
+                                                                  href="{{URL::asset('http://www.artansoftware.ir/')}}"> گروه
                     برنامه نویسی آرتان</a> می باشد.</p>
         </div><!-- /#footer-menu-box -->
     </div>
@@ -90,7 +90,7 @@
                 var token = $(this).data("token");
                 $.ajax({
                     dataType: "json",
-                    url: "{{url('getSubmenu')}}" + '/' + id,
+                    url: "{{URL::asset('getSubmenu')}}" + '/' + id,
                     cash: false,
                     type: "get",
                     data: {
@@ -101,25 +101,25 @@
                         var item = $(".submenu");
                         item.empty();
                         var x = 1;
+                        if (response.catImg != null && x == 1) {
+                            item.append('<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
+                                '<ul class="block">' +
+                                '<li class="img_container">' +
+                                '<img src="{{URL::asset('public/dashboard/image')}}/' + response.catImg + '" alt="' + response.title + '" title="' + response.title + '" >' +
+                                '</li>' +
+                                '</ul></li>')
+                        }
                         $.each(response.submenu, function (key, value) {
-                            if (value.catImg != null && x == 1) {
-                                item.append('<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
-                                    '<ul class="block">' +
-                                    '<li class="img_container">' +
-                                    '<img src="{{url('public/dashboard/image')}}/' + value.catImg + '" alt="' + value.title + '" title="' + value.title + '" >' +
-                                    '</li>' +
-                                    '</ul></li>')
-                            }
                             if (value.hasProduct == 1) {
                                 x = 0;
                                 var temp = '<li class="block-container col-md-3 col-xs-12 float-xs-none" style="float: right">' +
                                     '<ul class="block">' +
                                     '<li class="link_container group_header">' +
-                                    '<a href="{{url('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +
+                                    '<a href="{{URL::asset('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +
                                     '</li>';
                                 {{--$.each(response.submenu, function (key, value) {--}}
                                         {{--temp += '<li class="link_container" id="' + value.id + '">' +--}}
-                                        {{--'<a href="{{url('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +--}}
+                                        {{--'<a href="{{URL::asset('showProducts')}}' + "/" + value.id + ' ">' + value.title + '</a>' +--}}
                                         {{--'</li>';--}}
                                         {{--});--}}
                                     temp += '</ul>' + '</li>';
@@ -149,7 +149,7 @@
     });
     {{--$.ajax({--}}
         {{--dataType: "json",--}}
-        {{--url: "{{url('getSubmenu')}}" + '/' + 15,--}}
+        {{--url: "{{URL::asset('getSubmenu')}}" + '/' + 15,--}}
         {{--cash: false,--}}
         {{--type: "get",--}}
         {{--data: {--}}
@@ -200,7 +200,7 @@
         });
         $.ajax
         ({
-            url: "{{url('user/addToBasket')}}",
+            url: "{{URL::asset('user/addToBasket')}}",
             type: "POST",
             data: formOrderOption,
             dataType: "json",
@@ -257,7 +257,7 @@
         var token = $('#token').val();
         $.ajax
         ({
-            url: "{{url('user/getBasketCountNotify')}}",
+            url: "{{URL::asset('user/getBasketCountNotify')}}",
             type: "get",
             dataType: "json",
             data: {'_token': token},
@@ -278,7 +278,7 @@
         var token = $('#token').val();
         $.ajax
         ({
-            url: "{{url('user/getBasketTotalPrice')}}",
+            url: "{{URL::asset('user/getBasketTotalPrice')}}",
             type: "get",
             dataType: "json",
             data: {'_token': token},
@@ -299,7 +299,7 @@
         var token = $('#token').val();
         $.ajax
         ({
-            url: "{{url('user/getBasketContent')}}",
+            url: "{{URL::asset('user/getBasketContent')}}",
             type: "get",
             dataType: "json",
             data: {'_token': token},
@@ -349,7 +349,7 @@
         var token = $('#token').val();
         $.ajax
         ({
-            url: "{{url('user/removeItemFromBasket')}}",
+            url: "{{URL::asset('user/removeItemFromBasket')}}",
             type: "post",
             data: {'productId': productId, 'basketId': basketId, '_token': token},
             dataType: "json",
@@ -391,7 +391,7 @@
         var td = $(this);
         $.ajax
         ({
-            url: "{{url('user/removeItemFromBasket')}}",
+            url: "{{URL::asset('user/removeItemFromBasket')}}",
             type: "post",
             data: {'productId': productId, 'basketId': basketId, '_token': token},
             dataType: "json",
@@ -432,7 +432,7 @@
         var token = $('#token').val();
         $.ajax
         ({
-            url: "{{url('user/orderFixed')}}",
+            url: "{{URL::asset('user/orderFixed')}}",
             type: "post",
             data: {'_token': token},
             dataType: "json",
@@ -462,7 +462,7 @@
             $(td).css('color', '#adaaaa');
             $.ajax
             ({
-                url: "{{url('user/addOrSubCount')}}",
+                url: "{{URL::asset('user/addOrSubCount')}}",
                 type: "post",
                 data: {'_token': token, 'productId': productId, 'basketId': basketId, 'parameter': 'addToCount'},
                 dataType: "json",
@@ -514,7 +514,7 @@
             } else {
                 $.ajax
                 ({
-                    url: "{{url('user/addOrSubCount')}}",
+                    url: "{{URL::asset('user/addOrSubCount')}}",
                     type: "post",
                     data: {'_token': token, 'productId': productId, 'basketId': basketId, 'parameter': 'subFromCount'},
                     context: td,
@@ -552,7 +552,7 @@
         var userCoordination = $('#userCoordination').val();
         $.ajax
         ({
-            url: "{{url('user/orderRegistration')}}",
+            url: "{{URL::asset('user/orderRegistration')}}",
             type: "post",
             data: formData,
             dataType: 'JSON',
@@ -625,7 +625,7 @@
         });
         $("[name='search_select']").change(function () {
             console.log($(this).val())
-            $("#form_search").attr('action', '{{url('search')}}/' + $(this).val())
+            $("#form_search").attr('action', '{{URL::asset('search')}}/' + $(this).val())
         })
     })
 </script>
@@ -638,7 +638,7 @@
         var token = $('#token').val();
         $.ajax
         ({
-            url: "{{url('user/addToSeenCount')}}",
+            url: "{{URL::asset('user/addToSeenCount')}}",
             type: "post",
             data: {'productId': productId, '_token': token},
             success: function (response) {

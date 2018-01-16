@@ -62,23 +62,11 @@
 
                                     </div>
                                     <div class=" col-md-6">
-                                    <span class="price product-price pull-right">
+                                    <span class="price product-price pull-right" dir="rtl">
                                         @if($flag->active == 1)
-                                            @if($flag->title == "price")
-                                                <b>قیمت اصلی </b>
+                                            @if($flag->title == "price")قیمت({{$product->unit_count }})
                                             @endif
-                                            @if($flag->title == "special_price")
-                                                <b>قیمت ویژه </b>
-                                            @endif
-                                            @if($flag->title == "wholesale_price")
-                                                <b>قیمت عمده </b>
-                                            @endif
-                                            @if($flag->title == "sales_price")
-                                                <b>قیمت حراج </b>
-                                            @endif
-                                            @if($flag->title == "free_price")
-                                                <b>قیمت آزاد </b>
-                                            @endif </span>
+                                    </span>
                                         @endif
                                     </div>
                                 @endforeach
@@ -127,7 +115,7 @@
                                     </span>
                                 </div>
                                 <div class="col-md-6">
-                                    <span class="price product-price">  :امتیاز  </span>
+                                    <span class="price product-price">  امتیاز  </span>
                                 </div>
                             </div>
                         </div>
