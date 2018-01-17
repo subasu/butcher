@@ -1,24 +1,28 @@
-<ul class="row product-list style2 grid">
+<div id="view-product-list" class="view-product-list">
+<ul class="row product-list  grid">
     @foreach($products as $product)
         @if($product->active == 1)
-            <li class="col-sx-12 col-sm-3">
+            <li class="col-sx-12 col-md-3">
                 <div class="product-container">
-                    <div align="center">
-                        <a>
+                    <div class="left-block">
+                        {{--<a>--}}
                             @if(!empty($product->productImages[0]))
                                 <img src="{{url('public/dashboard/productFiles/picture/'.$product->productImages[0]->image_src)}}"
                                      alt="عنوان محصول" width="200" height="250" style="text-decoration: underline;"/>
                             @endif
-                        </a>
+                        {{--</a>--}}
                         <div class="quick-view">
                             <a title="افزودن به علاقه مندی ها" class="heart"></a>
                             <a title="مقایسه" class="compare"></a>
                             <a title="نمایش جزئیات" class="search" id="goToDetail" content="{{$product->id}}"
                                href="{{url('productDetail/'.$product->id)}}"></a>
                         </div>
+                        <div class="add-to-cart">
+                            <a href="{{url('productDetail/'.$product->id)}}">نمایش جزئیات</a>
+                        </div>
                         @foreach($product->productFlags as $flag)
-                            <div class="group-price">
                                 @if($flag->active == 1)
+                                <div class="group-price">
                                     <span class="product-sale">
                                         @if($flag->title == "price")
                                             <b>قیمت اصلی </b>
@@ -36,8 +40,8 @@
                                             <b>قیمت آزاد </b>
                                         @endif
                                         </span>
-                                @endif
-                            </div>
+                                </div>
+                            @endif
                         @endforeach
                     </div>
 
@@ -122,22 +126,10 @@
                         {{--<input type="hidden" class="score" value="{{$product->scores[0]->score}}">--}}
                         {{--<input type="hidden" id="count" value="{{$count}}">--}}
                     </div>
-                    {{--<div class="right-block display-inline">--}}
-                    {{--<div class="add-to-cart" >--}}
-                    {{--<button class="btn btn-success"--}}
-                    {{--@foreach($product->productFlags as $flag)--}}
-                    {{--@if($flag->active == 1)--}}
-                    {{--content = "{{$flag->price}}"--}}
-                    {{--@endif--}}
-                    {{--@endforeach--}}
-                    {{--id="addToBasket"  name="{{$product->id}}">--}}
-                    {{--<span></span>افزودن به سبدخرید--}}
-                    {{--</button>--}}
-                    {{--</div>--}}
-                    {{--</div>--}}
                 </div>
             </li>
         @endif
     @endforeach
 </ul>
+</div>
 {!! $products->render() !!}
