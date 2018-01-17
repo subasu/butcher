@@ -102,7 +102,7 @@ Route::group(['middleware' => ['auth']], function () {
     //end admin panel routes
     //user panel routes
     Route::group(['prefix' => 'user'], function () {
-        Route::get('userOrders/{parameter}', 'UserController@userOrders')->name('userOrder');
+        Route::get('userOrders/{parameter}', 'UserController@userOrders')->name('userOrders');
         Route::get('orderDetails/{id}', 'UserController@orderDetails');
         Route::get('userShowFactor/{id}', 'UserController@userShowFactor');
         Route::get('changePassword', 'UserController@changePassword');

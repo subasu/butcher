@@ -792,6 +792,9 @@
                                                                        id="goToDetail" content="{{$product->id}}"
                                                                        href="{{url('productDetail/'.$product->id)}}"></a>
                                                                 </div>
+                                                                <div class="add-to-cart">
+                                                                    <a href="{{url('productDetail/'.$product->id)}}">نمایش جزئیات</a>
+                                                                </div>
                                                             </div>
                                                             <div class="right-block">
                                                                 <h3 class="product-name text-right col-md-12">

@@ -109,7 +109,7 @@
                                 <div class="product-desc text-justify" dir="rtl">
                                     {{$product->description}}
                                 </div>
-                                @if(count($product->productOption)>0)
+                                @if(count($product->ProductOption)>0)
                                     <div class="form-option">
                                         <p class="float-r form-option-title">: گزینه های ارسال محصول</p>
                                         <div class="attributes">

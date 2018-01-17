@@ -85,7 +85,7 @@ class Product extends Model
     //relation of product and productOption
     public function productOption()
     {
-        return $this->hasMany('App\Models\productOption','product_id');
+        return $this->hasMany('App\Models\ProductOption','product_id');
     }
 
 }
