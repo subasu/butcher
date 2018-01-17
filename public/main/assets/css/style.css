@@ -1616,13 +1616,13 @@ span.notify-right {
     line-height: inherit;
     color: #fff;
 }
-
+/*me*/
 .floor-elevator {
     width: 70px;
     height: 50px;
     position: absolute;
-    top: 0;
-    right: 0;
+    top: -4px;
+    left: 5px;
     background: url("../images/floor-elevator.png") no-repeat left center;
     padding-left: 38px;
     padding-right: 22px;
@@ -1794,18 +1794,18 @@ span.notify-right {
     background: #669900;
     color: #fff;
 }
-
+/*me*/
 .show-brand .navbar-brand {
     display: block;
     width: 234px;
     background: #000;
-    margin-left: 0 !important;
-    text-transform: uppercase;
+    margin-left: 1px !important;
     padding: 0;
     padding-left: 20px;
     line-height: 50px;
     font-size: 16px;
     text-align: center;
+    float: right;
 }
 
 .show-brand .navbar-brand a {
@@ -2348,7 +2348,7 @@ span.notify-right {
 }
 
 .product-list li .add-to-cart a {
-    background: url("../images/add-cart.png") no-repeat left center;
+    background: url("../images/search.png") no-repeat left center;
     height: 32px;
     line-height: 32px;
     color: #fff;
@@ -2641,24 +2641,24 @@ span.notify-right {
     margin-top: 10px;
     background: #fff;
 }
-
+/*me*/
 .product-featured .product-featured-content {
     width: 100%;
     float: right;
 }
-
+/*me*/
 .product-featured .product-featured-content .product-featured-list {
-    margin-left: 234px;
+    margin-right: 234px;
     overflow: hidden;
 }
-
+/*me*/
 .product-featured .banner-featured {
     width: 234px;
-    float: left;
-    margin-right: -100%;
+    float: right;
+    margin-left: -100%;
     position: relative;
 }
-
+/*me*/
 .product-featured .product-list li {
     border-right: 1px solid #eaeaea;
     padding-bottom: 10px;
