@@ -286,8 +286,6 @@ class IndexController extends Controller
             $i++;
         }
         $similarProduct = collect($similarProduct);
-//        $productScore = $this->productScore($category->products[0]->scores);
-//        dd($productScore);
         foreach ($product->scores as $product) {
             $product->productScore = $this->productScore($product);
         }

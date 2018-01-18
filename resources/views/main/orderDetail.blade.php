@@ -21,42 +21,27 @@
                 {{csrf_field()}}
             <div class="page-content checkout-page">
                 <h3 class="checkout-sep">اطلاعات مشتری</h3>
-                <div class="box-border" style="border-color: #0a0a0a;">
+                <div class="box-border">
                     <div class="row">
                         <div class="col-md-6 col-md-offset-6" >
                             <label>شماره تلفن</label>
-                            <input type="text" maxlength="11" name="userCellphone" id="userCellphone" class="form-control input" style="border-color: #0a0a0a;">
+                            <input type="text" maxlength="11" name="userCellphone" id="userCellphone" class="form-control input" >
                             <label>آدرس تحویل محصول</label>
-                            <textarea name="userCoordination" id="userCoordination" class="form-control input overflow_hidden_x" style="border-color: #0a0a0a;"></textarea>
+                            <textarea name="userCoordination" id="userCoordination" class="form-control input overflow_hidden_x" ></textarea>
                         </div>
                     </div>
                 </div>
                 <h3 class="checkout-sep">توضیحات سفارش</h3>
-                <div class="box-border" style="border-color: #0a0a0a;">
+                <div class="box-border" >
                     <div class="row">
                         <div class="col-md-6 col-md-offset-6" >
                             <label>توضیحات</label>
-                            <textarea name="comments" id="comments" class="form-control input overflow_hidden_x" style="border-color: #0a0a0a;"></textarea>
+                            <textarea name="comments" id="comments" class="form-control input overflow_hidden_x"></textarea>
                         </div>
                     </div>
                 </div>
-                {{--<h3 class="checkout-sep">نوع پست</h3>--}}
-                {{--<div class="box-border" style="border-color: #0a0a0a;">--}}
-                    {{--<ul class="shipping_method">--}}
-                        {{--<li>--}}
-                            {{--<p class="subcaption bold">Free Shipping</p>--}}
-                            {{--<label for="radio_button_3"><input type="radio" checked name="radio_3" id="radio_button_3">Free $0</label>--}}
-                        {{--</li>--}}
-
-                        {{--<li>--}}
-                            {{--<p class="subcaption bold">Free Shipping</p>--}}
-                            {{--<label for="radio_button_4"><input type="radio" name="radio_3" id="radio_button_4"> Standard Shipping $5.00</label>--}}
-                        {{--</li>--}}
-                    {{--</ul>--}}
-                    {{--<button class="button">Continue</button>--}}
-                {{--</div>--}}
                 <h3 class="checkout-sep">نوع پرداخت</h3>
-                <div class="box-border" style="border-color: #0a0a0a;">
+                <div class="box-border" >
                     <ul>
                         @if(!empty($paymentTypes))
                             @foreach($paymentTypes as $paymentType)
@@ -71,7 +56,7 @@
                     {{--<button class="button">Continue</button>--}}
                 </div>
                 <h3 class="checkout-sep">بررسی جزئیات سفارشات</h3>
-                <div class="box-border" style="border-color: #0a0a0a;">
+                <div class="box-border" >
                     @if(!empty($baskets))
                         <table id="orderTable" class="table table-bordered table-responsive cart_summary rtl">
                             <thead>
@@ -83,7 +68,6 @@
                                 <th class="text-center">جمع کل (تومان)</th>
                                 <th class="text-center">تخفیف محصول (درصد)</th>
                                 <th class="text-center">هزینه ی پست (تومان)</th>
-
                             </tr>
                             </thead>
                             <tbody>
@@ -129,7 +113,7 @@
 
                         </table>
                     @endif
-                    <button type="button" class="col-md-6 button pull-right" style="margin-right: 25%;" id="orderRegistration">ثبت سفارش</button>
+                    <button type="button" class="col-md-6 button col-md-offset-3"  id="orderRegistration">ثبت سفارش</button>
                 </div>
             </div>
             </form>

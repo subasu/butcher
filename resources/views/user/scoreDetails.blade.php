@@ -22,7 +22,7 @@
 
                             <div style="float: right;" class="col-md-6 col-sm-6 col-xs-12 animated fadeInDown">
                                 <div class="well profile_view">
-                                    <div class="col-sm-12">
+                                    <div class="col-sm-12 my-score-box">
 
                                         <div class="left col-xs-7">
                                             <h2 class="brief"><strong>عنوان محصول :</strong> {{$product->title}}  </h2>
