@@ -271,7 +271,7 @@ class IndexController extends Controller
         return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products', 'image', 'parentCat'));
     }
 
-    //below function is to return show product blade
+     //below function is to return show product blade
     public function productDetail($id)
     {
         $menu = $menu = $this->loadMenu();
@@ -286,10 +286,14 @@ class IndexController extends Controller
             $i++;
         }
         $similarProduct = collect($similarProduct);
-        foreach ($product->scores as $product) {
-            $product->productScore = $this->productScore($product);
+        $count = count($product->scores);
+        if($count > 1){
+            foreach ($product->scores as $product) {
+                $product->productScore = $this->productScore($product);
+            }
+        }elseif($count == 1){
+            $product->productScore = $product->scores[0]->score;
         }
-
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
         $subcat = Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');
