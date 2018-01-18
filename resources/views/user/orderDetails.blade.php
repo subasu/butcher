@@ -1,14 +1,11 @@
 @extends('layouts.userLayout')
 @section('content')
-
-
     <div class="clearfix"></div>
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
                     <h2>جزئیات  سفارش</h2>
-
                     <ul class="nav navbar-right panel_toolbox">
                         <li><a class="collapse-link" data-toggle="tooltip" title="جمع کردن"><i
                                         class="fa fa-chevron-up"></i></a>
@@ -16,11 +13,8 @@
                         <li><a class="close-link" data-toggle="tooltip" title="بستن"><i class="fa fa-close"></i></a>
                         </li>
                     </ul>
-
                     <div class="clearfix"></div>
                 </div>
-
-
                 {{--<div style="">--}}
                 {{--<a href="{{url('admin/addProduct')}}" id="user-send" type="button" class="col-md-2 btn btn-info" style=" font-weight: bold; margin-left: 39%;">افزودن محصول جدید</a>--}}
                 {{--</div>--}}
@@ -50,10 +44,8 @@
                             <th style="text-align: center">هزینه پست(تومان)</th>
                             <th style="text-align: center">حجم تخفیف کلی(درصد)</th>
                             <th style="text-align: center">حجم تخفیف تحویل</th>
-
                         </tr>
                         </thead>
-
                         <tbody>
                         <?php $i=0 ?>
                         @foreach($baskets->products as $basket)
@@ -90,7 +82,6 @@
                                 <tr>
                             </tr>
                         @endforeach
-
                             <tr>
                                 <td></td>
                                 <td  colspan="12"><strong><a style=" font-size: 350%; text-decoration: none; " class="fa fa-print col-md-6  col-md-offset-3"  title="چاپ فاکتور" data-toggle="" href="{{url('user/userShowFactor/'.$basket->basket_id)}}"></a></strong></td>

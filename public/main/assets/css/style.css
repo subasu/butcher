@@ -132,7 +132,7 @@ a:focus {
 
 .input {
     border-radius: 0px;
-    border: 1px solid #eaeaea;
+    border: 1px solid #a5a5a5;
     -webkit-box-shadow: inherit;
     box-shadow: inherit;
 }
@@ -5097,7 +5097,7 @@ span.notify-right {
 }
 
 .box-border {
-    border: 1px solid #eaeaea;
+    border: 1px solid #a5a5a5;
     padding: 20px;
     overflow: hidden;
 }

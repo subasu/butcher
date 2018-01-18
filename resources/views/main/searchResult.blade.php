@@ -16,17 +16,16 @@
                         <!-- view-product-list-->
                         <div id="view-product-list" class="view-product-list">
                             <!-- PRODUCT LIST -->
-                            <ul class="row product-list style2 grid">
+                            <ul class="row product-list grid">
                                 @if(count($results)>0)
                                     @foreach($results as $product)
                                         <li class="col-sx-12 col-sm-4 col-md-3">
                                             <div class="product-container">
-                                                <div align="center">
+                                                <div class="left-block">
                                                     <a>
                                                         @if(!empty($product->productImages[0]))
                                                             <img src="{{url('public/dashboard/productFiles/picture/'.$product->productImages[0]->image_src)}}"
-                                                                 alt="عنوان محصول" width="200" height="250"
-                                                                 style="text-decoration: underline;"/>
+                                                                 alt="عنوان محصول" height="250"/>
                                                         @endif
                                                     </a>
                                                     <div class="quick-view">
@@ -34,6 +33,9 @@
                                                         <a title="مقایسه" class="compare"></a>
                                                         <a title="نمایش جزئیات" class="search"
                                                            href="{{url('productDetail/'.$product->id)}}"></a>
+                                                    </div>
+                                                    <div class="add-to-cart">
+                                                        <a href="{{url('productDetail/'.$product->id)}}">نمایش جزئیات</a>
                                                     </div>
                                                     @foreach($product->productFlags as $flag)
                                                         <div class="group-price">

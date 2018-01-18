@@ -271,7 +271,7 @@ class IndexController extends Controller
         return view('main.showProducts', compact('menu', 'pageTitle', 'categories', 'products', 'image', 'parentCat'));
     }
 
-    //below function is to return show product blade
+     //below function is to return show product blade
     public function productDetail($id)
     {
         $menu = $menu = $this->loadMenu();
