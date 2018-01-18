@@ -286,12 +286,14 @@ class IndexController extends Controller
             $i++;
         }
         $similarProduct = collect($similarProduct);
-//        $productScore = $this->productScore($category->products[0]->scores);
-//        dd($productScore);
-        foreach ($product->scores as $product) {
-            $product->productScore = $this->productScore($product);
+        $count = count($product->scores);
+        if($count > 1){
+            foreach ($product->scores as $product) {
+                $product->productScore = $this->productScore($product);
+            }
+        }elseif($count == 1){
+            $product->productScore = $product->scores[0]->score;
         }
-
         $subcatId = Category::where('id', '=', $brand)->value('parent_id');
         $subcat = Category::where('id', '=', $subcatId)->value('title');
         $cat = Category::where('id', '=', $subcat)->value('title');
