@@ -49,15 +49,15 @@
                 </div>
             </div>
             {{--<div class="col-md-3">--}}
-                {{--<div class="row">--}}
-                    {{--<div class="col-sm-12">--}}
-                        {{--<div class="introduce-title">سوپرگوشت برادران</div>--}}
-                        {{--<ul id="introduce-company" class="introduce-list">--}}
-                            {{--<li><a href="{{url('login')}}">ورود</a></li>--}}
-                            {{--<li><a href="{{url('login')}}">ثبت نام</a></li>--}}
-                        {{--</ul>--}}
-                    {{--</div>--}}
-                {{--</div>--}}
+            {{--<div class="row">--}}
+            {{--<div class="col-sm-12">--}}
+            {{--<div class="introduce-title">سوپرگوشت برادران</div>--}}
+            {{--<ul id="introduce-company" class="introduce-list">--}}
+            {{--<li><a href="{{url('login')}}">ورود</a></li>--}}
+            {{--<li><a href="{{url('login')}}">ثبت نام</a></li>--}}
+            {{--</ul>--}}
+            {{--</div>--}}
+            {{--</div>--}}
             {{--</div>--}}
             <div class="col-md-8">
                 <div id="contact-box">
@@ -141,44 +141,41 @@
     });
 </script>
 <script>
-
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
     {{--$.ajax({--}}
-        {{--dataType: "json",--}}
-        {{--url: "{{URL::asset('getSubmenu')}}" + '/' + 15,--}}
-        {{--cash: false,--}}
-        {{--type: "get",--}}
-        {{--data: {--}}
-            {{--"_method": 'get',--}}
-        {{--},--}}
-        {{--success: function (response) {--}}
-            {{--var item = $(".m3ySubcategoryList");--}}
-            {{--item.empty();--}}
-            {{--item.append('');--}}
-            {{--$.each(response.submenu, function (key, value) {--}}
-                {{--if (value.hasProduct == 1) {--}}
-                    {{--var temp = '<li><a data-toggle="tab" href="#tab-5">'+value.title+'</a></li>';--}}
-                    {{--item.append(temp)--}}
-                {{--}--}}
-            {{--});--}}
-        {{--}--}}
+    {{--dataType: "json",--}}
+    {{--url: "{{URL::asset('getSubmenu')}}" + '/' + 15,--}}
+    {{--cash: false,--}}
+    {{--type: "get",--}}
+    {{--data: {--}}
+    {{--"_method": 'get',--}}
+    {{--},--}}
+    {{--success: function (response) {--}}
+    {{--var item = $(".m3ySubcategoryList");--}}
+    {{--item.empty();--}}
+    {{--item.append('');--}}
+    {{--$.each(response.submenu, function (key, value) {--}}
+    {{--if (value.hasProduct == 1) {--}}
+    {{--var temp = '<li><a data-toggle="tab" href="#tab-5">'+value.title+'</a></li>';--}}
+    {{--item.append(temp)--}}
+    {{--}--}}
+    {{--});--}}
+    {{--}--}}
     {{--});//end ajax--}}
 </script>
 <script type="text/javascript" src="{{URL::asset('public/main/assets/lib/bootstrap/js/bootstrap.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/assets/lib/select2/js/select2.min.js')}}"></script>
-<script type="text/javascript"
-        src="{{URL::asset('public/main/assets/lib/jquery.bxslider/jquery.bxslider.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/lib/jquery.bxslider/jquery.bxslider.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/assets/lib/owl.carousel/owl.carousel.min.js')}}"></script>
-<script type="text/javascript"
-        src="{{URL::asset('public/main/assets/lib/jquery.countdown/jquery.countdown.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/lib/jquery.countdown/jquery.countdown.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/assets/js/jquery.actual.min.js')}}"></script>
+<script type="text/javascript" src="{{URL::asset('public/main/assets/js/theme-script.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/assets/lib/jquery-ui/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/main/assets/lib/jquery.elevatezoom.js')}}"></script>
-<script type="text/javascript" src="{{URL::asset('public/main/assets/js/theme-script.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/js/sweetalert.min.js')}}"></script>
 <script type="text/javascript" src="{{URL::asset('public/js/pnotify.custom.min.js')}}"></script>
 <script>
@@ -232,15 +229,12 @@
                         stack: myStack
                     });
                 }
-
             }, error: function (error) {
                 alert('خطایی رخ داده است')
             }
         })
     })
 </script>
-
-
 <script>
     //below function is related to make pay button shown or not shown
     //    function handlePayButton(response)
@@ -250,8 +244,6 @@
     //            $('#pay').css('display','none');
     //        }
     //    }
-
-
     //below function is related to get basket count
     function basketCountNotify() {
         var token = $('#token').val();
@@ -269,10 +261,8 @@
             error: function (error) {
                 console.log(error);
             }
-
         });
     }
-
     //below function is related to get total price
     function basketTotalPrice() {
         var token = $('#token').val();
@@ -290,10 +280,8 @@
             error: function (error) {
                 console.log(error);
             }
-
         });
     }
-
     //below function is related to get basket content
     function basketContent() {
         var token = $('#token').val();
@@ -326,12 +314,10 @@
                     )
                     i++;
                 }
-
             },
             error: function (error) {
                 console.log(error);
             }
-
         });
     }
 </script>
@@ -340,7 +326,6 @@
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
     }
 </script>
-
 <!-- below script is related to remove item from basket -->
 <script>
     $(document).on('click', '#removeFromBasket', function () {
@@ -364,7 +349,6 @@
                     setTimeout(function () {
                         window.location.reload(true);
                     }, 5000);
-
                 } else {
                     swal({
                         title: "",
@@ -374,11 +358,9 @@
                     });
                 }
             }
-
         })
     })
 </script>
-
 <!-- below script is related to remove basket items inj order page -->
 <script>
     $(document).on('click', '#removeItem', function () {
@@ -411,7 +393,6 @@
                     basketContent();
                     if (response.count == 0)
                         window.history.back();
-
                 } else {
                     swal({
                         title: "",
@@ -421,11 +402,9 @@
                     });
                 }
             }
-
         })
     });
 </script>
-
 <!-- below script is related to fix or register order -->
 <script>
     $(document).on('click', '#orderFixed', function () {
@@ -446,8 +425,6 @@
         });
     });
 </script>
-
-
 <!-- below script is related to handle addToCount  -->
 <script>
     $('.addToCount').each(function () {
@@ -491,7 +468,6 @@
 <script>
     $('.subFromCount').each(function () {
         $(this).click(function () {
-
             var productId = $(this).attr('content');
             var basketId = $(this).attr('name');
             var token = $('#token').val();
@@ -520,9 +496,7 @@
                     context: td,
                     dataType: "json",
                     success: function (response) {
-
                         if (response.code == 1) {
-
                             $(td).closest('td').find('input.input-sm').val(--count);
                             var newCount = $(td).closest('td').find('input.input-sm').val();
                             var sum = unitPrice * newCount;
@@ -532,7 +506,6 @@
                                 $(td).css('pointer-events', '');
                                 $(td).css('color', '#666');
                             }, 5000);
-
                         }
                     }, error: function (error) {
                         console.log(error);
@@ -541,9 +514,7 @@
             }
         })
     })
-
 </script>
-
 <!-- below script is related to add order in data base -->
 <script>
     $(document).on('click', '#orderRegistration', function () {
@@ -567,7 +538,6 @@
                     $('#userCoordination').css('border-color', 'red');
                     return false;
                 }
-
             },
             success: function (response) {
                 console.log(response);
@@ -604,16 +574,12 @@
                     });
                 }
                 if (error.status === 422) {
-
                     var errors = error.responseJSON; //this will get the errors response data.
-
                     var errorsHtml = '';
-
                     $.each(errors, function (key, value) {
                         errorsHtml += value[0] + '\n'; //showing only the first error.
                     });
                     //errorsHtml += errorsHtml;
-
                     swal({
                         title: "",
                         text: errorsHtml,
@@ -629,8 +595,6 @@
         })
     })
 </script>
-
-
 <!-- below script is related to add seen count of product -->
 <script>
     $(document).on('click', '#goToDetail', function () {

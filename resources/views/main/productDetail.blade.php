@@ -94,18 +94,6 @@
                                     {{--<span class="old-price">$52.00</span>--}}
                                     {{--<span class="discount">-30%</span>--}}
                                 </div>
-                                {{--<div class="info-orther" dir="rtl">--}}
-                                {{--<p>کد: #453217907</p>--}}
-                                {{--<p>وضعیت: <span class="in-stock">--}}
-                                {{--@if($product->warehouse_count>0)--}}
-                                {{--<b class="text-success">--}}
-                                {{--موجود در انبار--}}
-                                {{--</b>--}}
-                                {{--@else--}}
-                                {{--<b class="text-danger">--}}
-                                {{--ناموجود--}}
-                                {{--</b>@endif</span></p>--}}
-                                {{--</div>--}}
                                 <div class="product-desc text-justify" dir="rtl">
                                     {{$product->description}}
                                 </div>

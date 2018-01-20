@@ -98,7 +98,7 @@
                                                 aria-expanded="false" aria-controls="navbar">
                                             <i class="fa fa-bars"></i>
                                         </button>
-                                        <a class="navbar-brand" href="#">قصابی برادران</a>
+                                        <a class="navbar-brand" href="#">منوی اصلی</a>
                                     </div>
                                     <div id="navbar" class="navbar-collapse collapse">
                                         <ul class="nav navbar-nav">
