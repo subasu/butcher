@@ -11,7 +11,7 @@
 */
 //main site
 Route::get('/', 'IndexController@home');
-File::get(url('997032.txt'));
+//File::get(url('997032.txt'));
 Route::post('/search', 'IndexController@search');
 Route::get('productFiles', 'IndexController@productFiles');
 Route::get('products', 'IndexController@products');
