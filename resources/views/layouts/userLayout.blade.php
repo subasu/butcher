@@ -601,32 +601,32 @@
     });
 </script>
 
-<script>
-    $(document).ready(function(){
-        setInterval(function(){
+{{--<script>--}}
+    {{--$(document).ready(function(){--}}
+        {{--setInterval(function(){--}}
 
-            $.ajax
-            ({
-                url      : "{{url('user/checkScore')}}",
-                type     : "get",
-                dataType : "JSON",
-                success : function(response)
-                {
-                    if(response.data > 0)
-                    {
-                        $('#checkScore').css('background-color','orange');
-                        setTimeout(function () {
-                            $('#checkScore').css('background-color','');
-                        },3000);
-                    }
-                },error:function (error) {
-                  console.log(error);
-                }
-            })
+            {{--$.ajax--}}
+            {{--({--}}
+                {{--url      : "{{url('user/checkScore')}}",--}}
+                {{--type     : "get",--}}
+                {{--dataType : "JSON",--}}
+                {{--success : function(response)--}}
+                {{--{--}}
+                    {{--if(response.data > 0)--}}
+                    {{--{--}}
+                        {{--$('#checkScore').css('background-color','orange');--}}
+                        {{--setTimeout(function () {--}}
+                            {{--$('#checkScore').css('background-color','');--}}
+                        {{--},3000);--}}
+                    {{--}--}}
+                {{--},error:function (error) {--}}
+                  {{--console.log(error);--}}
+                {{--}--}}
+            {{--})--}}
 
-        },100000);
-    })
-</script>
+        {{--},100000);--}}
+    {{--})--}}
+{{--</script>--}}
 
 </body>
 </html>

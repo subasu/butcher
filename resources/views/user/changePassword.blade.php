@@ -132,12 +132,13 @@
                     data  : formData,
                     contentType : false,
                     processData : false,
+                    dataType    : "json",
                     success : function (response) {
-                        if(response == 'رمز عبور شما تغییر یافت')
+                        if(response.code == 'success')
                         {
                             swal({
                                 title: "",
-                                text: response,
+                                text: response.message,
                                 type: "info",
                                 confirmButtonText: "بستن"
                             });
@@ -148,7 +149,7 @@
                         {
                             swal({
                                 title: "",
-                                text: response,
+                                text: response.message,
                                 type: "info",
                                 confirmButtonText: "بستن"
                             });

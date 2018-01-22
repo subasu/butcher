@@ -414,15 +414,15 @@ class UserController extends Controller
                         if ($q) {
                             //$n=1;
                             Auth::logout();
-                            return response('رمز عبور شما تغییر یافت');
+                            return response()->json(['message' => 'رمز عبور شما تغییر یافت' , 'code' => 'success']);
                         } else {
-                            return response('متاسفانه در فرآیند تغییر رمز خطایی رخ داده است!');
+                            return response()->json(['message' => 'متاسفانه در فرآیند تغییر رمز خطایی رخ داده است!']);
                         }
                     } else {
-                        return response('رمز و تکرار رمز با یکدیگر یکسان نیست');
+                        return response()->json(['message' => 'رمز و تکرار رمز با یکدیگر یکسان نیست']);
                     }
                 } else {
-                    return response('رمز قبلی صحیح نیست');
+                    return response()->json(['message' => 'رمز قبلی صحیح نیست']);
                 }
             } else {
                 return redirect('/logout');
@@ -472,20 +472,20 @@ class UserController extends Controller
     }
 
     //below function is to check scores
-    public function checkScore()
-    {
-       $baskets  = Order::where('user_id',Auth::user()->id)->pluck('basket_id');
-       $products = DB::table('basket_product')->whereIn('basket_id',$baskets)->pluck('product_id');
-       $count = count($products);
-       if(ProductScore::where('user_id',Auth::user()->id)->count('product_id') == $count)
-       {
-            return response()->json(['data' => 0]);
-       }
-       else
-           {
-               return response()->json(['data' => 1]);
-           }
-    }
+//    public function checkScore()
+//    {
+//       $baskets  = Order::where('user_id',Auth::user()->id)->pluck('basket_id');
+//       $products = DB::table('basket_product')->whereIn('basket_id',$baskets)->pluck('product_id');
+//       $count = count($products);
+//       if(ProductScore::where('user_id',Auth::user()->id)->count('product_id') == $count)
+//       {
+//            return response()->json(['data' => 0]);
+//       }
+//       else
+//           {
+//               return response()->json(['data' => 1]);
+//           }
+//    }
 
     //below function is to redirect score details
     public function scoreDetails($id)

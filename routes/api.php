@@ -56,6 +56,10 @@ Route::group(['prefix' => '/v1/user'],function (){
 Route::group(['prefix' => '/v1/userPanel'],function(){
     Route::get('userOrders', 'webService\PanelController@userOrders');
     Route::get('orderDetails/{id}', 'webService\PanelController@orderDetails');
+    Route::get('userShowFactor/{id}', 'webService\PanelController@userShowFactor');
+    Route::get('scoreDetails/{id}','webService\PanelController@scoreDetails');
+    Route::post('addScore','webService\PanelController@addScore');
+    Route::post('saveNewPassword','webService\PanelController@saveNewPassword');
 
 
 });
