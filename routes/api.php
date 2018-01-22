@@ -47,6 +47,17 @@ Route::group(['prefix' => '/v1/user'],function (){
     Route::post('addOrSubCount','webService\UserController@addOrSubCount');
     Route::post('orderRegistration','webService\UserController@orderRegistration');
     Route::post('addCommentForEachProduct','webService\UserController@addCommentForEachProduct');
+
+    Route::post('login','webService\LoginController@login');
+
+});
+
+// below routes are related to panel of user
+Route::group(['prefix' => '/v1/userPanel'],function(){
+    Route::get('userOrders', 'webService\PanelController@userOrders');
+    Route::get('orderDetails/{id}', 'webService\PanelController@orderDetails');
+
+
 });
 //below routes are related to some general routes in index routes such menu and ...
 Route::group(['prefix' => '/v1/general'],function(){
