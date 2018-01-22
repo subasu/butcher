@@ -32,19 +32,12 @@ Route::group(['prefix' => '/v1'], function () {
     Route::get('getMainUnits','CommonController@getMainUnits');
     Route::post('getSubunitsBySubUnitTitle','CommonController@getSubunitsBySubUnitTitle');
 
-    //color routes
-    Route::get('getColors','CommonController@getColors');
-
-    //size routes
-    Route::get('getSizes','CommonController@getSizes');
-
     //payment type routes
     Route::get('getPaymentTypes','CommonController@getPaymentTypes');
 });
 
 //below routes are related to some special operation in index page such as add to basket or ...
 Route::group(['prefix' => '/v1/user'],function (){
-
     Route::post('addToBasket','webService\UserController@addToBasket');
     Route::post('getBasketCountNotify','webService\UserController@getBasketCountNotify');
     Route::post('getBasketTotalPrice','webService\UserController@getBasketTotalPrice');
@@ -54,6 +47,7 @@ Route::group(['prefix' => '/v1/user'],function (){
     Route::post('addOrSubCount','webService\UserController@addOrSubCount');
     Route::post('orderRegistration','webService\UserController@orderRegistration');
     Route::post('addCommentForEachProduct','webService\UserController@addCommentForEachProduct');
+
     Route::post('login','webService\LoginController@login');
 
 });
@@ -63,10 +57,9 @@ Route::group(['prefix' => '/v1/userPanel'],function(){
     Route::get('userOrders', 'webService\PanelController@userOrders');
     Route::get('orderDetails/{id}', 'webService\PanelController@orderDetails');
 
+
 });
-
 //below routes are related to some general routes in index routes such menu and ...
-
 Route::group(['prefix' => '/v1/general'],function(){
 
     Route::get('getMainMenu','webService\GeneralController@getMainMenu');
