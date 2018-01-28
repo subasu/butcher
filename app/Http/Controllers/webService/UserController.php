@@ -183,20 +183,20 @@ class UserController extends Controller
                 $update = DB::table('basket_product')->where([['basket_id',$request->basketId],['product_id',$request->productId]])->increment('count');
                 if($update)
                 {
-                    return response()->json(['code' => 1]);
+                    return response()->json(['message' => 'یک واحد به محصول مورد اضافه گردید','code' => 1]);
                 }else
                 {
-                    return response()->json(['code' => 0]);
+                    return response()->json(['message' => 'خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید','code' => 0]);
                 }
                 break;
             case 'subFromCount' :
                 $update = DB::table('basket_product')->where([['basket_id',$request->basketId],['product_id',$request->productId]])->decrement('count');
                 if($update)
                 {
-                    return response()->json(['code' => 1]);
+                    return response()->json(['یک واحد از محصول مورد نظر کسر گردید','code' => 1]);
                 }else
                 {
-                    return response()->json(['code' => 0]);
+                    return response()->json(['message' => 'خطایی رخ داده است ، لطفا با بخش پشتیبانی تماس بگیرید','code' => 0]);
                 }
                 break;
         }
