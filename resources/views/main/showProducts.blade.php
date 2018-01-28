@@ -213,8 +213,9 @@
     {{--pagination--}}
     <script>
         $(window).on('hashchange', function() {
-            if (window.location.hash) {
+            if (!window.location.hash) {
                 var page = window.location.hash.replace('#', '');
+console.log('fdf');
                 if (page == Number.NaN || page <= 0) {
                     return false;
                 }else{
@@ -249,7 +250,7 @@
                 {
                     console.log(data);
 
-                    $("#product_container").empty().html(data);
+                    $("#product-container").empty().html(data);
                     location.hash = page;
                 })
                 .fail(function(jqXHR, ajaxOptions, thrownError)

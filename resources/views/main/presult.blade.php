@@ -130,6 +130,7 @@
             </li>
         @endif
     @endforeach
+
 </ul>
 </div>
 {!! $products->render() !!}
