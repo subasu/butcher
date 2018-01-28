@@ -26,6 +26,7 @@ Route::group(['prefix' => '/v1'], function () {
     Route::post('findCategoryProduct','CommonController@findCategoryProduct');
     Route::get('getDisabledCategories/{id}','CommonController@getDisabledCategories');
     Route::get('getAllDisabledCategories','CommonController@getAllDisabledCategories');
+    Route::get('sliderImages', 'webService\GeneralController@sliderImages');//return slider images with title
 
     //unit counts routes
     Route::get('getSubunits/{id}','CommonController@getSubunits');

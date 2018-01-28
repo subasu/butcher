@@ -10,6 +10,16 @@ use App\Http\Controllers\Controller;
 
 class GeneralController extends Controller
 {
+    //return slider Images
+    public function sliderImages()
+    {
+        $sliser=Array();
+        $sliser[0]=Array('url'=>'http://tidashoping.com/public/main/assets/slider/1.jpg','title'=>'سوپر گوشت برادران');
+        $sliser[1]=Array('url'=>'http://tidashoping.com/public/main/assets/slider/4.jpg','title'=>'اعتماد شما،افتخار ماست');
+        $sliser[2]=Array('url'=>'http://tidashoping.com/public/main/assets/slider/3.jpg','title'=>'محصولات مرغوب و تازه و با کیفیت را از ما بخواهید');
+        return response()->json($sliser);
+
+    }
     //below function is related to get main menu
     public function getMainMenu()
     {

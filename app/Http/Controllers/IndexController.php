@@ -255,11 +255,12 @@ class IndexController extends Controller
         $categories = Category::find($id);
         $parentCat = Category::where('id', '=', $categories->parent_id)->value('title');
         $image = Category::where('id', '=', $categories->parent_id)->value('image_src');
-        $products = $categories->products()->paginate(12);
+        $products = $categories->products()->paginate(1);
         //$productScore = $this->productScore($products);
         $count = count($products);
         $i = 0;
-        while ($i < $count) {
+        while ($i < $count)
+        {
             foreach ($products[$i]->scores as $product) {
                 $product->productScore = $this->productScore($products);
             }
