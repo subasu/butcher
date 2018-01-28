@@ -25,7 +25,6 @@ class UserController extends Controller
         $now = Carbon::now(new \DateTimeZone('Asia/Tehran'));
         if($request->basketId != null || $request->basketId != '')
         {
-
             if($oldCookie = DB::table('baskets')->where([['id',$request->basketId],['payment',0]])->count() > 0)
             {
                 $count    = DB::table('basket_product')->where([['basket_id',$request->basketId],['product_id',$request->productId]])->count();
