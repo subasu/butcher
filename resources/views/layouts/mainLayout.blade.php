@@ -613,5 +613,24 @@
         })
     })
 </script>
+<script>
+    $(document).on('click','#comment',function(){
+        var formData = $('#commentForm').serialize();
+        $.ajax
+        ({
+            url      : "{{url('user/addCommentForEachProduct')}}",
+            type     : "post",
+            //dataType : "json",
+            data     : formData,
+            success  : function()
+            {
+                console.log('success');
+            },error  : function(error)
+            {
+                console.log(error);
+            }
+        });
+    });
+</script>
 </body>
 </html>

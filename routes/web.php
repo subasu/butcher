@@ -32,6 +32,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('addOrSubCount', 'UserController@addOrSubCount');
     Route::post('orderRegistration', 'UserController@orderRegistration');
     Route::post('addToSeenCount', 'UserController@addToSeenCount');
+    Route::post('addCommentForEachProduct','UserController@addCommentForEachProduct');
 });
 //Auth::routes();
 // Authentication Routes...
@@ -114,6 +115,7 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('commentDetails/{id}','UserController@commentDetails');
         Route::post('addScore','UserController@addScore');
         Route::get('checkScore','UserController@checkScore');
+
     });
     //end user panel routes
     Route::post('logout', 'Auth\LoginController@logout');//rayat 20-9-96

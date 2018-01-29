@@ -512,9 +512,9 @@ class UserController extends Controller
     }
 
     //below function is related to redirect comment details
-//    public function commentDetails($id)
-//    {
-//
-//    }
+    public function addCommentForEachProduct(Request $request)
+    {
+        return ($request->comment[0]);
+    }
 }
 

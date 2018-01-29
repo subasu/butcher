@@ -1,7 +1,7 @@
 @extends('layouts.mainLayout')
 @section('content')
 
-<div id="header" class="header">
+    <div id="header" class="header">
 
     <!--/.top-header -->
     <!-- MAIN HEADER -->
@@ -9,7 +9,12 @@
 
     </div>
     <!-- END MANIN HEADER -->
-
+    <style>
+        .red
+        {
+            color: darkred;
+        }
+    </style>
 </div>
 <!-- end header -->
 <!-- page wapper-->
@@ -39,6 +44,7 @@
                 {{--<h2>سبد خرید شما حاوی  {{$count}} نوع محصول است </h2>--}}
             {{--</div>--}}
             <div class="order-detail-content " align="center">
+
                 @if(!empty($baskets))
                 <table id="orderTable" class="table table-bordered table-responsive cart_summary rtl">
                     <thead>
@@ -50,11 +56,13 @@
                         <th class="text-center">تعداد/مقدار</th>
                         <th class="text-center">مجموع</th>
                         <th  class="action">عملیات</th>
+                        <th  class="action red" >در صورت نیاز توضحیات خود را در زیر وارد نمائید</th>
                     </tr>
                     </thead>
                     <tbody>
 
                     @foreach($baskets->products as $basket)
+                        <form id="commentForm">
                         <tr class="text-center">
                             <td class="cart_product">{{$basket->title}}</td>
                             <td class="cart_description">
@@ -75,20 +83,32 @@
                             <td class="col-md-2">
                                 <a class="fa fa-trash-o" id="removeItem" name="{{$basket->id}}" data-target="{{$basket->price}}" content="{{$basket->basket_id}}" title="پاک کردن" data-toggle=""  ></a>
                             </td>
+
+                                <td contenteditable="true" name="comment[]" class="col-md-2">
+                                    <input type="hidden" value="{{$basket->id}}">
+                                    {{--<textarea  name="comment[]" class="form-control">--}}
+
+                                    {{--</textarea>--}}
+
+                                </td>
+
                         </tr>
                     @endforeach
+                        </form>
                     </tbody>
                     <tfoot>
                     <tr>
                         <td colspan="2" rowspan="2"></td>
-                        <td colspan="3">مجموع هزینه ها</td>
+                        <td colspan="4">مجموع هزینه ها</td>
                         <td colspan="2" id="orderTotal" content="{{$total}}">{{number_format($total)}} تومان</td>
                     </tr>
                     </tfoot>
                 </table>
+
                 @endif
                 <div class="cart_navigation">
                     <a class="prev-btn"  onclick="window.history.back();">ادامه خرید</a>
+                    <a id="comment" class="btn btn-warning col-md-3 col-md-offset-3"> ثبت توضیحات</a>
                     <a class="next-btn" href="{{url('order/orderDetail')}}">مشاهده جزئیات سفارش</a>
                 </div>
             </div>
