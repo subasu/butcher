@@ -169,4 +169,30 @@ class ProductController extends Controller
             break;
         }
     }
+
+    //below function is to delete video of product
+    public function deleteVideo(Request $request)
+    {
+        $videoName = Product::where('id',$request->productId)->value('video_src');
+        if($videoName)
+        {
+            $product = Product::find($request->productId);
+            $product->video_src = '';
+            $product->save();
+            if($product)
+            {
+                $videoSrc = '/dashboard/productFiles/video/' . $videoName;
+                $result   = unlink(public_path().$videoSrc);
+                if($result)
+                {
+                    return response()->json(['message' => 'success']);
+                }
+                else
+                {
+                    return response()->json(['message' => 'error']);
+                }
+            }
+        }
+
+    }
 }

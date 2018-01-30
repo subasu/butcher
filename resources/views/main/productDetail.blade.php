@@ -120,7 +120,11 @@
                                         <div class="right-block display-inline" dir="rtl">
                                             <div class="add-to-cart">
                                                 <input type="button" class="btn btn-warning addToBasket"
-                                                       id="addToBasket" value="افزودن به سبدخرید">
+                                                       id="addToBasket" value="افزودن به سبد خرید">
+                                                @if($product->video_src != null)
+                                                <input type="button" class="btn btn-danger"
+                                                       id="showProductVideo" value="مشاهده ویدئو محصول">
+                                                @endif
                                                 <input type="hidden" name="productId" id="productId"
                                                        value="{{$product->id}}">
                                                 <input type="hidden" name="productFlag" id="productFlag"
