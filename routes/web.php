@@ -33,6 +33,7 @@ Route::group(['prefix' => 'user'], function () {
     Route::post('orderRegistration', 'UserController@orderRegistration');
     Route::post('addToSeenCount', 'UserController@addToSeenCount');
     Route::post('addCommentForEachProduct','UserController@addCommentForEachProduct');
+    Route::post('showJson','UserController@showJson');
 });
 //Auth::routes();
 // Authentication Routes...

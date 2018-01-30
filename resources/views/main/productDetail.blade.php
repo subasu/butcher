@@ -1,5 +1,42 @@
 @extends('layouts.mainLayout')
 @section('content')
+
+    <style>
+        .annoy
+        {
+          margin-top: -3.40% !important;
+        }
+    </style>
+    <!-- Modal -->
+    <div id="myModal" class="modal fade" role="dialog" dir="rtl">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h2 class="modal-title">نمایش ویدئوی محصول</h2>
+                </div>
+                <div class="modal-body">
+                    <video   class="video" style="width: 200px; height: 200px;"
+                             id="video" name="video_src">
+                        <source id="playingVideo" src="{{url('public/dashboard/productFiles/video')}}/{{$product->video_src}}">
+                    </video>
+                </div>
+                <div class="modal-footer" >
+
+                    <a type="button"  id="playVideo"
+                       class="glyphicon glyphicon-play btn btn-success pull-left col-md-offset-3"
+                       title="پخش ویدئو "></a>
+                    <a class="col-md-offset-3"></a>
+                    <a type="button"  id="pauseVideo"
+                       class="glyphicon glyphicon-pause btn btn-success edit pull-left col-md-offset-3"
+                       title="توقف پخش ویدئو " style="display: none;"></a>
+
+                    <button type="button" class="btn btn-warning col-md-6 annoy" data-dismiss="modal">بستن</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="container" id="columns">
         <!-- breadcrumb -->
         <div class="breadcrumb clearfix">
@@ -17,7 +54,7 @@
         <!-- row -->
         <div class="row">
 
-            <!-- Center colunm-->
+            <!-- Center column -->
             <div class="center_column col-xs-12 col-sm-12" id="center_column">
                 <!-- Product -->
                 <div id="product">
@@ -97,42 +134,40 @@
                                 <div class="product-desc text-justify" dir="rtl">
                                     {{$product->description}}
                                 </div>
-                                @if(count($product->ProductOption)>0)
-                                    <div class="form-option">
-                                        <p class="float-r form-option-title">: گزینه های ارسال محصول</p>
-                                        <div class="attributes">
-                                            <div class="attribute-label" dir="rtl"></div>
-                                            <div class="attribute-list float-r">
-                                                @foreach ($product->productOption as $opt)
-                                                    <div class="col-md-12 col-sm-12 ">
-                                                        <input type="checkbox" name="orderOption[]" class="float-r"
-                                                               value="{{$opt->title}}"/>
-                                                        <label class="float-r margin-r-5">{{$opt->title}}</label>
-                                                    </div>
-                                                @endforeach
-                                            </div>
-                                        </div>
+                                {{--@if(count($product->ProductOption)>0)--}}
+                                    {{--<div class="form-option">--}}
+                                        {{--<p class="float-r form-option-title">: گزینه های ارسال محصول</p>--}}
+                                        {{--<div class="attributes">--}}
+                                            {{--<div class="attribute-label" dir="rtl"></div>--}}
+                                            {{--<div class="attribute-list float-r">--}}
+                                                {{--@foreach ($product->productOption as $opt)--}}
+                                                    {{--<div class="col-md-12 col-sm-12 ">--}}
+                                                        {{--<input type="checkbox" name="orderOption[]" class="float-r"--}}
+                                                               {{--value="{{$opt->title}}"/>--}}
+                                                        {{--<label class="float-r margin-r-5">{{$opt->title}}</label>--}}
+                                                    {{--</div>--}}
+                                                {{--@endforeach--}}
+                                            {{--</div>--}}
+                                        {{--</div>--}}
 
-                                    </div>
-                                @endif
+                                    {{--</div>--}}
+                                {{--@endif--}}
                                 <div class="form-action" dir="rtl">
                                     <div class="button-group">
                                         <div class="right-block display-inline" dir="rtl">
                                             <div class="add-to-cart">
-                                                <input type="button" class="btn btn-warning addToBasket"
-                                                       id="addToBasket" value="افزودن به سبد خرید">
+                                                <input type="button" class="btn btn-warning addToBasket" id="addToBasket" value="افزودن به سبد خرید">
                                                 @if($product->video_src != null)
-                                                <input type="button" class="btn btn-danger"
-                                                       id="showProductVideo" value="مشاهده ویدئو محصول">
+                                                    <input type="button" class="btn btn-danger" id="showProductVideo" value="مشاهده ویدئو محصول">
                                                 @endif
                                                 <input type="hidden" name="productId" id="productId"
                                                        value="{{$product->id}}">
                                                 <input type="hidden" name="productFlag" id="productFlag"
-                                                       @foreach($product->productFlags as $flag)
-                                                       @if($flag->active == 1)
-                                                       value="{{$flag->price}}"
-                                                        @endif
-                                                        @endforeach>
+                                                @foreach($product->productFlags as $flag)
+                                                    @if($flag->active == 1)
+                                                        value="{{$flag->price}}"
+                                                    @endif
+                                                @endforeach>
                                             </div>
                                         </div>
                                     </div>

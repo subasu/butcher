@@ -322,6 +322,7 @@ class IndexController extends Controller
                             $basket->sum = $basket->pivot->count * $basket->pivot->product_price;
                             $total += $basket->sum;
                             $basket->basket_id = $basket->pivot->basket_id;
+                            $basket->comments = $basket->pivot->comments;
                         }
                         return view('main.order', compact('menu', 'pageTitle', 'baskets', 'total'));
                     } else {

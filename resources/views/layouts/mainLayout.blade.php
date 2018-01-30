@@ -613,23 +613,70 @@
         })
     })
 </script>
+{{--<script>--}}
+    {{--$(document).on('click','#comment',function(){--}}
+        {{--var formData = $('#commentForm').serialize();--}}
+        {{--$.ajax--}}
+        {{--({--}}
+            {{--url      : "{{url('user/addCommentForEachProduct')}}",--}}
+            {{--type     : "post",--}}
+            {{--//dataType : "json",--}}
+            {{--data     : formData,--}}
+            {{--success  : function()--}}
+            {{--{--}}
+                {{--console.log('success');--}}
+            {{--},error  : function(error)--}}
+            {{--{--}}
+                {{--console.log(error);--}}
+            {{--}--}}
+        {{--});--}}
+    {{--});--}}
+{{--</script>--}}
+<script>
+    $(document).on('click','#showProductVideo',function(){
+       $('#myModal').modal('show');
+    });
+</script>
+<script>
+    $(document).on('click','#playVideo',function(){
+
+        var video = document.getElementById('video');
+        if(video != null)
+        {
+            video.play();
+            $(this).css('display','none');
+            $('#pauseVideo').css('display','block');
+        }
+
+    })
+    $(document).on('click','#pauseVideo',function(){
+        $(this).css('display','none');
+        $('#playVideo').css('display','block');
+        var video = document.getElementById('video');
+        video.pause();
+    })
+</script>
 <script>
     $(document).on('click','#comment',function(){
-        var formData = $('#commentForm').serialize();
-        $.ajax
-        ({
-            url      : "{{url('user/addCommentForEachProduct')}}",
-            type     : "post",
-            //dataType : "json",
-            data     : formData,
-            success  : function()
-            {
-                console.log('success');
-            },error  : function(error)
-            {
-                console.log(error);
-            }
-        });
+        var  jsonObject = [];
+        $.each($("input[name='orderOption[]']:checked"),function(){
+            jsonObject.push({"id" : {"value" : $(this).val()}});
+       })
+       $.ajax
+       ({
+           url : "{{url('user/showJson')}}",
+           type : "post",
+           data : {'jsonObject' : jsonObject},
+           dataType : "json",
+           success : function()
+           {
+               console.log('success');
+
+           },error : function(error)
+           {
+               console.log(error);
+           }
+       })
     });
 </script>
 </body>

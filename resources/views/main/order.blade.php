@@ -56,7 +56,7 @@
                         <th class="text-center">تعداد/مقدار</th>
                         <th class="text-center">مجموع</th>
                         <th  class="action">عملیات</th>
-                        <th  class="action red" >در صورت نیاز توضحیات خود را در زیر وارد نمائید</th>
+                        <th  class="action red" >جزئیات سفارش</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -66,7 +66,7 @@
                         <tr class="text-center">
                             <td class="cart_product">{{$basket->title}}</td>
                             <td class="cart_description">
-                                <textarea class="form-control" disabled="">{{$basket->description}}</textarea>
+                               {{$basket->description}}
                             </td>
                             <td>
                                 {{$basket->unit_count}}
@@ -84,14 +84,26 @@
                                 <a class="fa fa-trash-o" id="removeItem" name="{{$basket->id}}" data-target="{{$basket->price}}" content="{{$basket->basket_id}}" title="پاک کردن" data-toggle=""  ></a>
                             </td>
 
-                                <td contenteditable="true" name="comment[]" class="col-md-2">
-                                    <input type="hidden" value="{{$basket->id}}">
-                                    {{--<textarea  name="comment[]" class="form-control">--}}
+                                <td class="col-md-2">
+                                    @if(count($basket->ProductOption)>0)
+                                        <div class="form-option">
+                                            {{--<p class="float-r form-option-title">: گزینه های ارسال محصول</p>--}}
+                                            <div class="attributes">
+                                                <div class="attribute-label" dir="rtl"></div>
+                                                <div class="attribute-list float-r">
+                                                    @foreach ($basket->productOption as $opt)
+                                                        <div class="col-md-12 col-sm-12 ">
+                                                            <input type="checkbox" name="orderOption[]" class="float-r"
+                                                                   value="{{$opt->title}}"/>
+                                                            <label class="float-r margin-r-5">{{$opt->title}}</label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
 
-                                    {{--</textarea>--}}
-
+                                        </div>
+                                    @endif
                                 </td>
-
                         </tr>
                     @endforeach
                         </form>
@@ -108,7 +120,7 @@
                 @endif
                 <div class="cart_navigation">
                     <a class="prev-btn"  onclick="window.history.back();">ادامه خرید</a>
-                    <a id="comment" class="btn btn-warning col-md-3 col-md-offset-3"> ثبت توضیحات</a>
+                    <a id="comment" class="btn btn-warning col-md-3 col-md-offset-3">ثبت جزئیات سفارش</a>
                     <a class="next-btn" href="{{url('order/orderDetail')}}">مشاهده جزئیات سفارش</a>
                 </div>
             </div>

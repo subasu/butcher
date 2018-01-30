@@ -46,7 +46,6 @@ class UserController extends Controller
                     $orderOptionArr .= $request->orderOption[$i];
             }
         }
-//        return response()->json($orderOptionArr);
         $now = Carbon::now(new \DateTimeZone('Asia/Tehran'));
         if (isset($_COOKIE['addToBasket'])) {
             $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
@@ -71,6 +70,7 @@ class UserController extends Controller
                     'product_price' => $request->productFlag,
                     'time' => $now->toTimeString(),
                     'date' => $now->toDateString(),
+                    'comments' => $orderOptionArr,
                     'count' => 1
                 ]);
                 if ($pivotInsert) {
@@ -80,12 +80,12 @@ class UserController extends Controller
                 }
             }
         } else {
-            return $this->newCookie($now, $request);
+            return $this->newCookie($now, $request ,  $orderOptionArr);
         }
     }
 
     //below function is related to make new cookie
-    public function newCookie($now, $request)
+    public function newCookie($now, $request ,  $orderOptionArr)
     {
         $cookieValue = mt_rand(1, 1000) . microtime();
         $cookie = setcookie('addToBasket', $cookieValue, time() + (86400 * 30), "/");
@@ -101,6 +101,7 @@ class UserController extends Controller
                     'product_price' => $request->productFlag,
                     'time' => $now->toTimeString(),
                     'date' => $now->toDateString(),
+                    'comments' => $orderOptionArr,
                     'count' => 1
                 ]);
                 if ($pivotInsert) {
@@ -512,9 +513,9 @@ class UserController extends Controller
     }
 
     //below function is related to redirect comment details
-    public function addCommentForEachProduct(Request $request)
+    public function showJson(Request $request)
     {
-        return ($request->comment[0]);
+        return response()->json($request->jsonObject);
     }
 }
 
