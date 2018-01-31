@@ -93,7 +93,7 @@
                                                 <div class="attribute-list float-r">
                                                     @foreach ($basket->productOption as $opt)
                                                         <div class="col-md-12 col-sm-12 ">
-                                                            <input type="checkbox" name="orderOption[]" class="float-r"
+                                                            <input type="checkbox" name="orderOption[]" content="{{$basket->id}}" id="{{$basket->basket_id}}" class="float-r"
                                                                    value="{{$opt->title}}"/>
                                                             <label class="float-r margin-r-5">{{$opt->title}}</label>
                                                         </div>

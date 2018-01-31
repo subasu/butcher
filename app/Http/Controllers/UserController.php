@@ -515,7 +515,34 @@ class UserController extends Controller
     //below function is related to redirect comment details
     public function showJson(Request $request)
     {
-        return response()->json($request->jsonObject);
+        $array = json_decode($request->jsonStr);
+        $i = 0;
+        while($i < count($array))
+        {
+            $firstUpdate = DB::table('basket_product')->where([['product_id',$array[$i]->productId],['basket_id',$array[$i]->basketId]])->update(['comments' => ""]);
+            $i++;
+        }
+//        if($firstUpdate)
+//        {
+            $i = 0;
+            while($i < count($array))
+            {
+                $secondUpdate = DB::table('basket_product')->where([['product_id',$array[$i]->productId],['basket_id',$array[$i]->basketId]])->update(['comments' => DB::raw("CONCAT(comments , '".$array[$i]->value."','".','."')")]);
+                $i++;
+            }
+            if($secondUpdate)
+            {
+                return response()->json(['message' => 'جزئیات سفارش با موفقیت ثبت گردید' , 'code' => 'success']);
+            }else
+                {
+                    return response()->json(['message' => 'خطا در ثبت اطلاعات ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error1']);
+                }
+        //}
+//        else
+//        {
+//            return response()->json(['message' => 'خطا در ثبت اطلاعات ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error2']);
+//        }
+
     }
 }
 

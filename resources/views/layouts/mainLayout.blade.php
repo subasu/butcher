@@ -660,17 +660,20 @@
     $(document).on('click','#comment',function(){
         var  jsonObject = [];
         $.each($("input[name='orderOption[]']:checked"),function(){
-            jsonObject.push({"id" : {"value" : $(this).val()}});
-       })
-       $.ajax
+//            var productId = $(this).attr('content');
+            jsonObject.push({"productId" : $(this).attr('content'),"basketId" : $(this).attr('id') , "value" : $(this).val()});
+       });
+        var jsonStr = JSON.stringify(jsonObject);
+        console.log(typeof(jsonStr));
+        $.ajax
        ({
            url : "{{url('user/showJson')}}",
            type : "post",
-           data : {'jsonObject' : jsonObject},
+           data : {'jsonStr' : jsonStr},
            dataType : "json",
-           success : function()
+           success : function(response)
            {
-               console.log('success');
+               console.log(response);
 
            },error : function(error)
            {
