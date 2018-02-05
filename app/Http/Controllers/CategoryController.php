@@ -90,7 +90,7 @@ class CategoryController extends Controller
     public function editCategoryPicture(Request $request)
     {
         $checkFiles = new CheckFiles();
-        $result = $checkFiles->checkCategoryFiles($request);
+        $result = $checkFiles->checkCategoryFiles($request,'');
         if(is_bool($result))
         {
             $category = Category::find($request->categoryId);
