@@ -663,7 +663,9 @@
 //            var productId = $(this).attr('content');
             jsonObject.push({"productId" : $(this).attr('content'),"basketId" : $(this).attr('id') , "value" : $(this).val()});
        });
+        console.log(jsonObject);
         var jsonStr = JSON.stringify(jsonObject);
+        console.log(jsonObject);
         console.log(typeof(jsonStr));
         $.ajax
        ({
