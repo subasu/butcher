@@ -128,7 +128,7 @@ class UserController extends Controller
         $products = Category::find($id);
         foreach ($products->products as $product) {
             $product->productFlags = $product->productFlags;
-            $product->picture      = 'http://gushtomorghebaradaran.ir/'.'public/dashboard/image/'.$product->productImages[0]->image_src;
+            $product->picture      = 'http://gushtomorghebaradaran.ir/'.'public/dashboard/image/'.$product->productImages;
         }
         return response()->json(['products' => $products->products]);
     }
