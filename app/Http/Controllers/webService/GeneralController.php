@@ -31,6 +31,10 @@ class GeneralController extends Controller
     public function getSubMenu($id)
     {
         $subMenu  = Category::where('parent_id',$id)->get();
+        foreach ($subMenu as $sub)
+        {
+            $sub->picture = 'http://gushtomorghebaradaran.ir/'.'public/dashboard/image/'.$sub->image_src; ;
+        }
         return response()->json(['subMenu' =>$subMenu ]);
     }
 
