@@ -128,11 +128,21 @@ class UserController extends Controller
         $products = Category::find($id);
         foreach ($products->products as $product) {
             $product->productFlags = $product->productFlags;
+            //$product->productScore = $product->scores;
             foreach ($product->productImages as $image )
             {
                 $image->picture      = 'http://gushtomorghebaradaran.ir/'.'public/dashboard/image/'.$image->image_src;
             }
 
+        }
+        $count = count($products->products);
+        $i = 0;
+        while($i < $count)
+        {
+            foreach ($products->products[$i]->scores as $product) {
+                $product->productScore = $this->productScore($products->products);
+            }
+            $i++;
         }
         return response()->json(['products' => $products->products]);
     }
@@ -292,5 +302,18 @@ class UserController extends Controller
                return response()->json(['message' => 'سفارش مربوط به این سبد خرید قبلا ثبت گردیده است' , 'code' => 'error']);
         }
 
+    }
+
+    public function productScore($products)
+    {
+        $i = 0;
+        while (count($products) > $i) {
+            foreach ($products[$i]->scores as $score) {
+                $products[$i]->totalScore += $score->score;
+                $products[$i]->count += 1;
+                $products[$i]->productScore = $products[$i]->totalScore / $products[$i]->count;
+            }
+            $i++;
+        }
     }
 }
