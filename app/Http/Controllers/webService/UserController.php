@@ -332,7 +332,7 @@ class UserController extends Controller
             }
             foreach ($products[0]->productImages as $image)
             {
-                $image->picture = 'http://gushtomorghebaradaran.ir/'.'public/dashboard/productFiles/pictures/'.$image->image_src;
+                $image->picture = 'http://gushtomorghebaradaran.ir/'.'public/dashboard/productFiles/picture/'.$image->image_src;
             }
             return response()->json(['productDetails' => $products]);
         } else {
