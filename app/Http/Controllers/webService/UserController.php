@@ -133,7 +133,7 @@ class UserController extends Controller
             //$product->productScore = $product->scores;
             foreach ($product->productImages as $image )
             {
-                $image->picture      = 'http://gushtomorghebaradaran.ir/'.'public/dashboard/image/'.$image->image_src;
+                $image->picture      = 'http://gushtomorghebaradaran.ir/'.'public/dashboard/productFiles/picture/'.$image->image_src;
             }
 
         }
