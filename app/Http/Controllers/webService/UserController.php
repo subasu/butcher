@@ -326,6 +326,10 @@ class UserController extends Controller
         if (count($products) > 0) {
             $products[0]->produceDate = $this->toPersian($products[0]->produce_date);
             $products[0]->expireDate = $this->toPersian($products[0]->expire_date);
+            foreach ($products[0]->productImages as $image)
+            {
+                $image->picture = 'http://gushtomorghebaradaran.ir/'.'public/dashboard/image/'.$image->image_src;
+            }
             return response()->json(['productDetails' => $products]);
         } else {
             return response()->json(['message' => 'محصول مورد نظر غیر فعال گردیده است']);
