@@ -6,8 +6,10 @@ use App\Http\Requests\OrderRegistrationValidation;
 use App\Models\Basket;
 use App\Models\Category;
 use App\Models\Order;
+use App\Models\Product;
 use App\User;
 use Carbon\Carbon;
+use Hekmatinasser\Verta\Verta;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -315,5 +317,33 @@ class UserController extends Controller
             }
             $i++;
         }
+    }
+
+
+    public function productDetails($id)
+    {
+        $products = Product::where([['id', $id], ['active', 1]])->get();
+        if (count($products) > 0) {
+            $products[0]->produceDate = $this->toPersian($products[0]->produce_date);
+            $products[0]->expireDate = $this->toPersian($products[0]->expire_date);
+            return response()->json(['productDetails' => $products]);
+        } else {
+            return response()->json(['message' => 'محصول مورد نظر غیر فعال گردیده است']);
+        }
+    }
+    public function toPersian($date)
+    {
+        if (count($date) > 0) {
+            $gDate = $date;
+            if ($date = explode('-', $gDate)) {
+                $year = $date[0];
+                $month = $date[1];
+                $day = $date[2];
+            }
+            $date = Verta::getJalali($year, $month, $day);
+            $myDate = $date[0] . '/' . $date[1] . '/' . $date[2];
+            return $myDate;
+        }
+
     }
 }

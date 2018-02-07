@@ -48,6 +48,7 @@ Route::group(['prefix' => '/v1/user'],function (){
     Route::post('addOrSubCount','webService\UserController@addOrSubCount');
     Route::post('orderRegistration','webService\UserController@orderRegistration');
     Route::post('addCommentForEachProduct','webService\UserController@addCommentForEachProduct');
+    Route::get('productDetails/{id}','webService\UserController@productDetails');
 
     Route::post('login','webService\LoginController@login');
 
