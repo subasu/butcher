@@ -118,7 +118,7 @@ class UserController extends Controller
     public function getBasketCountNotify(Request $request)
     {
         $count     = DB::table('basket_product')->where('basket_id',$request->basketId)->count();
-        return response()->json($count);
+        return response()->json(['basketCount' =>  $count]);
     }
 
     /*
