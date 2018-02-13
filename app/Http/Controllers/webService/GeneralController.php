@@ -59,11 +59,12 @@ class GeneralController extends Controller
                         $total     = 0;
                         foreach ($baskets->products as $basket)
                         {
-                            $basket->count       = $basket->pivot->count;
-                            $basket->price       = $basket->pivot->product_price;
-                            $basket->sum         = $basket->pivot->count * $basket->pivot->product_price;
-                            $total              += $basket->sum;
-                            $basket->basket_id   = $basket->pivot->basket_id;
+                            $basket->count          = $basket->pivot->count;
+                            $basket->price          = $basket->pivot->product_price;
+                            $basket->sum            = $basket->pivot->count * $basket->pivot->product_price;
+                            $total                  += $basket->sum;
+                            $basket->basket_id      = $basket->pivot->basket_id;
+                            $basket->productOption  = $basket->ProductOption;
                         }
                         return response()->json(compact(['basket' => 'baskets' , 'total' => 'total']));
                     }else

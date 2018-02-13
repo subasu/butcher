@@ -121,7 +121,7 @@ class UserController extends Controller
     {
         $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
         $count = DB::table('basket_product')->where('basket_id', $basketId)->count();
-        return response()->json($count);
+        return response()->json(['basketCount' => $count]);
     }
 
     //below function is related to get basket total price

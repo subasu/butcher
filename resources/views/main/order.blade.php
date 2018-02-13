@@ -80,11 +80,11 @@
                             <td id="oldSum" content="{{$basket->sum}}" class=" text-center">
                                 {{number_format($basket->sum)}} تومان
                             </td>
-                            <td class="col-md-2">
+                            <td class="col-md-1">
                                 <a class="fa fa-trash-o" id="removeItem" name="{{$basket->id}}" data-target="{{$basket->price}}" content="{{$basket->basket_id}}" title="پاک کردن" data-toggle=""  ></a>
                             </td>
 
-                                <td class="col-md-2">
+                                <td class="col-md-3">
                                     @if(count($basket->ProductOption)>0)
                                         <div class="form-option">
                                             {{--<p class="float-r form-option-title">: گزینه های ارسال محصول</p>--}}
