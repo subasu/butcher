@@ -255,7 +255,7 @@
             data: {'_token': token},
             success: function (response) {
                 console.log(response);
-                $('#basketCountNotify').text(response);
+                $('#basketCountNotify').text(response.basketCount);
                 handlePayButton(response);
             },
             error: function (error) {
