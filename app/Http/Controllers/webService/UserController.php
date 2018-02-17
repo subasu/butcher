@@ -35,7 +35,7 @@ class UserController extends Controller
                     $update = DB::table('basket_product')->where([['basket_id',$request->basketId],['product_id',$request->productId]])->increment('count');
                     if($update)
                     {
-                        return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید' , 'code' => 1]);
+                        return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید' , 'basketId' => $request->basketId]);
                     }else
                     {
                         return response()->json(['message' => 'خطایی رخ داده است']);
@@ -54,16 +54,15 @@ class UserController extends Controller
                     ]);
                     if($pivotInsert)
                     {
-                        return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید' , 'code' => 1]);
+                        return response()->json(['message' => 'محصول مورد نظر شما به سبد خرید اضافه گردید' , 'basketId' => $request->basketId]);
                     }else
                     {
                         return response()->json(['message' => 'خطایی رخ داده است']);
                     }
                 }
-            }else if($oldCookie = DB::table('baskets')->where([['cookie',$request->basketId],['payment',1]])->count() > 0 )
+            }else if($oldCookie = DB::table('baskets')->where([['id',$request->basketId],['payment',1]])->count() > 0 )
                 {
                    return  $this->newCookie($now,$request);
-
                 }else
                     {
                         return response()->json(['message' => 'لطفا در عملیات مربوط به سبد خرید اختلال ایجاد ننمایید']);
