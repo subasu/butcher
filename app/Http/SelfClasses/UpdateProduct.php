@@ -14,6 +14,7 @@ use App\Models\Product;
 use App\Models\ProductColor;
 use App\Models\ProductFlag;
 use App\Models\ProductImage;
+use App\Models\ProductOption;
 use App\Models\ProductSize;
 use App\Models\SubUnitCount;
 use App\Models\UnitCount;
@@ -182,6 +183,18 @@ class UpdateProduct
                 $subCatId = $catId;
             }
             updateCategoryProduct($lastProductId, $subCatId);
+        }
+        if(!empty($product->option))
+        {
+
+            $countOption=count($product->option);
+            while($countOption)
+            {
+                $countOption--;
+                $update=ProductOption::find($product->optionId[$countOption]);
+                $update->title=$product->option[$countOption];
+                $update->save();
+            }
         }
         return (true);
     }
