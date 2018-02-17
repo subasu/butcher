@@ -414,34 +414,34 @@
                                         </div>
                                     </div>
                                     {{--<div class="col-md-10 col-md-offset-1 margin-1 ">--}}
-                                        {{--<div id="grandparent">--}}
-                                            {{--<div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">--}}
-                                                {{--<div class="col-md-2">--}}
-                                                    {{--<a type="button" name="edit" id="edit"--}}
-                                                       {{--class="glyphicon glyphicon-edit btn btn-success edit"--}}
-                                                       {{--title="ویرایش "></a>--}}
-                                                {{--</div>--}}
-                                                {{--<div class="col-md-10">--}}
-                                                    {{--@if($products[0]->warehouse_place != null)--}}
-                                                        {{--<input disabled id="editable"--}}
-                                                               {{--class="form-control col-md-7 col-xs-12 editable"--}}
-                                                               {{--name="warehouse_place"--}}
-                                                               {{--value="{{$products[0]->warehouse_place}}">--}}
-                                                    {{--@endif--}}
-                                                    {{--@if($products[0]->warehouse_place == null)--}}
-                                                        {{--<input disabled id="editable"--}}
-                                                               {{--class="form-control col-md-7 col-xs-12 editable"--}}
-                                                               {{--name="warehouse_place">--}}
-                                                    {{--@endif--}}
-                                                {{--</div>--}}
-                                            {{--</div>--}}
-                                            {{--<label class="control-label col-md-2 col-sm-4 col-xs-3"--}}
-                                                   {{--for="warehouse_place"> محل--}}
-                                                {{--فیزیکی در--}}
-                                                {{--انبار :--}}
-                                                {{--<span class="required star" title="پر کردن این فیلد الزامی است"></span>--}}
-                                            {{--</label>--}}
-                                        {{--</div>--}}
+                                    {{--<div id="grandparent">--}}
+                                    {{--<div class="col-md-7 col-sm-6 col-xs-9 col-md-offset-2">--}}
+                                    {{--<div class="col-md-2">--}}
+                                    {{--<a type="button" name="edit" id="edit"--}}
+                                    {{--class="glyphicon glyphicon-edit btn btn-success edit"--}}
+                                    {{--title="ویرایش "></a>--}}
+                                    {{--</div>--}}
+                                    {{--<div class="col-md-10">--}}
+                                    {{--@if($products[0]->warehouse_place != null)--}}
+                                    {{--<input disabled id="editable"--}}
+                                    {{--class="form-control col-md-7 col-xs-12 editable"--}}
+                                    {{--name="warehouse_place"--}}
+                                    {{--value="{{$products[0]->warehouse_place}}">--}}
+                                    {{--@endif--}}
+                                    {{--@if($products[0]->warehouse_place == null)--}}
+                                    {{--<input disabled id="editable"--}}
+                                    {{--class="form-control col-md-7 col-xs-12 editable"--}}
+                                    {{--name="warehouse_place">--}}
+                                    {{--@endif--}}
+                                    {{--</div>--}}
+                                    {{--</div>--}}
+                                    {{--<label class="control-label col-md-2 col-sm-4 col-xs-3"--}}
+                                    {{--for="warehouse_place"> محل--}}
+                                    {{--فیزیکی در--}}
+                                    {{--انبار :--}}
+                                    {{--<span class="required star" title="پر کردن این فیلد الزامی است"></span>--}}
+                                    {{--</label>--}}
+                                    {{--</div>--}}
                                     {{--</div>--}}
                                     <div class="col-md-10 col-md-offset-1 margin-1">
                                         <div id="grandparent">
@@ -734,25 +734,30 @@
                                         <div class="col-md-10 margin-bot-1 parent">
                                             <div class="col-md-2 col-md-offset-3">
                                                 <a type="button" name="editVideo" id="editVideo"
-                                                   class="glyphicon glyphicon-edit btn btn-success edit" content="{{$products[0]->id}}"
+                                                   class="glyphicon glyphicon-edit btn btn-success edit"
+                                                   content="{{$products[0]->id}}"
                                                    title="ویرایش "></a>
-                                                <a type="button"  id="playVideo"
-                                                   class="glyphicon glyphicon-play btn btn-success" content="{{$products[0]->id}}"
+                                                <a type="button" id="playVideo"
+                                                   class="glyphicon glyphicon-play btn btn-success"
+                                                   content="{{$products[0]->id}}"
                                                    title="پخش ویدئو "></a>
-                                                <a type="button"  id="pauseVideo"
-                                                   class="glyphicon glyphicon-pause btn btn-success edit" content="{{$products[0]->id}}"
+                                                <a type="button" id="pauseVideo"
+                                                   class="glyphicon glyphicon-pause btn btn-success edit"
+                                                   content="{{$products[0]->id}}"
                                                    title="توقف پخش ویدئو " style="display: none;"></a>
 
                                             </div>
                                             <div class="col-md-5 col-sm-6 col-xs-9 " id="videoContent">
                                                 @if($products[0]->video_src != null)
-                                                    <video   class="video" style="width: 200px; height: 200px;"
-                                                             id="video" name="video_src">
-                                                        <source id="playingVideo" src="{{url('public/dashboard/productFiles/video')}}/{{$products[0]->video_src}}">
+                                                    <video class="video" style="width: 200px; height: 200px;"
+                                                           id="video" name="video_src">
+                                                        <source id="playingVideo"
+                                                                src="{{url('public/dashboard/productFiles/video')}}/{{$products[0]->video_src}}">
                                                     </video>
                                                     <input
                                                             class="form-control col-md-7 col-xs-12 editable"
-                                                            id="newVideo" src="" name="video_src" type="file" style="display: none;">
+                                                            id="newVideo" src="" name="video_src" type="file"
+                                                            style="display: none;">
                                                 @endif
                                                 @if($products[0]->video_src == null)
                                                     <input disabled="disabled"
@@ -768,55 +773,80 @@
                                             </label>
                                         </div>
                                     </div>
+                                    @php $OptionCount = count($products[0]->productOption); @endphp
+                                    @if($OptionCount)
+                                        @foreach($products[0]->productOption as $option)
+                                            <div id="grandparent" class="grandparent">
+                                                <div class="parent" name="parent">
+                                                    <div class="col-md-10 margin-1">
+                                                        <div class="col-md-2 col-md-offset-3" id="edit">
+                                                            <a class="glyphicon glyphicon-edit btn btn-success edit"
+                                                               title="ویرایش "></a>
+                                                        </div>
+                                                        <div class="col-md-5 col-sm-6 col-xs-9 showPic" id="option"
+                                                             style="display: block;">
+                                                            <input id="editable" name="option[]" class="form-control col-md-7 col-xs-12 editable"
+                                                                    disabled value="{{$option->title}} ">
+                                                            <input class="editable" id="editable" type="hidden" name="optionId[]" disabled value="{{$option->id}}">
+                                                        </div>
+                                                        <label class="control-label col-md-2 col-sm-4 col-xs-3"
+                                                               for="option">
+                                                            <span class="required star"></span>
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    @endif
                                     {{--<div class="grandparent" id="grandparent">--}}
-                                        {{--<div class="col-md-10 margin-bot-1 parent">--}}
-                                            {{--<div class="col-md-2 col-md-offset-3">--}}
-                                                {{--<a type="button" name="edit" id="edit"--}}
-                                                   {{--class="glyphicon glyphicon-edit btn btn-success edit"--}}
-                                                   {{--title="ویرایش "></a>--}}
-                                            {{--</div>--}}
+                                    {{--<div class="col-md-10 margin-bot-1 parent">--}}
+                                    {{--<div class="col-md-2 col-md-offset-3">--}}
+                                    {{--<a type="button" name="edit" id="edit"--}}
+                                    {{--class="glyphicon glyphicon-edit btn btn-success edit"--}}
+                                    {{--title="ویرایش "></a>--}}
+                                    {{--</div>--}}
 
-                                            {{--<div class="col-md-5 col-sm-6 col-xs-9 editable" name="colors"--}}
-                                                 {{--id="editable">--}}
-                                                {{--@foreach($products[0]->colors as $color)--}}
-                                                    {{--<div class="col-md-4 col-sm-6 col-xs-3 float-right">--}}
-                                                        {{--<label class="myLabel">--}}
-                                                            {{--<input class="form-control myColor" disabled="disabled"--}}
-                                                                   {{--checked type="checkbox"--}}
-                                                                   {{--name="color[]" value="{{$color->title}}"/>--}}
-                                                            {{--{{$color->title}}--}}
-                                                        {{--</label></div>--}}
-                                                {{--@endforeach--}}
-                                            {{--</div>--}}
-                                            {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="color">انتخاب--}}
-                                                {{--رنگهای محصول :--}}
-                                            {{--</label>--}}
-                                        {{--</div>--}}
+                                    {{--<div class="col-md-5 col-sm-6 col-xs-9 editable" name="colors"--}}
+                                    {{--id="editable">--}}
+                                    {{--@foreach($products[0]->colors as $color)--}}
+                                    {{--<div class="col-md-4 col-sm-6 col-xs-3 float-right">--}}
+                                    {{--<label class="myLabel">--}}
+                                    {{--<input class="form-control myColor" disabled="disabled"--}}
+                                    {{--checked type="checkbox"--}}
+                                    {{--name="color[]" value="{{$color->title}}"/>--}}
+                                    {{--{{$color->title}}--}}
+                                    {{--</label></div>--}}
+                                    {{--@endforeach--}}
+                                    {{--</div>--}}
+                                    {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="color">انتخاب--}}
+                                    {{--رنگهای محصول :--}}
+                                    {{--</label>--}}
+                                    {{--</div>--}}
                                     {{--</div>--}}
                                     {{--<div class="grandparent" id="grandparent">--}}
-                                        {{--<div class="col-md-10 margin-bot-1 parent">--}}
-                                            {{--<div class="col-md-2 col-md-offset-3">--}}
-                                                {{--<a type="button" name="edit" id="edit"--}}
-                                                   {{--class="glyphicon glyphicon-edit btn btn-success edit"--}}
-                                                   {{--title="ویرایش "></a>--}}
-                                            {{--</div>--}}
+                                    {{--<div class="col-md-10 margin-bot-1 parent">--}}
+                                    {{--<div class="col-md-2 col-md-offset-3">--}}
+                                    {{--<a type="button" name="edit" id="edit"--}}
+                                    {{--class="glyphicon glyphicon-edit btn btn-success edit"--}}
+                                    {{--title="ویرایش "></a>--}}
+                                    {{--</div>--}}
 
-                                            {{--<div class="col-md-5 col-sm-6 col-xs-9 editable" name="sizes" id="editable">--}}
-                                                {{--@foreach($products[0]->sizes as $size)--}}
-                                                    {{--<div class="col-md-4 col-sm-6 col-xs-3 float-right">--}}
-                                                        {{--<label class="myLabel">--}}
-                                                            {{--<input class="form-control myColor" disabled="disabled"--}}
-                                                                   {{--checked type="checkbox"--}}
-                                                                   {{--name="size[]" value="{{$size->title}}"/>--}}
-                                                            {{--{{$size->title}}--}}
-                                                        {{--</label></div>--}}
-                                                {{--@endforeach--}}
-                                            {{--</div>--}}
-                                            {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="size">انتخاب--}}
-                                                {{--اندازه--}}
-                                                {{--های محصول :--}}
-                                            {{--</label>--}}
-                                        {{--</div>--}}
+                                    {{--<div class="col-md-5 col-sm-6 col-xs-9 editable" name="sizes" id="editable">--}}
+                                    {{--@foreach($products[0]->sizes as $size)--}}
+                                    {{--<div class="col-md-4 col-sm-6 col-xs-3 float-right">--}}
+                                    {{--<label class="myLabel">--}}
+                                    {{--<input class="form-control myColor" disabled="disabled"--}}
+                                    {{--checked type="checkbox"--}}
+                                    {{--name="size[]" value="{{$size->title}}"/>--}}
+                                    {{--{{$size->title}}--}}
+                                    {{--</label></div>--}}
+                                    {{--@endforeach--}}
+                                    {{--</div>--}}
+                                    {{--<label class="control-label col-md-2 col-sm-4 col-xs-3" for="size">انتخاب--}}
+                                    {{--اندازه--}}
+                                    {{--های محصول :--}}
+                                    {{--</label>--}}
+                                    {{--</div>--}}
                                     {{--</div>--}}
                                     {{--<div>--}}
                                     {{--<div class="col-md-12 margin-2 margin-bot-1">--}}
@@ -871,7 +901,7 @@
                                     text: x,
                                     type: "info",
                                 })
-                                location.reload();
+//                                location.reload();
                             },
                             error: function (xhr) {
                                 console.log(xhr)
@@ -1055,7 +1085,7 @@
                                 if (isConfirm) {
                                     //load all subCategory in select box in addProductForm
                                     $.ajax({
-                                        url: "{{url('admin/deleteProductPicture')}}/"+imageId,
+                                        url: "{{url('admin/deleteProductPicture')}}/" + imageId,
                                         type: 'get',
                                         dataType: "json",
                                         success: function (response) {
@@ -1322,18 +1352,17 @@
             loadUnits();
         </script>
         <script>
-            $(document).on('click','#playVideo',function(){
+            $(document).on('click', '#playVideo', function () {
 
                 var video = document.getElementById('video');
-                if(video != null)
-                {
+                if (video != null) {
                     video.play();
                     $(this).hide();
                     $('#pauseVideo').show();
                 }
 
             })
-            $(document).on('click','#pauseVideo',function(){
+            $(document).on('click', '#pauseVideo', function () {
                 $(this).hide();
                 $('#playVideo').show();
                 var video = document.getElementById('video');
@@ -1341,13 +1370,12 @@
             })
         </script>
         <script>
-            $(document).on('click','#editVideo',function(){
+            $(document).on('click', '#editVideo', function () {
                 // var DOM       = $(this).parentsUntil('#grandparent');
                 var productId = $(this).attr('content');
-                var editable  = $('#videoContent');
-                var me        = $(this);
-                if(editable.children().length > 0)
-                {
+                var editable = $('#videoContent');
+                var me = $(this);
+                if (editable.children().length > 0) {
                     swal({
                             title: '',
                             text: 'قبل از ویرایش فیلم محصول ابتدا باید آن را حذف نمائید  ، آیا مایل به انجام این کار هستید؟',
@@ -1363,37 +1391,32 @@
                             if (isConfirm) {
                                 $.ajax
                                 ({
-                                    url      : "{{url('admin/deleteVideo')}}",
-                                    type     : "get",
-                                    dataType : "json",
-                                    data     : {'productId' : productId },
-                                    context  : {'me' : me},
-                                    success  : function(response)
-                                    {
-                                        if(response.message == 'success')
-                                        {
-                                            $('#video').css('display','none');
-                                            $('#newVideo').css('display','block');
-                                            $(me).attr('id','edit');
-                                            $(me).attr('name','edit');
-                                        }else
-                                        {
+                                    url: "{{url('admin/deleteVideo')}}",
+                                    type: "get",
+                                    dataType: "json",
+                                    data: {'productId': productId},
+                                    context: {'me': me},
+                                    success: function (response) {
+                                        if (response.message == 'success') {
+                                            $('#video').css('display', 'none');
+                                            $('#newVideo').css('display', 'block');
+                                            $(me).attr('id', 'edit');
+                                            $(me).attr('name', 'edit');
+                                        } else {
                                             swal({
                                                 title: '',
                                                 text: 'خطایی رخ داده است ، با بخش پشتیبانی تماس بگیرید',
                                                 type: "warning",
                                             })
                                         }
-                                    },error  : function(error)
-                                    {
+                                    }, error: function (error) {
                                         console.log(error);
                                     }
                                 })
                             }
                         }
                     );
-                }else
-                {
+                } else {
 
                 }
             })
