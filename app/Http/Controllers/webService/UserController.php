@@ -158,7 +158,7 @@ class UserController extends Controller
         {
             $totalPrice  += $basket->count * $basket->product_price;
         }
-        return response()->json($totalPrice);
+        return response()->json(['basketTotalPrice' => $totalPrice]);
     }
 
     //below function is related to get basket content
