@@ -349,6 +349,7 @@ class IndexController extends Controller
                             $basket->basket_id = $basket->pivot->basket_id;
                             $totalPostPrice += $basket->post_price;
                             $basket->product_id = $basket->pivot->product_id;
+                            $basket->comments = $basket->pivot->comments;
                             if ($basket->discount_volume != null) {
                                 $totalDiscount += $basket->discount_volume;
                                 if ($totalDiscount > 0) {
@@ -357,6 +358,7 @@ class IndexController extends Controller
                             }
 
                         }
+                      //  dd($baskets);
                         $finalPrice += ($total + $totalPostPrice) - $basket->sumOfDiscount;
                         return view('main.orderDetail', compact('menu', 'pageTitle', 'baskets', 'total', 'totalPostPrice', 'finalPrice', 'paymentTypes'));
                     } else {

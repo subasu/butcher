@@ -658,6 +658,7 @@
 </script>
 <script>
     $(document).on('click','#comment',function(){
+        var myStack = {"dir1": "down", "dir2": "right", "push": "top"};
         var  jsonObject = [];
         $.each($("input[name='orderOption[]']:checked"),function(){
 //            var productId = $(this).attr('content');
@@ -665,17 +666,43 @@
        });
         console.log(jsonObject);
         var jsonStr = JSON.stringify(jsonObject);
-        console.log(jsonObject);
-        console.log(typeof(jsonStr));
+        console.log(jsonStr + 'here');
         $.ajax
        ({
            url : "{{url('user/showJson')}}",
            type : "post",
            data : {'jsonStr' : jsonStr},
            dataType : "json",
+           beforeSend : function()
+           {
+               if(jsonStr.length == 2)
+               {
+
+                   console.log('خالی');
+                   new PNotify({
+                       title: 'لطفا جزئیات را انتخاب نمائید و سپس دکمه ثبت جزئیات سفارش را بزنید',
+                       text: '',
+                       addclass: "stack-custom",
+                       type: "info",
+                       stack: myStack
+                   });
+                   return false;
+               }
+           },
            success : function(response)
            {
                console.log(response);
+               if(response.code == 'success')
+               {
+                   new PNotify({
+                       title: response.message,
+                       text: '',
+                       addclass: "stack-custom",
+                       type: "info",
+                       stack: myStack
+                   });
+               }
+
 
            },error : function(error)
            {

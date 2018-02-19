@@ -345,7 +345,6 @@ class UserController extends Controller
                 $basket->basketComment = $basket->pivot->comments;
                 $basket->basketCount = $basket->pivot->count;
             }
-
             return view('user.orderDetails', compact('baskets', 'pageTitle', 'comments'));
         } else {
             return view('errors.403');

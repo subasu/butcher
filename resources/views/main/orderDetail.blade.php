@@ -2,6 +2,9 @@
 @section('content')
     <style>
         .overflow_hidden_x{overflow-x: hidden;}
+        .margin-top-1{
+            margin-top: -1% !important;
+        }
     </style>
     <div class="columns-container">
         <div class="container" id="columns" dir="rtl">
@@ -34,9 +37,9 @@
                 <h3 class="checkout-sep">توضیحات سفارش</h3>
                 <div class="box-border" >
                     <div class="row">
-                        <div class="col-md-6 col-md-offset-6" >
+                        <div class="col-md-10 col-md-offset-2" >
                             <label>توضیحات</label>
-                            <textarea name="comments" id="comments" class="form-control input overflow_hidden_x"></textarea>
+                            <textarea name="comments" id="comments" class="form-control input overflow_hidden_x col-md-12"></textarea>
                         </div>
                     </div>
                 </div>
@@ -50,8 +53,7 @@
                                 </li>
                             @endforeach
                         @endif
-
-
+                            <label for="radio_button_5" class="float-r margin-r-5 margin-top-1"><input type="radio" checked  class="float-r " value="پرداخت آنلاین" name="paymentType" id="radio" disabled>پرداخت آنلاین</label>
                     </ul>
                     {{--<button class="button">Continue</button>--}}
                 </div>
@@ -62,12 +64,13 @@
                             <thead>
                             <tr>
                                 <th class="text-center cart_product">عنوان محصول</th>
-                                <th class="text-center"> توضیحات</th>
+                                {{--<th class="text-center">توضیحات محصول</th>--}}
                                 <th class="text-center">قیمت واحد</th>
                                 <th class="text-center" align="center">تعداد/مقدار</th>
                                 <th class="text-center">جمع کل (تومان)</th>
                                 <th class="text-center">تخفیف محصول (درصد)</th>
-                                <th class="text-center">هزینه ی پست (تومان)</th>
+                                <th class="text-center">هزینه پست (تومان)</th>
+                                <th class="text-center">جزئیات سبد خرید</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -75,9 +78,9 @@
                             @foreach($baskets->products as $basket)
                                 <tr class="text-center">
                                     <td class="cart_product">{{$basket->title}}</td>
-                                    <td class="cart_description">
-                                        <textarea class="form-control" disabled="">{{$basket->description}}</textarea>
-                                    </td>
+                                    {{--<td class="cart_description">--}}
+                                        {{--<textarea class="form-control" disabled="">{{$basket->description}}</textarea>--}}
+                                    {{--</td>--}}
                                     <td id="unitPrice" content="{{$basket->price}}">{{number_format($basket->price)}}</td>
                                     <td class="qty">
                                         <input disabled="disabled" class="form-control input-sm" id="count" name="count" type="text" value="{{$basket->count}}">
@@ -85,6 +88,19 @@
                                     <td id="oldSum" content="{{$basket->sum}}">{{number_format($basket->sum)}}</td>
                                     <td class="col-md-2">@if($basket->discount_volume != null){{$basket->discount_volume}}@endif @if($basket->discount_volume == null) تخفیف ندارد @endif</td>
                                     <td class="col-md-2">{{number_format($basket->post_price)}}</td>
+                                    @if(count($basket->comments) > 0)
+                                        <?php $array = explode(',',$basket->comments); $len = count($array); $i = 0;  ?>
+                                        <td class="col-md-3">
+                                        @while($i < $len-1)
+                                                <div class="col-md-12">
+                                                <input type="checkbox" disabled checked class="float-r "/>
+
+                                                <label class="float-r margin-r-5 margin-top-1">{{$array[$i]}}</label>
+                                                </div>
+                                            <?php $i++; ?>
+                                        @endwhile
+                                        </td>
+                                    @endif
                                     <input type="hidden" name="basketId" value="{{$basket->basket_id}}">
                                     <input type="hidden" name="productId[]" value="{{$basket->product_id}}">
                                 </tr>
@@ -113,6 +129,7 @@
 
                         </table>
                     @endif
+                    <button type="button" class="col-md-3 button"  onclick="window.location.replace('basketDetail');">بازگشت به سبد خرید</button>
                     <button type="button" class="col-md-6 button col-md-offset-3"  id="orderRegistration">ثبت سفارش</button>
                 </div>
             </div>
