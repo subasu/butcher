@@ -42,6 +42,7 @@ class IndexController extends Controller
         $i = 0;
         while ($i < $count) {
             foreach ($results[$i]->scores as $product) {
+                if ($this->productScore($product))
                 $product->productScore = $this->productScore($product);
             }
             $i++;
