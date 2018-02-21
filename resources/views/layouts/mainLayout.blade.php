@@ -552,15 +552,35 @@
                     setTimeout(function () {
                         window.location.href = '../login';
                     }, 15000);
-                } else {
+                } else if(response.code == 'error1') {
                     swal
                     ({
                         title: "",
                         text: response.message,
-                        type: "warning",
+                        type: "info",
                         confirmButtonText: "بستن"
                     });
+                }else if(response.code == 'success')
+                {
+                    swal
+                    ({
+                        title: "",
+                        text: response.message,
+                        type: "info",
+                        confirmButtonText: "بستن"
+                    });
+                    //setTimeout(function(){window.location.reload(true);},5000);
                 }
+                else
+                    {
+                        swal
+                        ({
+                            title: "",
+                            text: response.message,
+                            type: "warning",
+                            confirmButtonText: "بستن"
+                        });
+                    }
             },
             error: function (error) {
                 if (error.status === 500) {
