@@ -135,7 +135,7 @@ class UpdateProduct
                 $productPicture = new ProductImage();
                 $productPicture->product_id = $lastProductId;
                 $imageExtension = $product->file[$i]->getClientOriginalExtension();
-                $imageName = time()*10000;
+                $imageName=microtime(true );
                 $productPicture->image_src = $imageName.'.'.$imageExtension;
                 $product->file[$i]->move('public/dashboard/productFiles/picture/', $imageName.'.'.$imageExtension);
                 $productPicture->active = 1;
