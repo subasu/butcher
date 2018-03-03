@@ -256,7 +256,7 @@ class IndexController extends Controller
         $categories = Category::find($id);
         $parentCat = Category::where('id', '=', $categories->parent_id)->value('title');
         $image = Category::where('id', '=', $categories->parent_id)->value('image_src');
-        $products = $categories->products()->paginate(1);
+        $products = $categories->products()->paginate(12);
         //$productScore = $this->productScore($products);
         $count = count($products);
         $i = 0;
