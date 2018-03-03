@@ -549,9 +549,9 @@
                         type: "success",
                         confirmButtonText: "بستن"
                     });
-                    setTimeout(function () {
-                        window.location.href = '../login';
-                    }, 15000);
+//                    setTimeout(function () {
+//                        window.location.href = '../login';
+//                    }, 15000);
                 } else if(response.code == 'error1') {
                     swal
                     ({
