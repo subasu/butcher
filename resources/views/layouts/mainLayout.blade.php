@@ -235,6 +235,7 @@
         })
     })
 </script>
+<!-- below script is related to add to basket -->
 <script>
     //below function is related to make pay button shown or not shown
     //    function handlePayButton(response)
@@ -321,6 +322,7 @@
         });
     }
 </script>
+<!--formatNumber -->
 <script>
     function formatNumber(num) {
         return num.toString().replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,")
