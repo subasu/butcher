@@ -104,7 +104,7 @@ class UserController extends Controller
                     'product_price' => $request->productFlag,
                     'time' => $now->toTimeString(),
                     'date' => $now->toDateString(),
-                    'comments' => $orderOptionArr,
+               //     'comments' => $orderOptionArr,
                     'count' => 1
                 ]);
                 if ($pivotInsert) {
@@ -122,26 +122,41 @@ class UserController extends Controller
     //below function is related to get basket count
     public function getBasketCountNotify()
     {
-        $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
-        $count = DB::table('basket_product')->where('basket_id', $basketId)->count();
-        return response()->json(['basketCount' => $count]);
+        if(isset($_COOKIE['addToBasket']))
+        {
+            $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
+            $count = DB::table('basket_product')->where('basket_id', $basketId)->count();
+            return response()->json(['basketCount' => $count]);
+        }else
+        {
+            return response()->json(0);
+        }
     }
 
     //below function is related to get basket total price
     public function getBasketTotalPrice()
     {
-        $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
-        $baskets = DB::table('basket_product')->where('basket_id', $basketId)->get();
-        $totalPrice = '';
-        foreach ($baskets as $basket) {
-            $totalPrice += $basket->count * $basket->product_price;
-        }
-        return response()->json($totalPrice);
+        if(isset($_COOKIE['addToBasket']))
+        {
+            $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
+            $baskets = DB::table('basket_product')->where('basket_id', $basketId)->get();
+            $totalPrice = '';
+            foreach ($baskets as $basket) {
+                $totalPrice += $basket->count * $basket->product_price;
+            }
+            return response()->json($totalPrice);
+        }else
+            {
+                return response()->json(0);
+            }
+
     }
 
     //below function is related to get basket content
     public function getBasketContent()
     {
+        if(isset($_COOKIE['addToBasket']))
+        {
         $basketId = DB::table('baskets')->where([['cookie', $_COOKIE['addToBasket']], ['payment', 0]])->value('id');
         $baskets = Basket::find($basketId);
         foreach ($baskets->products as $product) {
@@ -151,7 +166,11 @@ class UserController extends Controller
             $product->product_id = $product->pivot->product_id;
 
         }
-        return response()->json($baskets);
+             return response()->json($baskets);
+        }else
+        {
+            return response()->json(0);
+        }
     }
 
     //below function is related to remove item from basket
