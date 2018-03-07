@@ -285,6 +285,7 @@ class UserController extends Controller
             $order->total_price = $request->totalPrice;
             $order->discount_price = $request->discountPrice;
             $order->factor_price = $request->factorPrice;
+            $order->pay_price    = $request->totalPrice / 2;
             $order->user_cellphone = $request->userCellphone;
             $order->basket_id = $request->basketId;
             $order->payment_type = $request->paymentType;
@@ -538,6 +539,7 @@ class UserController extends Controller
     public function scoreDetails($id)
     {
         $baskets = Basket::find($id);
+      //  dd($baskets);
         $pageTitle = 'جزئیات سفارش';
         foreach ($baskets->products as $basket) {
             $basket->product_price = $basket->pivot->product_price;
@@ -561,6 +563,7 @@ class UserController extends Controller
     //below function is related to redirect comment details
     public function showJson(Request $request)
     {
+        var_dump($request->jsonStr);
         $array = json_decode($request->jsonStr);
         $i = 0;
         while($i < count($array))

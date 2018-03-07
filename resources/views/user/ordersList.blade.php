@@ -43,6 +43,7 @@
                             <th style="text-align: center"> هزینه اولیه (تومان)</th>
                             <th style="text-align: center">مجموع تخفیفات (تومان)</th>
                             <th style="text-align: center">هزینه نهایی (تومان)</th>
+                            <th style="text-align: center">هزینه پرداختی (تومان)</th>
                             <th style="text-align: center">وضعیت تحویل</th>
                             <th style="text-align: center">مشاهده جزییات</th>
                         </tr>
@@ -57,6 +58,7 @@
                                 <td style="font-size: 120%">{{number_format($datum->total_price)}}</td>
                                 <td style="font-size: 120%">{{number_format($datum->discount_price)}}</td>
                                 <td style="font-size: 120%">{{number_format($datum->factor_price)}}</td>
+                                <td style="font-size: 120%">{{number_format($datum->pay_price)}}</td>
                                 @if($datum->order_status == null)
                                     <td><button class="btn btn-default" style="font-size: 120%;">نا مشخص</button></td>
                                 @endif

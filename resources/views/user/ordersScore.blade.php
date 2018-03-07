@@ -50,7 +50,7 @@
                             <tr class="unit">
                                 <td style="font-size: 120%"> {{++$i}}</td>
                                 <td style="font-size: 120%">{{$datum->orderDate}}</td>
-                                <td ><strong><a style="font-size: 120%" class="btn btn-primary col-md-8 col-md-offset-2" href="{{url('user/scoreDetails/'.$datum->id)}}" >امتیازات</a></strong></td>
+                                <td ><strong><a style="font-size: 120%" class="btn btn-primary col-md-8 col-md-offset-2" href="{{url('user/scoreDetails/'.$datum->basket_id)}}" >امتیازات</a></strong></td>
                         </tbody>
                         @endforeach
                     </table>

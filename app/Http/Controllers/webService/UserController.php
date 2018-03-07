@@ -254,6 +254,7 @@ class UserController extends Controller
         $order->total_price = $request->totalPrice;
         $order->discount_price = $request->discountPrice;
         $order->factor_price = $request->factorPrice;
+        $order->pay_price    = $request->totalPrice / 2;
         $order->user_cellphone = $request->userCellphone;
         $order->basket_id = $request->basketId;
         $order->payment_type = $request->paymentType;
@@ -280,25 +281,38 @@ class UserController extends Controller
         }
     }
 
-    //below function is related to add comments to each product in  basket
     public function addCommentForEachProduct(Request $request)
     {
-        if(DB::table('baskets')->where([['id',$request->basketId],['payment',0]])->count() > 0)
+        //var_dump($request->jsonStr);
+        //var_dump($request->jsonStr);
+        $array = json_decode($request);
+        return response()->json(json_decode($request));
+        $i = 0;
+        while($i < count($array))
         {
-            $basketComment = DB::table('basket_product')->where([['basket_id',$request->basketId],['product_id',$request->productId]])->update(['comments' => $request->comments]);
-            if($basketComment)
-            {
-                return response()->json(['message' => 'جزئیات سفارش این محصول با موفقیت ثبت گردید' ,'code' => 'success']);
-            }
-            else
-            {
-                return response()->json(['message' => 'خطایی رخ داده است لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error']);
-            }
+            $firstUpdate = DB::table('basket_product')->where([['product_id',$array[$i]->productId],['basket_id',$array[$i]->basketId]])->update(['comments' => ""]);
+            $i++;
         }
-        else
+//        if($firstUpdate)
+//        {
+        $i = 0;
+        while($i < count($array))
         {
-               return response()->json(['message' => 'سفارش مربوط به این سبد خرید قبلا ثبت گردیده است' , 'code' => 'error']);
+            $secondUpdate = DB::table('basket_product')->where([['product_id',$array[$i]->productId],['basket_id',$array[$i]->basketId]])->update(['comments' => DB::raw("CONCAT(comments , '".$array[$i]->value."','".','."')")]);
+            $i++;
         }
+//        if($secondUpdate)
+//        {
+            return response()->json(['message' => 'جزئیات سفارش با موفقیت ثبت گردید' , 'code' => 'success']);
+//        }else
+//        {
+//            return response()->json(['message' => 'خطا در ثبت اطلاعات ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error1']);
+//        }
+        //}
+//        else
+//        {
+//            return response()->json(['message' => 'خطا در ثبت اطلاعات ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error2']);
+//        }
 
     }
 

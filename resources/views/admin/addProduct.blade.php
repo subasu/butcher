@@ -404,7 +404,7 @@
                                     <div class="col-md-12 margin-1">
                                         <div id="removeOptionDiv" class="col-md-1 col-sm-1 col-xs-1 col-md-offset-1">
                                             <a id="removeOption" class="glyphicon glyphicon-remove btn btn-danger"
-                                               data-toggle="" title="حذف تصویر'"></a>
+                                               data-toggle="" title="حذف گزینه ها"></a>
                                         </div>
                                         <div class="col-md-1 col-sm-1 col-xs-1">
                                             <a id="addOptionBtn" class="glyphicon glyphicon-plus btn btn-success"
