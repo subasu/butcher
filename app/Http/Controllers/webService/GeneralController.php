@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\webService;
 
+use App\Http\Requests\RegisterValidation;
 use App\Models\Basket;
 use App\Models\Category;
 use App\Models\PaymentType;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Validator;
 
 class GeneralController extends Controller
 {
@@ -118,5 +122,20 @@ class GeneralController extends Controller
             return response()->json(['message' => 'سبد خرید ایجاد نشده است']);
         }
 
+    }
+
+    public function register(RegisterValidation $request)
+    {
+        $user = new User();
+        $user->cellphone = trim($request->cellphone);
+        $user->password  = Hash::make($request->password);
+        $user->save();
+        if($user)
+        {
+            return response()->json(["message" => "ثبت نام با موفقیت انجام شد" , "code" => "success"]);
+        }else
+            {
+                return response()->json(["message" => "در ثبت اطلاعات خطایی رخ داده است" , "code" => "error"]);
+            }
     }
 }

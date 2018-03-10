@@ -35,6 +35,8 @@ Route::group(['prefix' => '/v1'], function () {
 
     //payment type routes
     Route::get('getPaymentTypes','CommonController@getPaymentTypes');
+
+
 });
 
 //below routes are related to some special operation in index page such as add to basket or ...
@@ -72,7 +74,8 @@ Route::group(['prefix' => '/v1/general'],function(){
     Route::get('getSubMenu/{id}','webService\GeneralController@getSubMenu');
     Route::get('getBrands/{id}','webService\GeneralController@getBrands');
     Route::post('order','webService\GeneralController@order');
-
+    //register route
+    Route::post('register','webService\GeneralController@register');
 });
 
 
