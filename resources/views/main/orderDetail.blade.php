@@ -126,6 +126,11 @@
                                 <td colspan="5" >{{number_format($finalPrice)}}</td>
                                 <input type="hidden" name="factorPrice" value="{{$finalPrice}}">
                             </tr>
+                            <tr>
+                                <td colspan="5">قیمت پرداختی (تومان)</td>
+                                <td colspan="5" >{{number_format($payPrice)}}</td>
+                                <input type="hidden" name="payPrice" value="{{$payPrice}}">
+                            </tr>
 
                         </table>
                     @endif

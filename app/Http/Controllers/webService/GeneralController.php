@@ -81,6 +81,7 @@ class GeneralController extends Controller
                     $totalDiscount  = 0 ;
                     $totalPostPrice = 0;
                     $finalPrice     = 0;
+                    $payPrice       = 0;
                     if(!empty($baskets))
                     {
                         foreach ($baskets->products as $basket)
@@ -102,7 +103,8 @@ class GeneralController extends Controller
 
                         }
                         $finalPrice += ($total + $totalPostPrice) - $basket->sumOfDiscount;
-                        return response()->json(compact('baskets','total','totalPostPrice','finalPrice','paymentTypes'));
+                        $payPrice   += (($total + $totalPostPrice) - $basket->sumOfDiscount) / 2;
+                        return response()->json(compact('baskets','total','totalPostPrice','finalPrice','paymentTypes','payPrice'));
                     }else
                     {
                         return resposne()->json(['message' => 'سبد خرید خالی است']);

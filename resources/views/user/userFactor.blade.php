@@ -67,7 +67,7 @@
         </tr>
         <tr>
             <td class="col-md-2" colspan="8" style="text-align: left"><b>هزینه  پرداختی (تومان)</b></td>
-            <th class="col-md-3" colspan="3">{{number_format($basket->pay_price)}}</th>
+            <th class="col-md-3" colspan="3">{{number_format($payPrice)}}</th>
         </tr>
         <tr>
             <td class="col-md-10" colspan="1" style="text-align: right;"><b>توضیحات سفارش</b></td>

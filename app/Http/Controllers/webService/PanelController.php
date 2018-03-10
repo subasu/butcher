@@ -91,6 +91,7 @@ class PanelController extends Controller
         $totalDiscount = 0;
         $totalPostPrice = 0;
         $finalPrice = 0;
+        $payPrice   = 0;
         if (!empty($baskets)) {
             foreach ($baskets->products as $basket) {
                 $basket->count = $basket->pivot->count;
@@ -108,7 +109,8 @@ class PanelController extends Controller
                 }
             }
             $finalPrice += ($total + $totalPostPrice) - $basket->sumOfDiscount;
-            return response()->json( compact( 'baskets', 'total', 'totalPostPrice', 'finalPrice', 'paymentTypes', 'comments'));
+            $payPrice   += (($total + $totalPostPrice) - $basket->sumOfDiscount) / 2;
+            return response()->json( compact( 'baskets', 'total', 'totalPostPrice', 'finalPrice', 'paymentTypes', 'comments','payPrice'));
         } else {
             return response()->json(['message' => 'no match found']);
         }
@@ -133,7 +135,7 @@ class PanelController extends Controller
                         $basket->product_price = $basket->pivot->product_price;
                     }
                     $i = 0;
-                    while (count($baskets->products) > $i) {
+                    while ($i < count($baskets->products)) {
                         foreach ($baskets->products[$i]->scores as $score) {
                             $baskets->products[$i]->totalScore += $score->score;
                             $baskets->products[$i]->count += 1;
@@ -144,7 +146,7 @@ class PanelController extends Controller
                         }
                         $i++;
                     }
-                    return response()->json($baskets);
+                    return response()->json(["scoreInfo" => $baskets]);
                 }else
                 {
                     return response()->json(['no match found']);
@@ -206,7 +208,7 @@ class PanelController extends Controller
             if(!$errors->isEmpty())
                 return response()->json($errors);
             else
-                if ($user->id == $request->userId) {
+//                if ($user->id == $request->userId) {
                     $oldPassword = User::where([['id', $user->id], ['active', 1]])->value('password');
                     if (Hash::check($request->oldPassword, $oldPassword)) {
                         if ($request->password === $request->confirmPassword) {
@@ -224,9 +226,9 @@ class PanelController extends Controller
                     } else {
                         return response()->json(['message' => 'رمز قبلی صحیح نیست']);
                     }
-                } else {
-                    return response()->json(['message' => 'مشکلی در شناسایی کاربر بوجود آمده است!']);
-                }
+//                } else {
+//                    return response()->json(['message' => 'مشکلی در شناسایی کاربر بوجود آمده است!']);
+//                }
         }
     }
 }

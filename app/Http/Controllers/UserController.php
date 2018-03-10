@@ -232,7 +232,7 @@ class UserController extends Controller
             if(is_bool($result))
             {
                 $bankModule =  new BankModule();
-                $result1    =  $bankModule->bankOperation();
+                $result1    =  $bankModule->bankOperation($request->payPrice);
                 if(is_bool($result1))
                 {
                     $user = User::where('cellphone', $request->userCellphone)->get();
@@ -285,7 +285,7 @@ class UserController extends Controller
             $order->total_price = $request->totalPrice;
             $order->discount_price = $request->discountPrice;
             $order->factor_price = $request->factorPrice;
-            $order->pay_price    = $request->totalPrice / 2;
+            $order->pay_price    = $request->payPrice;
             $order->user_cellphone = $request->userCellphone;
             $order->basket_id = $request->basketId;
             $order->payment_type = $request->paymentType;
@@ -343,24 +343,29 @@ class UserController extends Controller
     public function userOrders($parameter)
     {
         $data = Order::where([['user_id', Auth::user()->id], ['pay', '<>', null], ['transaction_code', '<>', null]])->get();
-        $baskets = Basket::find($data[0]->basket_id);
-        foreach ($data as $datum) {
-            $datum->orderDate = $this->toPersian($datum->created_at->toDateString());
-        }
-        switch ($parameter) {
-            case 'factor' :
-                $pageTitle = 'سفارشات و فاکتورها';
-                return view('user.ordersList', compact('data', 'pageTitle', 'baskets'));
-                break;
-            case 'score' :
-                $pageTitle = 'سفارشات و امتیاز دهی';
-                return view('user.ordersScore', compact('data', 'pageTitle', 'baskets'));
-                break;
+        if(count($data) > 0)
+        {
+            $baskets = Basket::find($data[0]->basket_id);
+            foreach ($data as $datum) {
+                $datum->orderDate = $this->toPersian($datum->created_at->toDateString());
+            }
+            switch ($parameter) {
+                case 'factor' :
+                    $pageTitle = 'سفارشات و فاکتورها';
+                    return view('user.ordersList', compact('data', 'pageTitle', 'baskets'));
+                    break;
+                case 'score' :
+                    $pageTitle = 'سفارشات و امتیاز دهی';
+                    return view('user.ordersScore', compact('data', 'pageTitle', 'baskets'));
+                    break;
 
-            default:
-                return view('errors.403');
-        }
-
+                default:
+                    return view('errors.403');
+            }
+        }else
+            {
+                return Redirect::back();
+            }
     }
 
     //
@@ -410,6 +415,7 @@ class UserController extends Controller
         $totalDiscount = 0;
         $totalPostPrice = 0;
         $finalPrice = 0;
+        $payPrice   = 0;
         if (!empty($baskets)) {
             foreach ($baskets->products as $basket) {
                 $basket->count = $basket->pivot->count;
@@ -428,7 +434,8 @@ class UserController extends Controller
 
             }
             $finalPrice += ($total + $totalPostPrice) - $basket->sumOfDiscount;
-            return view('user.userFactor', compact('pageTitle', 'baskets', 'total', 'totalPostPrice', 'finalPrice', 'paymentTypes', 'comments'));
+            $payPrice   += (($total + $totalPostPrice) - $basket->sumOfDiscount) / 2;
+            return view('user.userFactor', compact('pageTitle', 'baskets', 'total', 'totalPostPrice', 'finalPrice', 'paymentTypes', 'comments','payPrice'));
         } else {
             return view('errors.403');
         }
@@ -563,7 +570,7 @@ class UserController extends Controller
     //below function is related to redirect comment details
     public function showJson(Request $request)
     {
-        var_dump($request->jsonStr);
+
         $array = json_decode($request->jsonStr);
         $i = 0;
         while($i < count($array))
@@ -571,7 +578,7 @@ class UserController extends Controller
             $firstUpdate = DB::table('basket_product')->where([['product_id',$array[$i]->productId],['basket_id',$array[$i]->basketId]])->update(['comments' => ""]);
             $i++;
         }
-//        if($firstUpdate)
+//        if($firstUpdate == true)
 //        {
             $i = 0;
             while($i < count($array))
@@ -579,14 +586,14 @@ class UserController extends Controller
                 $secondUpdate = DB::table('basket_product')->where([['product_id',$array[$i]->productId],['basket_id',$array[$i]->basketId]])->update(['comments' => DB::raw("CONCAT(comments , '".$array[$i]->value."','".','."')")]);
                 $i++;
             }
-            if($secondUpdate)
+            if($secondUpdate == true)
             {
                 return response()->json(['message' => 'جزئیات سفارش با موفقیت ثبت گردید' , 'code' => 'success']);
             }else
                 {
                     return response()->json(['message' => 'خطا در ثبت اطلاعات ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error1']);
                 }
-        //}
+//        }
 //        else
 //        {
 //            return response()->json(['message' => 'خطا در ثبت اطلاعات ، لطفا با بخش پشتیبانی تماس بگیرید' , 'code' => 'error2']);

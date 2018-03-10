@@ -76,21 +76,21 @@
                                   enctype="multipart/form-data">
                                 {{ csrf_field() }}
                                 <input type="hidden" value="user" name="frmtype">
-                                <div class="form-group col-md-12{{ $errors->has('name') ? ' has-error' : '' }}">
-                                    <div class="col-md-9">
-                                        <input id="name" type="text" class="form-control" name="name"
-                                               value="{{ old('name') }}" required autofocus>
-                                    </div>
-                                    <label for="name" class="col-md-3 control-label">نام</label>
-                                </div>
+                                {{--<div class="form-group col-md-12{{ $errors->has('name') ? ' has-error' : '' }}">--}}
+                                    {{--<div class="col-md-9">--}}
+                                        {{--<input id="name" type="text" class="form-control" name="name"--}}
+                                               {{--value="{{ old('name') }}" required autofocus>--}}
+                                    {{--</div>--}}
+                                    {{--<label for="name" class="col-md-3 control-label">نام</label>--}}
+                                {{--</div>--}}
 
-                                <div class="form-group col-md-12{{ $errors->has('family') ? ' has-error' : '' }}">
-                                    <div class="col-md-9">
-                                        <input id="family" type="text" class="form-control" name="family"
-                                               value="{{ old('family') }}" required autofocus>
-                                    </div>
-                                    <label for="family" class="col-md-3 control-label"> نام خانوادگی</label>
-                                </div>
+                                {{--<div class="form-group col-md-12{{ $errors->has('family') ? ' has-error' : '' }}">--}}
+                                    {{--<div class="col-md-9">--}}
+                                        {{--<input id="family" type="text" class="form-control" name="family"--}}
+                                               {{--value="{{ old('family') }}" required autofocus>--}}
+                                    {{--</div>--}}
+                                    {{--<label for="family" class="col-md-3 control-label"> نام خانوادگی</label>--}}
+                                {{--</div>--}}
                                 <div class="form-group col-md-12">
                                     <div class="col-md-9">
                                         <input type="text" pattern="^\d{11}$" required=" " tabindex="7"
@@ -117,72 +117,72 @@
                                     <label for="password-confirm" class="col-md-3 control-label">تکرار پسورد</label>
                                 </div>
 
-                                <div class="form-group col-md-12">
-                                    <div class="col-md-9">
-                                        <select tabindex="" class="form-control align-right selectpicker required"
-                                                name="capital"
-                                                id="capital" data-style="g-select" data-width="100%">
-                                            <option class="align-right" value="-1">لطفا استان مورد نظر خود را انتخاب
-                                                نمایید.
-                                            </option>
-                                            @foreach($capital as $cap)
-                                                <option class="align-right"
-                                                        value="{{$cap->id}}">{{$cap->title}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                    <label for="capital" class="col-md-3 control-label">استان</label>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <div class="col-md-9">
-                                        <select tabindex="" class="form-control align-right selectpicker required"
-                                                name="town" id="town" data-style="g-select" data-width="100%">
-                                        </select>
-                                    </div>
-                                    <label for="town" class="col-md-3 control-label">شهــر</label>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <div class="col-md-9">
-                                        <input type="text" pattern="^\d{11}$" required="" tabindex="6" autofocus
-                                               value="{{ old('telephone') }}" maxlength="11" name="telephone"
-                                               id="telephone"
-                                               class="form-control">
-                                    </div>
-                                    <label for="grade" class="col-md-3 control-label">تلفن ثابت</label>
-                                </div>
-                                <div class="form-group col-md-12{{ $errors->has('email') ? ' has-error' : '' }}">
-                                    <div class="col-md-9">
-                                        <input id="email" class="form-control" name="email" value="{{ old('email') }}"
-                                               required>
-                                    </div>
-                                    <label for="email" class="col-md-3 control-label">ایمیل</label>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <div class="col-md-9">
-                                        <input type="text" pattern="^\d{10}$" required=" " tabindex="8"
-                                               value="{{ old('zipCode') }}" maxlength="11" name="zipCode" id="zipCode"
-                                               class="form-control">
-                                    </div>
-                                    <label for="grade" class="col-md-3 control-label">کد پستی</label>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <div class="col-md-9">
-                                        <input type="text" required="" tabindex="9"
-                                               value="{{ old('birth_date') }}" maxlength="11" name="birth_date"
-                                               id="birth_date"
-                                               class="form-control">
-                                    </div>
-                                    <label for="grade" class="col-md-3 control-label">تاریخ تولد</label>
-                                </div>
-                                <div class="form-group col-md-12">
-                                    <div class="col-md-9">
-                                        <textarea type="text" required=" " tabindex="10"
-                                                  value="{{ old('address') }}" maxlength="2000" name="address"
-                                                  id="address"
-                                                  class="form-control address col-md-12"></textarea>
-                                    </div>
-                                    <label for="grade" class="col-md-3 control-label">آدرس</label>
-                                </div>
+                                {{--<div class="form-group col-md-12">--}}
+                                    {{--<div class="col-md-9">--}}
+                                        {{--<select tabindex="" class="form-control align-right selectpicker required"--}}
+                                                {{--name="capital"--}}
+                                                {{--id="capital" data-style="g-select" data-width="100%">--}}
+                                            {{--<option class="align-right" value="-1">لطفا استان مورد نظر خود را انتخاب--}}
+                                                {{--نمایید.--}}
+                                            {{--</option>--}}
+                                            {{--@foreach($capital as $cap)--}}
+                                                {{--<option class="align-right"--}}
+                                                        {{--value="{{$cap->id}}">{{$cap->title}}</option>--}}
+                                            {{--@endforeach--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                    {{--<label for="capital" class="col-md-3 control-label">استان</label>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group col-md-12">--}}
+                                    {{--<div class="col-md-9">--}}
+                                        {{--<select tabindex="" class="form-control align-right selectpicker required"--}}
+                                                {{--name="town" id="town" data-style="g-select" data-width="100%">--}}
+                                        {{--</select>--}}
+                                    {{--</div>--}}
+                                    {{--<label for="town" class="col-md-3 control-label">شهــر</label>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group col-md-12">--}}
+                                    {{--<div class="col-md-9">--}}
+                                        {{--<input type="text" pattern="^\d{11}$" required="" tabindex="6" autofocus--}}
+                                               {{--value="{{ old('telephone') }}" maxlength="11" name="telephone"--}}
+                                               {{--id="telephone"--}}
+                                               {{--class="form-control">--}}
+                                    {{--</div>--}}
+                                    {{--<label for="grade" class="col-md-3 control-label">تلفن ثابت</label>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group col-md-12{{ $errors->has('email') ? ' has-error' : '' }}">--}}
+                                    {{--<div class="col-md-9">--}}
+                                        {{--<input id="email" class="form-control" name="email" value="{{ old('email') }}"--}}
+                                               {{--required>--}}
+                                    {{--</div>--}}
+                                    {{--<label for="email" class="col-md-3 control-label">ایمیل</label>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group col-md-12">--}}
+                                    {{--<div class="col-md-9">--}}
+                                        {{--<input type="text" pattern="^\d{10}$" required=" " tabindex="8"--}}
+                                               {{--value="{{ old('zipCode') }}" maxlength="11" name="zipCode" id="zipCode"--}}
+                                               {{--class="form-control">--}}
+                                    {{--</div>--}}
+                                    {{--<label for="grade" class="col-md-3 control-label">کد پستی</label>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group col-md-12">--}}
+                                    {{--<div class="col-md-9">--}}
+                                        {{--<input type="text" required="" tabindex="9"--}}
+                                               {{--value="{{ old('birth_date') }}" maxlength="11" name="birth_date"--}}
+                                               {{--id="birth_date"--}}
+                                               {{--class="form-control">--}}
+                                    {{--</div>--}}
+                                    {{--<label for="grade" class="col-md-3 control-label">تاریخ تولد</label>--}}
+                                {{--</div>--}}
+                                {{--<div class="form-group col-md-12">--}}
+                                    {{--<div class="col-md-9">--}}
+                                        {{--<textarea type="text" required=" " tabindex="10"--}}
+                                                  {{--value="{{ old('address') }}" maxlength="2000" name="address"--}}
+                                                  {{--id="address"--}}
+                                                  {{--class="form-control address col-md-12"></textarea>--}}
+                                    {{--</div>--}}
+                                    {{--<label for="grade" class="col-md-3 control-label">آدرس</label>--}}
+                                {{--</div>--}}
                                 <div class="form-group col-md-12{{ $errors->has('captcha') ? ' has-error' : '' }}">
                                     <div class="col-md-9">
                                         {{--<img src="{{url('reload.jpg')}}" class="captcha-reload "--}}

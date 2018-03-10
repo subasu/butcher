@@ -28,8 +28,8 @@ class IndexController extends Controller
             return redirect()->route('productsManagement');
         } elseif ($role_id == $user_id)
         {
-//            return view('layouts.userLayout');
-            return redirect()->route('userOrders','factor');
+         return view('layouts.userLayout');
+           // return redirect()->route('userOrders','factor');
         }
     }
 
@@ -185,8 +185,8 @@ class IndexController extends Controller
                     'telephone' => 'sometimes|nullable|numeric|size:11',
                     'cellphone' => 'required|numeric|min:11|unique:users',
                     'birth_date' => 'sometimes|nullable|min:8|max:10',
-                    'capital' => 'required',
-                    'town' => 'required',
+                    'capital' => 'sometimes|nullable',
+                    'town' => 'sometimes|nullable',
                     'zipCode' => 'sometimes|nullable|numeric|min:10',
                     'captcha' => 'required|in:' . session()->get('captcha')
                 ]
@@ -341,6 +341,7 @@ class IndexController extends Controller
                     $totalDiscount = 0;
                     $totalPostPrice = 0;
                     $finalPrice = 0;
+                    $payPrice   = 0;
                     if (!empty($baskets)) {
                         foreach ($baskets->products as $basket) {
                             $basket->count = $basket->pivot->count;
@@ -361,7 +362,8 @@ class IndexController extends Controller
                         }
                       //  dd($baskets);
                         $finalPrice += ($total + $totalPostPrice) - $basket->sumOfDiscount;
-                        return view('main.orderDetail', compact('menu', 'pageTitle', 'baskets', 'total', 'totalPostPrice', 'finalPrice', 'paymentTypes'));
+                        $payPrice   += (($total + $totalPostPrice) - $basket->sumOfDiscount) / 2;
+                        return view('main.orderDetail', compact('menu', 'pageTitle', 'baskets', 'total', 'totalPostPrice', 'finalPrice', 'paymentTypes','payPrice'));
                     } else {
                         return view('errors.403');
                     }

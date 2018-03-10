@@ -11,7 +11,7 @@ namespace App\Http\SelfClasses;
 
 class BankModule
 {
-    public function bankOperation()
+    public function bankOperation($payPrice)
     {
         return true;
     }
